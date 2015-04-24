@@ -34,6 +34,13 @@ public class UserReactionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity().getApplicationContext(),"A unicorn was born!",Toast.LENGTH_LONG).show();
+                Fragment frag = new QuestionFragment();
+                FragmentManager fragMan = getFragmentManager();
+                FragmentTransaction fragTran = fragMan.beginTransaction();
+                fragTran.replace(R.id.frame_container, frag);
+                fragTran.addToBackStack(null);
+                fragTran.commit();
+
             }
         });
 

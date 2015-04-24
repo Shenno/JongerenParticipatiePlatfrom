@@ -88,7 +88,7 @@
         android:background="@color/ProjectBlue"/>
 
     <com.software.shell.fab.ActionButton
-        android:id="@+id/action_button"
+        android:id="@+id/btnNewReaction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/fab_margin"

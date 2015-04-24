@@ -1,15 +1,19 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDmsDetailed;
+import com.software.shell.fab.ActionButton;
 
 import java.text.SimpleDateFormat;
 
@@ -23,6 +27,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 17/04/2015.
  */
 public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
+    private ActionButton button;
     TextView startDate;
     TextView endDate;
     TextView questioner;
@@ -41,6 +46,20 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         winner = (TextView) rootView.findViewById(R.id.dmsDetWinner);
         question = (TextView) rootView.findViewById(R.id.dmsDetQuestion);
         extra = (TextView) rootView.findViewById(R.id.dmsDetExtra);
+
+        button = (ActionButton) rootView.findViewById(R.id.btnNewReaction);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment frag = new UserReactionFragment();
+                FragmentManager fragMan = getFragmentManager();
+                FragmentTransaction fragTran = fragMan.beginTransaction();
+                fragTran.replace(R.id.frame_container, frag);
+                fragTran.addToBackStack(null);
+                fragTran.commit();
+            }
+        });
 
         return rootView;
     }

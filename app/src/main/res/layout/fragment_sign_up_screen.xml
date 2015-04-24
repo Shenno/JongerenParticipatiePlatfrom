@@ -48,6 +48,7 @@
             android:drawableLeft="@drawable/birthdayicon"
             android:drawableStart="@drawable/birthdayicon"
             android:hint="@string/BirthdateHint"
+            android:inputType="date"
 
             />
 

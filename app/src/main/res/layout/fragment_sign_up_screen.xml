@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/ProjectBlue"
+
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/register"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:weightSum="1">
+
+
+        <EditText
+            android:id="@+id/txtName"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/user"
+            android:drawableStart="@drawable/user"
+            android:hint="@string/NameHint"
+
+
+            />
+
+        <EditText
+            android:id="@+id/etEmail"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/email"
+            android:drawableStart="@drawable/email"
+            android:hint="@string/EmailHint"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/txtBirthDay"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/birthdayicon"
+            android:drawableStart="@drawable/birthdayicon"
+            android:hint="@string/BirthdateHint"
+
+            />
+
+        <EditText
+            android:id="@+id/txtSignUpPassword"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/password"
+            android:drawableStart="@drawable/password"
+            android:hint="@string/Password"
+            android:inputType="textPassword"
+
+            />
+
+        <EditText
+            android:id="@+id/txtConfirmSignUpPassword"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/password"
+            android:drawableStart="@drawable/password"
+            android:hint="@string/ConfirmPassword"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnSingIn"
+            style="@style/btnStyleArsenic"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:text="@string/ConfirmRegistration" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/register"
+        style="@style/myTextViewTop"
+        android:background="@drawable/topedittextstyle"
+        android:text="@string/Register" />
+
+</RelativeLayout>

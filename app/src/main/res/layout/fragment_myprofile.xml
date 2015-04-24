@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ProjectBlue"
+    android:clickable="true">
+
+    <EditText
+        android:id="@+id/myProfile"
+        style="@style/myTextViewTop"
+        android:background="@drawable/topedittextstyle"
+        android:text="@string/MyProfile"
+
+        />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/myProfile">
+
+
+        <EditText
+            android:id="@+id/txtName"
+            style="@style/myTextView.Profile"
+            android:drawableLeft="@drawable/user"
+            android:drawableStart="@drawable/user"
+            android:hint="@string/NameHint"
+
+            />
+
+        <EditText
+            android:id="@+id/txtEmail"
+            style="@style/myTextView.Profile"
+            android:layout_below="@+id/txtName"
+            android:drawableLeft="@drawable/email"
+            android:drawableStart="@drawable/email"
+            android:hint="@string/EmailHint"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/txtGemeente"
+            style="@style/myTextView.Profile"
+            android:layout_below="@+id/txtEmail"
+            android:drawableLeft="@drawable/cityicon"
+            android:drawableStart="@drawable/cityicon"
+            android:hint="@string/townHint"
+            android:inputType="textPostalAddress"
+            android:textColorHint="#cccccc" />
+
+        <EditText
+            android:id="@+id/txtGeboorteDatum"
+            style="@style/myTextView.Profile"
+            android:layout_below="@+id/txtGemeente"
+            android:drawableLeft="@drawable/birthdayicon"
+            android:drawableStart="@drawable/birthdayicon"
+            android:hint="@string/BirthdateHint"
+            android:inputType="textPostalAddress"
+            android:textColorHint="#cccccc" />
+
+        <EditText
+            android:id="@+id/txtPassword"
+            style="@style/myTextView.Profile"
+            android:layout_below="@+id/txtGeboorteDatum"
+            android:drawableLeft="@drawable/password"
+            android:drawableStart="@drawable/password"
+            android:hint="@string/Password"
+            android:inputType="textPassword"
+            android:textColorHint="#cccccc" />
+
+
+        <Button
+            android:id="@+id/btnUpdatePassword"
+            style="@style/btnStyleArsenic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtPassword"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/ChangePassword" />
+
+        <Button
+            android:id="@+id/btnSignOut"
+            style="@style/btnStyleArsenic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btnUpdatePassword"
+            android:layout_alignLeft="@+id/btnUpdatePassword"
+            android:layout_alignRight="@+id/btnUpdatePassword"
+            android:layout_alignStart="@+id/btnUpdatePassword"
+            android:layout_below="@+id/btnUpdatePassword"
+            android:text="@string/LogOut" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

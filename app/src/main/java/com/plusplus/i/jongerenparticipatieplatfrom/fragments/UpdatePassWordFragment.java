@@ -17,6 +17,7 @@ public class UpdatePassWordFragment extends Fragment {
 
     public UpdatePassWordFragment() {
         // DIt is een test
+        //test2
     }
 
     @Override

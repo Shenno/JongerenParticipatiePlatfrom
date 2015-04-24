@@ -23,8 +23,6 @@ public class UpdatePassWordFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         final View rootView = inflater.inflate(R.layout.fragment_change_password_screen, container, false);
-
-
         return rootView;
     }
 

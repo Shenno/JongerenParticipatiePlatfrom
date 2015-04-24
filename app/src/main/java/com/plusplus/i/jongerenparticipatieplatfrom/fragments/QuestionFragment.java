@@ -61,19 +61,6 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
 
         getJppService().getOpenDms(1, this);
 
-        actionButton= (ActionButton) rootView.findViewById(R.id.action_button);
-
-        actionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment frag = new UserReactionFragment();
-                FragmentManager fragMan = getFragmentManager();
-                FragmentTransaction fragTran = fragMan.beginTransaction();
-                fragTran.replace(R.id.frame_container, frag);
-                fragTran.addToBackStack(null);
-                fragTran.commit();
-            }
-        });
 
         return rootView;
     }

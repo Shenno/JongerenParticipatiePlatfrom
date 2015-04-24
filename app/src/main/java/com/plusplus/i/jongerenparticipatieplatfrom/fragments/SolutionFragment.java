@@ -25,7 +25,7 @@ public class SolutionFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        getActivity().setTitle("Kevin is een homo");
+        getActivity().setTitle("Hoe oplossen?");
         if(getArguments() != null) {
             Bundle b = getArguments();
             String i = b.getString("parameter");

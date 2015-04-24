@@ -62,19 +62,16 @@ public class DmsAdapter extends BaseAdapter {
         }
         viewHolder.dateTextView.setText(new SimpleDateFormat("dd/MM/yyyy").format(dms.getEndDate()));
         viewHolder.questionTextView.setText(dms.getQuestion());
-        viewHolder.extraTextView.setText(dms.getExtraInfo());
         return convertView;
     }
 
     static class ViewHolder {
         TextView dateTextView;
         TextView questionTextView;
-        TextView extraTextView;
 
         public ViewHolder(View view) {
             dateTextView = (TextView) view.findViewById(R.id.dmsDate);
             questionTextView = (TextView) view.findViewById(R.id.dmsQuestion);
-            extraTextView = (TextView) view.findViewById(R.id.dmsExtra);
         }
     }
 }

@@ -35,20 +35,6 @@
 
         android:textColor="@color/WhiteSmoke" />
 
-    <TextView
-        android:id="@+id/dmsExtra"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/dmsQuestion"
-        android:layout_gravity="center_horizontal"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_weight="0.10"
-        android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-
-        android:textColor="@color/WhiteSmoke"
-        android:visibility="invisible" />
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"

@@ -16,6 +16,7 @@ import com.plusplus.i.jongerenparticipatieplatfrom.R;
 public class UpdatePassWordFragment extends Fragment {
 
     public UpdatePassWordFragment() {
+        // DIt is een test
     }
 
     @Override

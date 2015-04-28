@@ -47,7 +47,7 @@
         fab:type="DEFAULT"
         fab:button_color="@color/fab_material_lime_500"
         fab:button_colorPressed="@color/fab_material_lime_900"
-        fab:image="@drawable/fab_plus_icon"
+        fab:image="@drawable/ic_action_done"
         fab:image_size="24dp"
         fab:shadow_color="#757575"
         fab:shadow_radius="1.0dp"

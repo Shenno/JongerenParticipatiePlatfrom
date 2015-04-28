@@ -27,7 +27,8 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 17/04/2015.
  */
 public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
-    private ActionButton button;
+    private ActionButton newReaction;
+    private Button viewReactions;
     TextView startDate;
     TextView endDate;
     TextView questioner;
@@ -47,9 +48,9 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         question = (TextView) rootView.findViewById(R.id.dmsDetQuestion);
         extra = (TextView) rootView.findViewById(R.id.dmsDetExtra);
 
-        button = (ActionButton) rootView.findViewById(R.id.btnNewReaction);
+        newReaction = (ActionButton) rootView.findViewById(R.id.btnNewReaction);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        newReaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment frag = new UserReactionFragment();
@@ -60,6 +61,21 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
                 fragTran.commit();
             }
         });
+
+        viewReactions = (Button)rootView.findViewById(R.id.btnShowReactions);
+
+        viewReactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment frag = new ViewReactions();
+                FragmentManager fragMan = getFragmentManager();
+                FragmentTransaction fragTran = fragMan.beginTransaction();
+                fragTran.replace(R.id.frame_container, frag);
+                fragTran.addToBackStack(null);
+                fragTran.commit();
+            }
+        });
+
 
         return rootView;
     }

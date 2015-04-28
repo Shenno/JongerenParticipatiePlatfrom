@@ -52,7 +52,7 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         TextView tv = new TextView(getActivity());
         tv.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.FILL_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT));
-        tv.setText("dit is helemaal mooi");
+        tv.setText("dit is heleemaal mooi");
         rl.addView(tv);
     }
 

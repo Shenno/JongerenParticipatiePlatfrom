@@ -3,6 +3,8 @@ package com.plusplus.i.jongerenparticipatieplatfrom.service;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Account;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDmsDetailed;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Token;
 
 import java.util.List;
@@ -31,4 +33,10 @@ public interface JppService {
 
     @GET("/api/dms/{dmsId}")
     void getDms(@Path("dmsId") int dmsId, Callback<DtoDmsDetailed> callback);
+
+    @GET("/api/dms/{dmsId}/dossiers")
+    void getDossiers(@Path("dmsId") int dmsId, Callback<List<DtoDossier>> callBack);
+
+    @GET("/api/dms/dossier/{dId}")
+    void getDossier(@Path("dId") int dId, Callback<DtoDossierDetailed> callback);
 }

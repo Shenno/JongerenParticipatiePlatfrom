@@ -27,14 +27,14 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 17/04/2015.
  */
 public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
-    private ActionButton newReaction;
-    private Button viewReactions;
+    private ActionButton button;
     TextView startDate;
     TextView endDate;
     TextView questioner;
     TextView winner;
     TextView question;
     TextView extra;
+    Button button2;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,9 +48,11 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         question = (TextView) rootView.findViewById(R.id.dmsDetQuestion);
         extra = (TextView) rootView.findViewById(R.id.dmsDetExtra);
 
-        newReaction = (ActionButton) rootView.findViewById(R.id.btnNewReaction);
+        button = (ActionButton) rootView.findViewById(R.id.btnNewReaction);
+        button2 = (Button) rootView.findViewById(R.id.btnShowReactions);
 
-        newReaction.setOnClickListener(new View.OnClickListener() {
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment frag = new UserReactionFragment();
@@ -62,12 +64,10 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
             }
         });
 
-        viewReactions = (Button)rootView.findViewById(R.id.btnShowReactions);
-
-        viewReactions.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment frag = new ViewReactions();
+                Fragment frag = new DossiersFragment();
                 FragmentManager fragMan = getFragmentManager();
                 FragmentTransaction fragTran = fragMan.beginTransaction();
                 fragTran.replace(R.id.frame_container, frag);
@@ -75,7 +75,6 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
                 fragTran.commit();
             }
         });
-
 
         return rootView;
     }

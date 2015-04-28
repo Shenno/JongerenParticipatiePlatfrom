@@ -46,7 +46,18 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn();
+                if (txtName.getText().length() == 0) {
+                    txtName.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
+                }
+                if (txtPwd.getText().length() == 0) {
+                    txtPwd.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
+                }
+
+                if (!(txtName.getText().length() == 0 || txtPwd.getText().length() == 0)){
+                    signIn();
+                }
+
+                //TODO Als de user foute username gebruik of foute pw de error code van retrofit opvangen en error weergeven in de textfields
             }
         });
     }

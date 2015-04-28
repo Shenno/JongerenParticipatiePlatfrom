@@ -8,26 +8,33 @@
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
         android:id="@+id/dUsername"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Votes"
-        android:id="@+id/dVotes"
-        android:layout_below="@+id/dUsername"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dAnswer"
+        android:layout_marginTop="87dp"
+        android:text="Auteur"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/WhiteSmoke" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Answer"
         android:id="@+id/dAnswer"
-        android:layout_below="@+id/dVotes"
-        android:layout_alignParentStart="true" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:text="New Text"
+        android:textColor="@color/WhiteSmoke" />
+
+    <TextView
+        android:id="@+id/dVotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/dUsername"
+        android:text="Votes"
+        android:textColor="@color/WhiteSmoke" />
+
+
 </RelativeLayout>

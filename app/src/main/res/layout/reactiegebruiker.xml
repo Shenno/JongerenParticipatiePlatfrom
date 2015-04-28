@@ -27,7 +27,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/txtReaction"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_alignParentEnd="true"
@@ -57,6 +57,6 @@
         fab:stroke_width="1.0dp"
         fab:show_animation="@anim/fab_roll_from_down"
         fab:hide_animation="@anim/fab_roll_to_down"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/txtReaction"
         android:layout_alignParentEnd="true" />
 </RelativeLayout>

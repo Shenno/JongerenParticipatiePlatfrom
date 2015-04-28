@@ -4,6 +4,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/material_blue_grey_950"
     android:orientation="horizontal">
 
     <ListView
@@ -14,16 +15,8 @@
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false"
         android:overScrollMode="never"
-        android:scrollbarStyle="outsideOverlay" />
-
-    <TextView
-        android:id="@+id/empty"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Niks te zien" />
+        android:scrollbarStyle="outsideOverlay"
+        android:layout_below="@+id/txtTitle" />
 
 
     <com.software.shell.fab.ActionButton
@@ -48,6 +41,16 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="29dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/txtTitle"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/WhiteSmoke"
+        android:padding="2dp" />
 
 
 </RelativeLayout>

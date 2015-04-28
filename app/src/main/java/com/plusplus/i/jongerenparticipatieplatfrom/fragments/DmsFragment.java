@@ -98,7 +98,6 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         winner.setText(Integer.toString(dtoDmsDetailed.getWinnersCount()));
         question.setText(dtoDmsDetailed.getQuestion());
         extra.setText(dtoDmsDetailed.getExtraInfo());
-
     }
 
     @Override

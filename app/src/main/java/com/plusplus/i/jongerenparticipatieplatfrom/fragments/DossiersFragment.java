@@ -30,8 +30,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  */
 public class DossiersFragment extends Fragment implements Callback<List<DtoDossier>> {
     private DossierAdapter dossierAdapter;
-    OnHeadlineSelectedListener mCallback;
-    ActionButton actionButton;
+    private OnSelectedListener mCallback;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,34 +49,27 @@ public class DossiersFragment extends Fragment implements Callback<List<DtoDossi
                                     long arg3) {
                 DtoDossier dto = dossierAdapter.getItem(arg2);
                 Toast.makeText(getActivity(), dto.getAnswer(), Toast.LENGTH_LONG).show();
-        //        mCallback.onItemClicked(dto.getId());
+                mCallback.onDossierItemClicked(dto.getId());
             }
 
         });
 
         getJppService().getDossiers(1, this);
-
-
         return rootView;
     }
 
-    // Container Activity must implement this interface
-    public interface OnHeadlineSelectedListener {
-        public void onItemClicked(int position);
-    }
-
- /*   @Override
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         // This makes sure that the container activity has implemented
         // the callback interface. If not, it throws an exception
         try {
-            mCallback = (OnHeadlineSelectedListener) activity;
+            mCallback = (OnSelectedListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnHeadlineSelectedListener");
         }
-    }*/
+    }
 
     @Override
     public void success(List<DtoDossier> dtoDossiers, Response response) {

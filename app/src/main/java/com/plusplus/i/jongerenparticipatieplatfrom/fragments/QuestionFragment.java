@@ -33,9 +33,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 
 public class QuestionFragment extends Fragment implements Callback<List<DtoDms>> {
     private DmsAdapter dmsAdapter;
-    OnHeadlineSelectedListener mCallback;
-    ActionButton actionButton;
-
+    OnSelectedListener mCallback;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,10 +63,10 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
         return rootView;
     }
 
-    // Container Activity must implement this interface
+/*    // Container Activity must implement this interface
     public interface OnHeadlineSelectedListener {
         public void onItemClicked(int position);
-    }
+    }*/
 
     @Override
     public void onAttach(Activity activity) {
@@ -76,7 +74,7 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
         // This makes sure that the container activity has implemented
         // the callback interface. If not, it throws an exception
         try {
-            mCallback = (OnHeadlineSelectedListener) activity;
+            mCallback = (OnSelectedListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnHeadlineSelectedListener");

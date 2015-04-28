@@ -22,14 +22,16 @@ import java.util.ArrayList;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.NavDrawerListAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DmsFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.LogInFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyProfileFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.QuestionFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.RegisterFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.SolutionFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.NavDrawerItem;
 
-public class MainActivity extends Activity implements QuestionFragment.OnHeadlineSelectedListener {
+public class MainActivity extends Activity implements OnSelectedListener {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -255,5 +257,18 @@ public class MainActivity extends Activity implements QuestionFragment.OnHeadlin
         fragTran.addToBackStack(null);
         fragTran.commit();
         Toast.makeText(this, "tis gebeurd", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onDossierItemClicked(int id) {
+        Fragment fragment = new DossierFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
     }
 }

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Account;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Token;
@@ -74,10 +75,14 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         SharedPreferences prefs = getActivity().getSharedPreferences("TokenHype", MODE_PRIVATE);
         String text = prefs.getString("token", null);
         Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
+        AppMsg.makeText(getActivity(),text,AppMsg.STYLE_INFO).show();
+
     }
 
     @Override
     public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+       // Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+        AppMsg.makeText(getActivity(), error.toString(), AppMsg.STYLE_ALERT).show();
+
     }
 }

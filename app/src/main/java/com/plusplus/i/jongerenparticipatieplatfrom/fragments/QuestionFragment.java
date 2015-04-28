@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.DmsAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
@@ -90,7 +91,9 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
 
     @Override
     public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(), "Fout", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getActivity(), "Fout", Toast.LENGTH_LONG).show();
+        AppMsg.makeText(getActivity(), "Er is iets mis gegaan :(", AppMsg.STYLE_ALERT).show();
+
     }
 }
 

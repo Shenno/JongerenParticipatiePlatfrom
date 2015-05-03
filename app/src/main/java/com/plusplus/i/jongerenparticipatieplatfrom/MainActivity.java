@@ -49,10 +49,6 @@ public class MainActivity extends Activity implements OnSelectedListener {
     private ArrayList<NavDrawerItem> navDrawerItems;
     private NavDrawerListAdapter adapter;
 
-    private Button test;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -244,7 +240,6 @@ public class MainActivity extends Activity implements OnSelectedListener {
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-
     @Override
     public void onItemClicked(int i) {
         Fragment fragment = new DmsFragment();
@@ -256,7 +251,6 @@ public class MainActivity extends Activity implements OnSelectedListener {
         fragTran.replace(R.id.frame_container, fragment);
         fragTran.addToBackStack(null);
         fragTran.commit();
-        Toast.makeText(this, "tis gebeurd", Toast.LENGTH_LONG).show();
     }
 
     @Override

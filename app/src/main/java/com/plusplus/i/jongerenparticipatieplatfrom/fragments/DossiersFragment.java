@@ -48,13 +48,12 @@ public class DossiersFragment extends Fragment implements Callback<List<DtoDossi
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
                 DtoDossier dto = dossierAdapter.getItem(arg2);
-                Toast.makeText(getActivity(), dto.getAnswer(), Toast.LENGTH_LONG).show();
                 mCallback.onDossierItemClicked(dto.getId());
             }
 
         });
 
-        getJppService().getDossiers(1, this);
+        getJppService().getDossiers(4, this);
         return rootView;
     }
 

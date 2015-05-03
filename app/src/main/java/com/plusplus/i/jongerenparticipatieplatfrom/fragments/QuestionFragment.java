@@ -85,7 +85,6 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
 
     @Override
     public void success(List<DtoDms> dtoDmses, Response response) {
-        Toast.makeText(getActivity(), "Ok dit werkt al", Toast.LENGTH_LONG).show();
         dmsAdapter.setOpenDms(dtoDmses);
     }
 

@@ -98,7 +98,6 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
 
     @Override
     public void success(Account account, Response response) {
-        Toast.makeText(getActivity(), "SUCCESS", Toast.LENGTH_LONG).show();
         Fragment frag = new LogInFragment();
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTran = fragMan.beginTransaction();

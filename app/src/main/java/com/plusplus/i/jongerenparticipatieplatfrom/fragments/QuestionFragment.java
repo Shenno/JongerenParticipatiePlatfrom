@@ -52,7 +52,6 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
                 DtoDms dto = dmsAdapter.getItem(arg2);
-                Toast.makeText(getActivity(), dto.getExtraInfo(), Toast.LENGTH_LONG).show();
                 mCallback.onItemClicked(dto.getId());
             }
 
@@ -82,7 +81,6 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
         }
     }
 
-
     @Override
     public void success(List<DtoDms> dtoDmses, Response response) {
         dmsAdapter.setOpenDms(dtoDmses);
@@ -90,9 +88,7 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
 
     @Override
     public void failure(RetrofitError error) {
-        //Toast.makeText(getActivity(), "Fout", Toast.LENGTH_LONG).show();
         AppMsg.makeText(getActivity(), "Er is iets mis gegaan :(", AppMsg.STYLE_ALERT).show();
-
     }
 }
 

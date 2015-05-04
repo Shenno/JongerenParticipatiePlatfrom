@@ -60,7 +60,7 @@ public class DossierAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         }
         viewHolder.usernameTextView.setText(dossier.getUsername());
-        viewHolder.votesTextView.setText("test");
+        viewHolder.votesTextView.setText(Integer.toString(dossier.getVotes()));
         viewHolder.answerTextView.setText(dossier.getAnswer());
         return convertView;
     }

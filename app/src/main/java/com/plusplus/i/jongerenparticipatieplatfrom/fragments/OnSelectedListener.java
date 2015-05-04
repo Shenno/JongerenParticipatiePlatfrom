@@ -6,4 +6,8 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 public interface OnSelectedListener {
     public void onItemClicked(int position);
     public void onDossierItemClicked(int id);
+    public void onDmsItemClicked(int id);
+    public void onNewDossierClicked(int id);
+    public void onAddExtraToDossier(int id);
+    public void onAddLocationToDossier(int id);
 }

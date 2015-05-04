@@ -1,10 +1,14 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.service;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Account;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddEvent;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddExtra;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddLocation;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDmsDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierPost;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Token;
 
 import java.util.List;
@@ -39,4 +43,17 @@ public interface JppService {
 
     @GET("/api/dms/dossier/{dId}")
     void getDossier(@Path("dId") int dId, Callback<DtoDossierDetailed> callback);
+
+    @POST("/api/dms/dossier")
+    void postDossier(@Body DtoDossierPost dtoDossierPost, Callback<DtoDossierPost> callback);
+
+    @POST("/api/dms/dossier/extra")
+    void addExtraToDossier(@Body DtoAddExtra dtoAddExtra, Callback<DtoAddExtra> callback);
+
+    @POST("/api/dms/dossier/location")
+    void addLocationToDossier(@Body DtoAddLocation dtoAddLocation, Callback<DtoAddLocation> callback);
+
+    @POST("/api/dms/dossier/event")
+    void addEventToDossier(@Body DtoAddEvent dtoAddEvent, Callback<DtoAddEvent> callback);
+
 }

@@ -56,19 +56,19 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
 
     @Override
     public void success(DtoDossierDetailed dtoDossierDetailed, Response response) {
-        tUsername.setText(dtoDossierDetailed.getUsername());
-        tAnswer.setText(dtoDossierDetailed.getAnswer());
+        tUsername.setText("Username: " + dtoDossierDetailed.getUsername());
+        tAnswer.setText("Answer: " + dtoDossierDetailed.getAnswer());
         if(dtoDossierDetailed.getExtra() != null)
         {
             TextView tv = new TextView(getActivity());
-            tv.setText(dtoDossierDetailed.getExtra());
+            tv.setText("Extra: " + dtoDossierDetailed.getExtra());
             rl.addView(tv);
         }
 
         if(dtoDossierDetailed.getLocation() != null)
         {
             TextView tv = new TextView(getActivity());
-            tv.setText(dtoDossierDetailed.getLocation());
+            tv.setText("Location: " + dtoDossierDetailed.getLocation());
             rl.addView(tv);
         }
 
@@ -77,13 +77,13 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
             for(DtoEvent d : dtoDossierDetailed.getCalendar())
             {
                 TextView tv = new TextView(getActivity());
-                tv.setText(d.getTitle());
+                tv.setText("Event title: " + d.getTitle());
                 rl.addView(tv);
                 TextView tv2 = new TextView(getActivity());
-                tv2.setText(d.getDescription());
+                tv2.setText("Event desc: " + d.getDescription());
                 rl.addView(tv2);
                 TextView tv3 = new TextView(getActivity());
-                tv3.setText(d.getDate());
+                tv3.setText("Event date: " + d.getDate());
                 rl.addView(tv3);
             }
         }
@@ -93,10 +93,10 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
             for(DtoFixedQuestion d : dtoDossierDetailed.getFixedQuestion())
             {
                 TextView q = new TextView(getActivity());
-                q.setText(d.getQuestion());
+                q.setText("Fixed q: " + d.getQuestion());
                 rl.addView(q);
               TextView a = new TextView(getActivity());
-                a.setText(d.getAnswer());
+                a.setText("Fixed a: " + d.getAnswer());
                 rl.addView(a);
             }
         }

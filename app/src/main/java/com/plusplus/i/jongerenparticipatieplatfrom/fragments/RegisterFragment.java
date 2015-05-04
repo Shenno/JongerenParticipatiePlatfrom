@@ -11,8 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Account;
+
+
+import java.util.Date;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -65,7 +69,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
                     txtBirthdate.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
                 }
 
-                if (!txtPassword.getText().equals(txtConfirmPwd.getText())) {
+                if (!txtPassword.getText().toString().equals(txtConfirmPwd.getText().toString())) {
                     if (txtConfirmPwd.getText().length() == 0) {
                         txtConfirmPwd.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
                     } else {
@@ -91,6 +95,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         final Account acc = new Account();
         acc.setUserName(txtName.getText().toString());
         acc.setEmail(txtEmail.getText().toString());
+        acc.setBirthDate(new Date());
         acc.setPassword(txtPassword.getText().toString());
         acc.setConfirmPassword(txtConfirmPwd.getText().toString());
         getJppService().registerAccount(acc, this);
@@ -98,6 +103,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
 
     @Override
     public void success(Account account, Response response) {
+        AppMsg.makeText(getActivity(), "Succesvol geregistreerd", AppMsg.STYLE_INFO).show();
         Fragment frag = new LogInFragment();
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTran = fragMan.beginTransaction();
@@ -108,6 +114,6 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
 
     @Override
     public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
+        AppMsg.makeText(getActivity(), "Er is iets mis gegaan :(", AppMsg.STYLE_ALERT).show();
     }
 }

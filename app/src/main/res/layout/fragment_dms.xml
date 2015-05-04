@@ -10,7 +10,7 @@
         android:id="@+id/dmsDetStartDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="Startdatum"
         android:textColor="@color/WhiteSmoke"
         android:layout_below="@+id/dmsDetQuestioner"
         android:layout_alignParentEnd="true"
@@ -20,7 +20,7 @@
         android:id="@+id/dmsDetEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="Einddatum"
         android:textColor="@color/WhiteSmoke"
         android:layout_above="@+id/dmsDetExtra"
         android:layout_toEndOf="@+id/dmsDetWinner"
@@ -49,7 +49,7 @@
         android:paddingBottom="3dp"
         android:paddingLeft="3dp"
         android:paddingRight="3dp"
-        android:text="New Text"
+        android:text="Extra"
         android:textColor="@color/WhiteSmoke" />
 
     <TextView
@@ -59,9 +59,10 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="48dp"
-        android:text="New Text"
+        android:text="#Winnaars"
 
-        android:textColor="@color/WhiteSmoke" />
+        android:textColor="@color/WhiteSmoke"
+        android:layout_alignParentEnd="false" />
 
     <TextView
         android:id="@+id/dmsDetQuestioner"
@@ -87,19 +88,25 @@
         android:src="@drawable/calendaricon"
         android:background="@color/ProjectBlue"/>
 
+    <Button
+        style="@style/btnStyleArsenic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Laad dossiers"
+        android:id="@+id/btnShowReactions"
+        android:layout_alignTop="@+id/dmsDetWinner"
+        android:layout_centerHorizontal="true" />
+
     <com.software.shell.fab.ActionButton
-        android:id="@+id/btnNewReaction"
+        android:id="@+id/dmsNewDossier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/fab_margin"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         fab:type="DEFAULT"
-        fab:button_color="@color/fab_material_lime_500"
-        fab:button_colorPressed="@color/fab_material_lime_900"
+        fab:button_color="@color/ProjectBlue"
+        fab:button_colorPressed="@color/fab_material_blue_grey_500"
         fab:image="@drawable/fab_plus_icon"
-        fab:image_size="24dp"
+        fab:image_size="20dp"
         fab:shadow_color="#757575"
         fab:shadow_radius="1.0dp"
         fab:shadow_xOffset="0.5dp"
@@ -108,15 +115,8 @@
         fab:stroke_width="1.0dp"
         fab:show_animation="@anim/fab_roll_from_down"
         fab:hide_animation="@anim/fab_roll_to_down"
-        />
-
-    <Button
-        style="@style/btnStyleArsenic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Laad reacties"
-        android:id="@+id/btnShowReactions"
-        android:layout_alignTop="@+id/dmsDetWinner"
-        android:layout_centerHorizontal="true" />
-
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp" />
 </RelativeLayout>

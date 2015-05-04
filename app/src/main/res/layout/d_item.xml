@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/dAnswer"
-        android:layout_marginTop="87dp"
         android:text="Auteur"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/WhiteSmoke" />
@@ -24,7 +23,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:text="New Text"
+        android:maxLines="4"
+        android:minLines="4"
+        android:ellipsize="end"
+        android:text="Antwoord"
         android:textColor="@color/WhiteSmoke" />
 
     <TextView

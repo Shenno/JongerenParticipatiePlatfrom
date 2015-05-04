@@ -1,5 +1,7 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.model;
 
+import java.util.Date;
+
 /**
  * Created by Shenno on 11/04/2015.
  */
@@ -8,6 +10,15 @@ public class Account {
     private String Email;
     private String Password;
     private String ConfirmPassword;
+    private Date BirthDate;
+
+    public Date getBirthDate() {
+        return BirthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        BirthDate = birthDate;
+    }
 
     public String getUserName() {
         return UserName;

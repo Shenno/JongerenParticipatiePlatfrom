@@ -21,8 +21,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.NavDrawerListAdapter;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddExtraToDossierFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddLocationToDossierFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.CreateDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DmsFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DossierFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DossiersFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.EditDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.LogInFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyProfileFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.OnSelectedListener;
@@ -192,7 +197,7 @@ public class MainActivity extends Activity implements OnSelectedListener {
                 fragment = new MyProfileFragment();
                 break;
             case 5:
-                fragment = new QuestionFragment();
+                fragment = new EditDossierFragment();
                 break;
 
             default:
@@ -265,4 +270,56 @@ public class MainActivity extends Activity implements OnSelectedListener {
         fragTran.addToBackStack(null);
         fragTran.commit();
     }
+
+    @Override
+    public void onDmsItemClicked(int id) {
+        Fragment fragment = new DossiersFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+
+    @Override
+    public void onNewDossierClicked(int id) {
+        Fragment fragment = new CreateDossierFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+
+    @Override
+    public void onAddExtraToDossier(int id) {
+        Fragment fragment = new AddExtraToDossierFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+    @Override
+    public void onAddLocationToDossier(int id) {
+        Fragment fragment = new AddLocationToDossierFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+
 }

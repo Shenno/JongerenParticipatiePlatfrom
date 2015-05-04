@@ -31,6 +31,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 public class DossiersFragment extends Fragment implements Callback<List<DtoDossier>> {
     private DossierAdapter dossierAdapter;
     private OnSelectedListener mCallback;
+    ActionButton actionButtonNewDossier;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,9 +53,30 @@ public class DossiersFragment extends Fragment implements Callback<List<DtoDossi
             }
 
         });
+        actionButtonNewDossier = (ActionButton) rootView.findViewById(R.id.dsNewDossier);
+        actionButtonNewDossier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(getArguments() != null) {
+                    Bundle b = getArguments();
+                    int i = b.getInt("dId");
+                    mCallback.onNewDossierClicked(i);
+                }
+            }
+        });
 
-        getJppService().getDossiers(4, this);
+
         return rootView;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(getArguments() != null) {
+            Bundle b = getArguments();
+            int i = b.getInt("dId");
+            getJppService().getDossiers(i, this);
+        }
     }
 
     @Override
@@ -72,7 +94,6 @@ public class DossiersFragment extends Fragment implements Callback<List<DtoDossi
 
     @Override
     public void success(List<DtoDossier> dtoDossiers, Response response) {
-        Toast.makeText(getActivity(), "Ok dit werkt al", Toast.LENGTH_LONG).show();
         dossierAdapter.setDossierList(dtoDossiers);
     }
 

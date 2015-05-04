@@ -1,5 +1,6 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -11,7 +12,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDmsDetailed;
 import com.software.shell.fab.ActionButton;
 
@@ -27,14 +30,15 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 17/04/2015.
  */
 public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
-    private ActionButton button;
+    OnSelectedListener mCallback;
     TextView startDate;
     TextView endDate;
     TextView questioner;
     TextView winner;
     TextView question;
     TextView extra;
-    Button button2;
+    Button showDossiers;
+    ActionButton newDossier;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,36 +51,44 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         winner = (TextView) rootView.findViewById(R.id.dmsDetWinner);
         question = (TextView) rootView.findViewById(R.id.dmsDetQuestion);
         extra = (TextView) rootView.findViewById(R.id.dmsDetExtra);
+        newDossier = (ActionButton) rootView.findViewById(R.id.dmsNewDossier);
+        showDossiers = (Button) rootView.findViewById(R.id.btnShowReactions);
 
-        button = (ActionButton) rootView.findViewById(R.id.btnNewReaction);
-        button2 = (Button) rootView.findViewById(R.id.btnShowReactions);
-
-
-        button.setOnClickListener(new View.OnClickListener() {
+        newDossier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment frag = new UserReactionFragment();
-                FragmentManager fragMan = getFragmentManager();
-                FragmentTransaction fragTran = fragMan.beginTransaction();
-                fragTran.replace(R.id.frame_container, frag);
-                fragTran.addToBackStack(null);
-                fragTran.commit();
+                if(getArguments() != null) {
+                    Bundle b = getArguments();
+                    int i = b.getInt("parameter");
+                    mCallback.onNewDossierClicked(i);
+                }
             }
         });
 
-        button2.setOnClickListener(new View.OnClickListener() {
+        showDossiers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment frag = new DossiersFragment();
-                FragmentManager fragMan = getFragmentManager();
-                FragmentTransaction fragTran = fragMan.beginTransaction();
-                fragTran.replace(R.id.frame_container, frag);
-                fragTran.addToBackStack(null);
-                fragTran.commit();
+                if(getArguments() != null) {
+                    Bundle b = getArguments();
+                    int i = b.getInt("parameter");
+                    mCallback.onDmsItemClicked(i);
+                }
             }
         });
-
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            mCallback = (OnSelectedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnHeadlineSelectedListener");
+        }
     }
 
     @Override
@@ -91,7 +103,6 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
 
     @Override
     public void success(DtoDmsDetailed dtoDmsDetailed, Response response) {
-        Toast.makeText(getActivity(),"Kevinisblij", Toast.LENGTH_LONG).show();
         startDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(dtoDmsDetailed.getStartDate()));
         endDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(dtoDmsDetailed.getEndDate()));
         questioner.setText("QuestionerDummy");
@@ -102,7 +113,6 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
 
     @Override
     public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(),"Kevinisnietblij", Toast.LENGTH_LONG).show();
-
+        AppMsg.makeText(getActivity(), "Er is iets mis gegaan :(", AppMsg.STYLE_ALERT).show();
     }
 }

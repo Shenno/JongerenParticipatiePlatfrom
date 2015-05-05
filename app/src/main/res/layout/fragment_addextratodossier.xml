@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/material_blue_grey_950"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/alTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:text="Extra:"
-        android:id="@+id/aeTitle" />
+        android:textColor="@color/WhiteSmoke" />
 
     <EditText
+        android:id="@+id/aeExtra"
+        style="@style/myTextView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/aeExtra" />
+        android:layout_height="200dp"
+        android:gravity="top"
+        android:hint="Geef hier je extra uitleg"
+        android:inputType="textMultiLine"
+        android:maxLength="255"
+        android:padding="5dp"
+        android:layout_below="@id/alTitle"
+        android:textColorHint="#cccccc" />
+
 
     <Button
+        android:id="@+id/aeSubmit"
+        style="@style/btnStyleArsenic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Verzenden"
-        android:id="@+id/aeSubmit" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Verzenden" />
 
-</LinearLayout>
+</RelativeLayout>

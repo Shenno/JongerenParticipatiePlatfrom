@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:background="@color/ProjectBlue"
+    android:background="@color/material_blue_grey_950"
 
     tools:context=".MainActivity">
 

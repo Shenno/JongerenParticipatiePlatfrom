@@ -25,7 +25,6 @@
         android:inputType="textMultiLine"
         android:maxLength="255"
         android:layout_below="@id/cdTitel"
-        android:textColor="@color/WhiteSmoke"
         android:padding="5dp" />
 
 

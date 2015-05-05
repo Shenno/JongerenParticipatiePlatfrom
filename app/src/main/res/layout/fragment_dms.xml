@@ -10,21 +10,25 @@
         android:id="@+id/dmsDetStartDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="2dp"
         android:text="Startdatum"
         android:textColor="@color/WhiteSmoke"
-        android:layout_below="@+id/dmsDetQuestioner"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="115dp" />
+        android:layout_below="@+id/dmsDetQuestion"
+        android:layout_alignEnd="@+id/dmsDetExtra" />
 
     <TextView
         android:id="@+id/dmsDetEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignStart="@+id/dmsDetStartDate"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
         android:text="Einddatum"
-        android:textColor="@color/WhiteSmoke"
-        android:layout_above="@+id/dmsDetExtra"
-        android:layout_toEndOf="@+id/dmsDetWinner"
-        android:layout_marginStart="38dp" />
+        android:textColor="@color/WhiteSmoke" />
 
     <TextView
         android:id="@+id/dmsDetQuestion"
@@ -38,85 +42,93 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <TextView
+
+    <EditText
         android:id="@+id/dmsDetExtra"
+        style="@style/myTextView.Profile"
         android:layout_width="match_parent"
+        android:background="@color/material_deep_teal_200"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/dmsNewDossier"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/dmsDetStartDate"
-        android:layout_marginTop="31dp"
-        android:background="@drawable/textviewborder"
-        android:paddingBottom="3dp"
-        android:paddingLeft="3dp"
-        android:paddingRight="3dp"
+        android:layout_below="@+id/dmsDetEndDate"
+        android:gravity="top"
+        android:hint="Hier komt de extra uitleg"
+        android:inputType="textFilter|textMultiLine|textNoSuggestions"
+        android:layout_margin="3dp"
+        android:scrollbars="vertical"
+        android:textSize="12sp"
         android:text="Extra"
-        android:textColor="@color/WhiteSmoke" />
+        android:textColor="@color/WhiteSmoke"
+        android:textColorHint="@color/LightGrey" />
+
 
     <TextView
         android:id="@+id/dmsDetWinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="48dp"
+        android:drawableLeft="@drawable/throphy"
+        android:drawableStart="@drawable/throphy"
+        android:padding="5dp"
         android:text="#Winnaars"
-
         android:textColor="@color/WhiteSmoke"
-        android:layout_alignParentEnd="false" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
 
     <TextView
         android:id="@+id/dmsDetQuestioner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-
         android:layout_below="@+id/dmsDetQuestion"
-        android:paddingBottom="5dp"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:scrollbars="vertical"
         android:text="OP"
         android:textColor="@color/WhiteSmoke"
         android:textStyle="italic" />
 
     <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
         android:id="@+id/imageView2"
-        android:layout_alignTop="@+id/dmsDetEndDate"
-        android:layout_alignParentStart="true"
-        android:src="@drawable/calendaricon"
-        android:background="@color/ProjectBlue"/>
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/dmsDetStartDate"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_toStartOf="@+id/dmsDetStartDate"
+        android:background="@drawable/round_corners_imageview"
+        android:src="@drawable/cal_icon" />
 
     <Button
+        android:id="@+id/btnShowReactions"
         style="@style/btnStyleArsenic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Laad dossiers"
-        android:id="@+id/btnShowReactions"
         android:layout_alignTop="@+id/dmsDetWinner"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"/>
 
     <com.software.shell.fab.ActionButton
         android:id="@+id/dmsNewDossier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/fab_margin"
-        fab:type="DEFAULT"
         fab:button_color="@color/ProjectBlue"
         fab:button_colorPressed="@color/fab_material_blue_grey_500"
+        fab:hide_animation="@anim/fab_roll_to_down"
         fab:image="@drawable/fab_plus_icon"
         fab:image_size="20dp"
         fab:shadow_color="#757575"
         fab:shadow_radius="1.0dp"
         fab:shadow_xOffset="0.5dp"
         fab:shadow_yOffset="1.0dp"
+        fab:show_animation="@anim/fab_roll_from_down"
         fab:stroke_color="@color/fab_material_blue_grey_500"
         fab:stroke_width="1.0dp"
-        fab:show_animation="@anim/fab_roll_from_down"
-        fab:hide_animation="@anim/fab_roll_to_down"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp" />
+        fab:type="DEFAULT"
+        android:layout_alignBottom="@+id/btnShowReactions"
+        android:layout_alignStart="@+id/dmsDetEndDate" />
 </RelativeLayout>

@@ -65,6 +65,20 @@
         <item name="android:inputType">none</item>
 
     </style>
+    <style name="myTextView.Profile.dossier">
+        <item name="android:background">@drawable/edittext_dossier</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:clickable">false</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:ems">10</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:inputType">none</item>
+
+    </style>
+
 
     <style name="myTextViewTop">
         <item name="android:layout_height">80dp</item>

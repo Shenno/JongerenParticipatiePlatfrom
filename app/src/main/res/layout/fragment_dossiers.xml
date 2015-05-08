@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/material_blue_grey_800"
     android:orientation="horizontal">
 
     <TextView
@@ -12,10 +12,11 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:text="Titel"
-        android:textColor="@color/Black"
+        android:textColor="@color/WhiteSmoke"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_alignParentStart="true"
+
         android:layout_alignParentTop="true" />
     <ListView
         android:id="@+id/dList"
@@ -34,10 +35,10 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/fab_margin"
         fab:type="DEFAULT"
-        fab:button_color="@color/ProjectBlue"
+        fab:button_color="@color/MaterialLimeA400"
         fab:button_colorPressed="@color/fab_material_blue_grey_500"
         fab:image="@drawable/fab_plus_icon"
-        fab:image_size="20dp"
+        fab:image_size="30dp"
         fab:shadow_color="#757575"
         fab:shadow_radius="1.0dp"
         fab:shadow_xOffset="0.5dp"

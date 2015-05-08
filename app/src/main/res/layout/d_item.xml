@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_blue_grey_800"
+    android:background="@drawable/backgroundandbordersforquestions"
     android:descendantFocusability="blocksDescendants"
     android:weightSum="1">
 
@@ -15,7 +15,9 @@
         android:layout_below="@+id/dAnswer"
         android:text="Auteur"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@color/WhiteSmoke" />
+        android:textColor="@color/WhiteSmoke"
+        android:padding="2dp"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/dAnswer"
@@ -24,7 +26,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:maxLines="4"
-        android:minLines="4"
+        android:minLines="2"
+        android:padding="2dp"
         android:ellipsize="end"
         android:text="Antwoord"
         android:textColor="@color/WhiteSmoke" />
@@ -36,6 +39,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/dUsername"
         android:text="Votes"
+        android:padding="2dp"
         android:textColor="@color/WhiteSmoke" />
 
 

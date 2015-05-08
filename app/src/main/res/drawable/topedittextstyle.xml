@@ -7,8 +7,8 @@
         android:color="@color/WhiteSmoke"/>
     <corners android:radius="3dp" />
     <gradient
-        android:startColor="@color/FbBlue"
-        android:endColor="@color/ProjectBlue"
+        android:startColor="@color/BlueGrey800"
+        android:endColor="@color/BlueGrey400"
         android:type="linear"
         android:angle="270"/>
 </shape>

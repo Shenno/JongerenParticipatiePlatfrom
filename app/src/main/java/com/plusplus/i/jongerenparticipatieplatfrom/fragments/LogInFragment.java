@@ -2,6 +2,7 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
 import android.app.Fragment;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 public class LogInFragment extends Fragment implements Callback<Token> {
     private EditText txtName;
     private EditText txtPwd;
+    private EditText txtTopText;
     private Button btnSignIn;
 	
 	public LogInFragment(){}
@@ -33,11 +35,15 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
- 
+        Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/pacifico.ttf");
+
         View rootView = inflater.inflate(R.layout.fragment_sign_in_screen, container, false);
         txtName = (EditText) rootView.findViewById(R.id.signInUsername);
         txtPwd = (EditText) rootView.findViewById(R.id.signInPassword);
         btnSignIn = (Button) rootView.findViewById(R.id.signInBtn);
+        txtTopText = (EditText) rootView.findViewById(R.id.register);
+
+        txtTopText.setTypeface(fontttype);
         initListeners();
 
         return rootView;

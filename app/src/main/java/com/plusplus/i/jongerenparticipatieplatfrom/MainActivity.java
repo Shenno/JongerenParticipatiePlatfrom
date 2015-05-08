@@ -273,10 +273,11 @@ public class MainActivity extends Activity implements OnSelectedListener {
     }
 
     @Override
-    public void onDmsItemClicked(int id) {
+    public void onDmsItemClicked(int id, String answer) {
         Fragment fragment = new DossiersFragment();
         Bundle args = new Bundle();
         args.putInt("dId", id);
+        args.putString("answer", answer);
         fragment.setArguments(args);
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTran = fragMan.beginTransaction();

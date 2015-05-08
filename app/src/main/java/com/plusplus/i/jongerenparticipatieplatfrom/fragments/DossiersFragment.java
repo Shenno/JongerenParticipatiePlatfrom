@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
@@ -32,6 +33,7 @@ public class DossiersFragment extends Fragment implements Callback<List<DtoDossi
     private DossierAdapter dossierAdapter;
     private OnSelectedListener mCallback;
     ActionButton actionButtonNewDossier;
+    TextView title;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,6 +42,12 @@ public class DossiersFragment extends Fragment implements Callback<List<DtoDossi
         View rootView = inflater.inflate(R.layout.fragment_dossiers, container, false);
 
         ListView listView = (ListView) rootView.findViewById(R.id.dList);
+        title = (TextView) rootView.findViewById(R.id.dTitle);
+        if(getArguments() != null) {
+            Bundle b = getArguments();
+            String i = b.getString("answer");
+            title.setText(i);
+        }
         listView.setAdapter(dossierAdapter);
         View emptyView = rootView.findViewById(R.id.dEmpty);
         listView.setEmptyView(emptyView);

@@ -87,7 +87,7 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
                 if (getArguments() != null) {
                     Bundle b = getArguments();
                     int i = b.getInt("parameter");
-                    mCallback.onDmsItemClicked(i);
+                    mCallback.onDmsItemClicked(i, question.getText().toString());
                 }
             }
         });

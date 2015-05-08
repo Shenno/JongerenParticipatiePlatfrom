@@ -44,6 +44,8 @@
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textOn="Edit uit"
+        android:textOff="Edit aan"
         android:id="@+id/edToggleButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />

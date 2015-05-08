@@ -12,10 +12,13 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
@@ -35,9 +38,13 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  */
 public class EditDossierFragment extends Fragment implements Callback<DtoDossierDetailed> {
     OnSelectedListener mCallback;
-
+    ToggleButton toggleButton;
     Spinner spinner;
     Button button;
+    TextView tvExtra;
+    TextView tvLocation;
+    EditText etExtra;
+    EditText etLocation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +53,31 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
         View rootView = inflater.inflate(R.layout.fragment_editdossier, container, false);
         spinner = (Spinner) rootView.findViewById(R.id.edSpinner);
         button = (Button) rootView.findViewById(R.id.edBtn);
+        tvExtra = (TextView) rootView.findViewById(R.id.edExtra);
+        tvLocation = (TextView) rootView.findViewById(R.id.edLocation);
+        etExtra = (EditText) rootView.findViewById(R.id.edExtraEdit);
+        etLocation = (EditText) rootView.findViewById(R.id.edLocationEdit);
+        etExtra.setVisibility(View.GONE);
+        etLocation.setVisibility(View.GONE);
+        toggleButton = (ToggleButton) rootView.findViewById(R.id.edToggleButton);
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Toast.makeText(getActivity(),
+                            "ON",
+                            Toast.LENGTH_LONG).show();
+                    etExtra.setVisibility(View.VISIBLE);
+                    etLocation.setVisibility(View.VISIBLE);
+
+                } else {
+                    Toast.makeText(getActivity(),
+                            "OFF",
+                            Toast.LENGTH_LONG).show();
+                    etExtra.setVisibility(View.GONE);
+                    etLocation.setVisibility(View.GONE);
+                }
+            }
+        });
         List<String> list = new ArrayList<>();
         list.add("Extra");
         list.add("Locatie");

@@ -66,11 +66,12 @@
         android:id="@+id/dmsDetWinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/throphy"
-        android:drawableStart="@drawable/throphy"
-        android:padding="5dp"
+        android:layout_margin="5dp"
         android:text="#Win"
+        android:gravity="center_horizontal"
+        android:background="@drawable/prizewinnerdrawable"
         android:textColor="@color/WhiteSmoke"
+        android:textSize="22sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 

@@ -5,8 +5,10 @@ import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
@@ -52,7 +54,7 @@ public class DossierAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final DtoDossier dossier = getItem(position);
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
         if (convertView != null) {
             viewHolder = (ViewHolder) convertView.getTag();
         } else {
@@ -72,18 +74,28 @@ public class DossierAdapter extends BaseAdapter {
         viewHolder.usernameTextView.setText(dossier.getUsername());
         viewHolder.votesTextView.setText(Integer.toString(dossier.getVotes()));
         viewHolder.answerTextView.setText(dossier.getAnswer());
+        viewHolder.likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+             //  "Hier komt nog ne push naar de db met fragment switch"
+            }
+        });
         return convertView;
     }
+
+
 
     static class ViewHolder {
         TextView usernameTextView;
         TextView votesTextView;
         TextView answerTextView;
+        ImageButton likeButton;
 
         public ViewHolder(View view) {
             usernameTextView = (TextView) view.findViewById(R.id.dUsername);
             votesTextView = (TextView) view.findViewById(R.id.dVotes);
             answerTextView = (TextView) view.findViewById(R.id.dAnswer);
+            likeButton = (ImageButton) view.findViewById(R.id.dLikeButton);
         }
     }
 }

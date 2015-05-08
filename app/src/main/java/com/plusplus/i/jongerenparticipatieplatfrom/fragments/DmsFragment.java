@@ -5,11 +5,13 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Typeface;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,6 +93,16 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
                 }
             }
         });
+
+        winner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppMsg.makeText(getActivity(),"Maximum aantal winnende antwoorden",AppMsg.STYLE_INFO).show();
+
+            }
+        });
+
+
         return rootView;
     }
 

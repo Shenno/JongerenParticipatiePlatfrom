@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.NavDrawerListAdapter;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddEventToDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddExtraToDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddLocationToDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.CreateDossierFragment;
@@ -312,6 +313,19 @@ public class MainActivity extends Activity implements OnSelectedListener {
     @Override
     public void onAddLocationToDossier(int id) {
         Fragment fragment = new AddLocationToDossierFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+
+    @Override
+    public void onAddEventToDossier(int id) {
+        Fragment fragment = new AddEventToDossierFragment();
         Bundle args = new Bundle();
         args.putInt("dId", id);
         fragment.setArguments(args);

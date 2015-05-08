@@ -69,10 +69,10 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 
     @Override
     public void success(Token token, Response response) {
-        SharedPreferences.Editor editor = getActivity().getSharedPreferences("TokenHype", MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = getActivity().getSharedPreferences("Logindetails", MODE_PRIVATE).edit();
         editor.putString("token", token.getAccess_token());
         editor.commit();
-        SharedPreferences prefs = getActivity().getSharedPreferences("TokenHype", MODE_PRIVATE);
+        SharedPreferences prefs = getActivity().getSharedPreferences("Logindetails", MODE_PRIVATE);
         String text = prefs.getString("token", null);
         Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
         AppMsg.makeText(getActivity(),text,AppMsg.STYLE_INFO).show();

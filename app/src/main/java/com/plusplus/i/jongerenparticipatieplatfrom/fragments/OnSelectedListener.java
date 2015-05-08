@@ -10,4 +10,5 @@ public interface OnSelectedListener {
     public void onNewDossierClicked(int id);
     public void onAddExtraToDossier(int id);
     public void onAddLocationToDossier(int id);
+    public void onAddEventToDossier(int id);
 }

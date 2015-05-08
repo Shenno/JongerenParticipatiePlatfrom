@@ -35,8 +35,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  */
 public class EditDossierFragment extends Fragment implements Callback<DtoDossierDetailed> {
     OnSelectedListener mCallback;
-    TextView username;
-    TextView answer;
+
     Spinner spinner;
     Button button;
 

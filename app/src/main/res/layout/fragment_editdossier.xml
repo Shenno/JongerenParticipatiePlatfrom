@@ -19,32 +19,32 @@
         android:text="Voeg toe"
         android:id="@+id/edBtn"
         android:layout_alignParentTop="true"
-        android:layout_alignBottom="@+id/toggleButton"
-        android:layout_toStartOf="@+id/toggleButton" />
+        android:layout_alignBottom="@+id/edToggleButton"
+        android:layout_toStartOf="@+id/edToggleButton" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView3"
+        android:text="Locatie"
+        android:id="@+id/edLocation"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText3"
-        android:layout_alignRight="@+id/toggleButton" />
+        android:layout_below="@+id/edExtraEdit"
+        android:layout_alignRight="@+id/edToggleButton" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText3"
+        android:id="@+id/edExtraEdit"
+        android:hint="Extra edit"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView4"
-        android:layout_alignRight="@+id/toggleButton" />
+        android:layout_below="@+id/edExtra"
+        android:layout_alignRight="@+id/edToggleButton" />
 
     <ToggleButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New ToggleButton"
-        android:id="@+id/toggleButton"
+        android:id="@+id/edToggleButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
@@ -52,35 +52,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="New Text"
-        android:id="@+id/textView4"
+        android:text="Extra"
+        android:id="@+id/edExtra"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/edSpinner"
-        android:layout_alignEnd="@+id/toggleButton" />
+        android:layout_alignEnd="@+id/edToggleButton" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4"
-        android:layout_below="@+id/textView3"
+        android:id="@+id/edLocationEdit"
+        android:hint="Location edit"
+        android:layout_below="@+id/edLocation"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/editText4"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText5"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentLeft="true" />
 
 </RelativeLayout>

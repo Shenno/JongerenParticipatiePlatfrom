@@ -45,7 +45,7 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_editdossier, container, false);
-        spinner = (Spinner) rootView.findViewById(R.id.spinner);
+        spinner = (Spinner) rootView.findViewById(R.id.edSpinner);
         button = (Button) rootView.findViewById(R.id.edBtn);
         List<String> list = new ArrayList<>();
         list.add("Extra");

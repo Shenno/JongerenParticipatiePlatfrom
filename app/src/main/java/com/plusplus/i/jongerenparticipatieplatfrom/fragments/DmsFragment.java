@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import java.text.SimpleDateFormat;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
 
@@ -43,7 +45,7 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        super.onCreateView(inflater,container,savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_dms, container, false);
         startDate = (TextView) rootView.findViewById(R.id.dmsDetStartDate);
         endDate = (TextView) rootView.findViewById(R.id.dmsDetEndDate);
@@ -54,10 +56,24 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         newDossier = (ActionButton) rootView.findViewById(R.id.dmsNewDossier);
         showDossiers = (Button) rootView.findViewById(R.id.btnShowReactions);
 
+        Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
+        Typeface opensansBold = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Semibold.ttf");
+        Typeface openSansItalic = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Italic.ttf");
+
+
+        startDate.setTypeface(fontttype);
+        endDate.setTypeface(fontttype);
+        questioner.setTypeface(openSansItalic);
+        winner.setTypeface(fontttype);
+        question.setTypeface(opensansBold);
+        extra.setTypeface(fontttype);
+
+
+
         newDossier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(getArguments() != null) {
+                if (getArguments() != null) {
                     Bundle b = getArguments();
                     int i = b.getInt("parameter");
                     mCallback.onNewDossierClicked(i);
@@ -68,7 +84,7 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         showDossiers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(getArguments() != null) {
+                if (getArguments() != null) {
                     Bundle b = getArguments();
                     int i = b.getInt("parameter");
                     mCallback.onDmsItemClicked(i);
@@ -94,7 +110,7 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
     @Override
     public void onStart() {
         super.onStart();
-        if(getArguments() != null) {
+        if (getArguments() != null) {
             Bundle b = getArguments();
             int i = b.getInt("parameter");
             getJppService().getDms(i, this);

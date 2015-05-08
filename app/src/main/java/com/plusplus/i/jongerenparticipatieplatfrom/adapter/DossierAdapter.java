@@ -1,6 +1,7 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -59,6 +60,15 @@ public class DossierAdapter extends BaseAdapter {
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }
+        Typeface fontttype = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Regular.ttf");
+        Typeface openSansItalic = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Italic.ttf");
+
+
+        viewHolder.usernameTextView.setTypeface(openSansItalic);
+        viewHolder.votesTextView.setTypeface(fontttype);
+        viewHolder.answerTextView.setTypeface(fontttype);
+
+
         viewHolder.usernameTextView.setText(dossier.getUsername());
         viewHolder.votesTextView.setText(Integer.toString(dossier.getVotes()));
         viewHolder.answerTextView.setText(dossier.getAnswer());

@@ -3,7 +3,7 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/material_blue_grey_950"
+    android:background="@color/BlueGrey800"
     android:orientation="vertical">
 
     <TextView
@@ -69,7 +69,7 @@
         android:drawableLeft="@drawable/throphy"
         android:drawableStart="@drawable/throphy"
         android:padding="5dp"
-        android:text="#Winnaars"
+        android:text="#Win"
         android:textColor="@color/WhiteSmoke"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
@@ -115,11 +115,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/fab_margin"
-        fab:button_color="@color/ProjectBlue"
+        fab:button_color="@color/BlueGrey50"
         fab:button_colorPressed="@color/fab_material_blue_grey_500"
         fab:hide_animation="@anim/fab_roll_to_down"
-        fab:image="@drawable/fab_plus_icon"
-        fab:image_size="20dp"
+        fab:image="@drawable/plusicon"
+        fab:image_size="30dp"
         fab:shadow_color="#757575"
         fab:shadow_radius="1.0dp"
         fab:shadow_xOffset="0.5dp"

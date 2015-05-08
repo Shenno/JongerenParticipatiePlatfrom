@@ -1,6 +1,7 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,18 +61,41 @@ public class DmsAdapter extends BaseAdapter {
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }
+
+        Typeface fontttype = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Regular.ttf");
+        Typeface openSansBold = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Semibold.ttf");
+
+        Typeface fonttype2 = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/pacifico.ttf");
+
+        viewHolder.dateTextView.setTypeface(fontttype);
+        viewHolder.questionTextView.setTypeface(openSansBold);
+        viewHolder.questionExraInfo.setTypeface(fontttype);
+        viewHolder.image.setTypeface(fonttype2);
+
+
+
         viewHolder.dateTextView.setText(new SimpleDateFormat("dd/MM/yyyy").format(dms.getEndDate()));
         viewHolder.questionTextView.setText(dms.getQuestion());
+        viewHolder.questionExraInfo.setText(dms.getExtraInfo());
+        viewHolder.image.setText(dms.getQuestion().substring(0,1));
+
+
+
         return convertView;
     }
 
     static class ViewHolder {
         TextView dateTextView;
         TextView questionTextView;
+        TextView questionExraInfo;
+        TextView image;
 
         public ViewHolder(View view) {
             dateTextView = (TextView) view.findViewById(R.id.dmsDate);
             questionTextView = (TextView) view.findViewById(R.id.dmsQuestion);
+            questionExraInfo = (TextView) view.findViewById(R.id.dmsQuestionExtra);
+            image = (TextView)view.findViewById(R.id.dmsImage);
+
         }
     }
 }

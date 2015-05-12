@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -37,7 +39,7 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
     private TextView tUsername;
     private TextView tAnswer;
     private TextView tExtra;
-    private ListView tQA;
+    private GridView tQA;
     private TextView tLocation;
     private ListView tEvents;
     EventAdapter tEventAdapter;
@@ -46,24 +48,29 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        super.onCreateView(inflater,container,savedInstanceState);
+        super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_dossier, container, false);
-        rl = (LinearLayout) rootView.findViewById(R.id.linLay);
+        //rl = (LinearLayout) rootView.findViewById(R.id.linLay);
         tUsername = (TextView) rootView.findViewById(R.id.ddUsername);
         tAnswer = (TextView) rootView.findViewById(R.id.ddAnswer);
         tExtra = (TextView) rootView.findViewById(R.id.ddExtra);
         tLocation = (TextView) rootView.findViewById(R.id.ddLocation);
         tEvents = (ListView) rootView.findViewById(R.id.ddListEvents);
-        tQA = (ListView) rootView.findViewById(R.id.ddListQA);
+        tQA = (GridView) rootView.findViewById(R.id.ddListQA);
         tEventAdapter = new EventAdapter(getActivity());
         tQAAdapter = new QAAdapter(getActivity());
+       // tQA.setScrollContainer(false);
+       // tEvents.setScrollContainer(false);
+
+
+
         return rootView;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        if(getArguments() != null) {
+        if (getArguments() != null) {
             Bundle b = getArguments();
             int i = b.getInt("dId");
             getJppService().getDossier(i, this);
@@ -72,50 +79,66 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
 
     @Override
     public void success(DtoDossierDetailed dtoDossierDetailed, Response response) {
-        tUsername.setText(dtoDossierDetailed.getUsername());
+        tUsername.setText("Dossier van: " + dtoDossierDetailed.getUsername());
         tAnswer.setText(dtoDossierDetailed.getAnswer());
-        if(dtoDossierDetailed.getExtra() != null)
-        {
+        if (dtoDossierDetailed.getExtra() != null) {
             tExtra.setText(dtoDossierDetailed.getExtra());
-        }
-        else
-        {
+        } else {
             tExtra.setVisibility(View.GONE);
         }
 
-        if(dtoDossierDetailed.getLocation() != null)
-        {
-            tLocation.setText(dtoDossierDetailed.getLocation());
-        }
-        else
-        {
+        if (dtoDossierDetailed.getLocation() != null) {
+            tLocation.setText("Locatie: " + dtoDossierDetailed.getLocation());
+        } else {
             tLocation.setVisibility(View.GONE);
         }
 
-        if(dtoDossierDetailed.getCalendar() != null)
-        {
+        if (dtoDossierDetailed.getCalendar() != null) {
             tEventAdapter.setEvents(dtoDossierDetailed.getCalendar());
+
             tEvents.setAdapter(tEventAdapter);
-        }
-        else
-        {
+            justifyListViewHeightBasedOnChildren(tEvents);
+
+
+
+        } else {
 
             tEvents.setVisibility(View.GONE);
         }
 
-        if(dtoDossierDetailed.getFixedQuestion() != null)
-        {
+        if (dtoDossierDetailed.getFixedQuestion() != null) {
             tQAAdapter.setEvents(dtoDossierDetailed.getFixedQuestion());
             tQA.setAdapter(tQAAdapter);
-        }
-        else
-        {
+            //justifyListViewHeightBasedOnChildren(tQA);
+
+        } else {
             tQA.setVisibility(View.GONE);
         }
     }
 
     @Override
     public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(),"niet goed",Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "niet goed", Toast.LENGTH_LONG).show();
+    }
+
+    public void justifyListViewHeightBasedOnChildren (ListView listView) {
+
+        ListAdapter adapter = listView.getAdapter();
+
+        if (adapter == null) {
+            return;
+        }
+        ViewGroup vg = listView;
+        int totalHeight = 0;
+        for (int i = 0; i < adapter.getCount(); i++) {
+            View listItem = adapter.getView(i, null, vg);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+
+        ViewGroup.LayoutParams par = listView.getLayoutParams();
+        par.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1));
+        listView.setLayoutParams(par);
+        listView.requestLayout();
     }
 }

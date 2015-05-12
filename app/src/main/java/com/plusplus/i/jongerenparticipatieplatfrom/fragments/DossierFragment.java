@@ -10,11 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
+import com.plusplus.i.jongerenparticipatieplatfrom.adapter.EventAdapter;
+import com.plusplus.i.jongerenparticipatieplatfrom.adapter.QAAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoEvent;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoFixedQuestion;
@@ -33,6 +36,13 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
     LinearLayout rl;
     private TextView tUsername;
     private TextView tAnswer;
+    private TextView tExtra;
+    private ListView tQA;
+    private TextView tLocation;
+    private ListView tEvents;
+    EventAdapter tEventAdapter;
+    QAAdapter tQAAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,6 +51,12 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         rl = (LinearLayout) rootView.findViewById(R.id.linLay);
         tUsername = (TextView) rootView.findViewById(R.id.ddUsername);
         tAnswer = (TextView) rootView.findViewById(R.id.ddAnswer);
+        tExtra = (TextView) rootView.findViewById(R.id.ddExtra);
+        tLocation = (TextView) rootView.findViewById(R.id.ddLocation);
+        tEvents = (ListView) rootView.findViewById(R.id.ddListEvents);
+        tQA = (ListView) rootView.findViewById(R.id.ddListQA);
+        tEventAdapter = new EventAdapter(getActivity());
+        tQAAdapter = new QAAdapter(getActivity());
         return rootView;
     }
 
@@ -56,49 +72,45 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
 
     @Override
     public void success(DtoDossierDetailed dtoDossierDetailed, Response response) {
-        tUsername.setText("Username: " + dtoDossierDetailed.getUsername());
-        tAnswer.setText("Answer: " + dtoDossierDetailed.getAnswer());
+        tUsername.setText(dtoDossierDetailed.getUsername());
+        tAnswer.setText(dtoDossierDetailed.getAnswer());
         if(dtoDossierDetailed.getExtra() != null)
         {
-            TextView tv = new TextView(getActivity());
-            tv.setText("Extra: " + dtoDossierDetailed.getExtra());
-            rl.addView(tv);
+            tExtra.setText(dtoDossierDetailed.getExtra());
+        }
+        else
+        {
+            tExtra.setVisibility(View.GONE);
         }
 
         if(dtoDossierDetailed.getLocation() != null)
         {
-            TextView tv = new TextView(getActivity());
-            tv.setText("Location: " + dtoDossierDetailed.getLocation());
-            rl.addView(tv);
+            tLocation.setText(dtoDossierDetailed.getLocation());
+        }
+        else
+        {
+            tLocation.setVisibility(View.GONE);
         }
 
         if(dtoDossierDetailed.getCalendar() != null)
         {
-            for(DtoEvent d : dtoDossierDetailed.getCalendar())
-            {
-                TextView tv = new TextView(getActivity());
-                tv.setText("Event title: " + d.getTitle());
-                rl.addView(tv);
-                TextView tv2 = new TextView(getActivity());
-                tv2.setText("Event desc: " + d.getDescription());
-                rl.addView(tv2);
-                TextView tv3 = new TextView(getActivity());
-                tv3.setText("Event date: " + d.getDate());
-                rl.addView(tv3);
-            }
+            tEventAdapter.setEvents(dtoDossierDetailed.getCalendar());
+            tEvents.setAdapter(tEventAdapter);
+        }
+        else
+        {
+
+            tEvents.setVisibility(View.GONE);
         }
 
         if(dtoDossierDetailed.getFixedQuestion() != null)
         {
-            for(DtoFixedQuestion d : dtoDossierDetailed.getFixedQuestion())
-            {
-                TextView q = new TextView(getActivity());
-                q.setText("Fixed q: " + d.getQuestion());
-                rl.addView(q);
-              TextView a = new TextView(getActivity());
-                a.setText("Fixed a: " + d.getAnswer());
-                rl.addView(a);
-            }
+            tQAAdapter.setEvents(dtoDossierDetailed.getFixedQuestion());
+            tQA.setAdapter(tQAAdapter);
+        }
+        else
+        {
+            tQA.setVisibility(View.GONE);
         }
     }
 

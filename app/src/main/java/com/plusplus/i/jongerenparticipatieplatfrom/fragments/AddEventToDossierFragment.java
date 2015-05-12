@@ -76,18 +76,10 @@ public class AddEventToDossierFragment extends Fragment implements Callback<DtoA
         dtoAddEvent.setTitle(title.getText().toString());
         dtoAddEvent.setDescription(desc.getText().toString());
         DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-
-// Get the date today using Calendar object.
         Date today = getDateFromDatePicker(datePicker);
-// Using DateFormat format method we can create a string
-// representation of a date with the defined format.
         String reportDate = df.format(today);
-
-// Print what date is today!
-        System.out.println("Report Date: " + reportDate);
-//        date.toString();
-        Toast.makeText(getActivity(),reportDate,Toast.LENGTH_LONG).show();
-//        getJppService().addExtraToDossier(dtoAddExtra, this);
+        dtoAddEvent.setDate(reportDate);
+        getJppService().addEventToDossier(dtoAddEvent, this);
     }
 
     @Override

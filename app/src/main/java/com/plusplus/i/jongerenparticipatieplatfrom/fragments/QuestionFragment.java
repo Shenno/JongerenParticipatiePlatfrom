@@ -88,7 +88,12 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
 
     @Override
     public void failure(RetrofitError error) {
-        AppMsg.makeText(getActivity(), "Er is iets mis gegaan :(", AppMsg.STYLE_ALERT).show();
+        try {
+            AppMsg.makeText(getActivity(), "Er is iets mis gegaan :(", AppMsg.STYLE_ALERT).show();
+        }
+        catch (Exception e) {
+            Log.e("test", e.toString());
+        }
     }
 }
 

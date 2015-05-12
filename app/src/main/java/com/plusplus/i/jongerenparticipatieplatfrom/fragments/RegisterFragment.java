@@ -87,13 +87,8 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
     }
 
     private void registerAccount() {
-        // txtName.setEnabled(false);
-        // txtEmail.setEnabled(false);
-        // txtPassword.setEnabled(false);
-        // txtConfirmPwd.setEnabled(false);
-
         final Account acc = new Account();
-        acc.setUserName(txtName.getText().toString());
+        acc.setFullName(txtName.getText().toString());
         acc.setEmail(txtEmail.getText().toString());
         acc.setBirthDate(new Date());
         acc.setPassword(txtPassword.getText().toString());

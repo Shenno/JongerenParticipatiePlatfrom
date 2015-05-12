@@ -35,7 +35,6 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/pacifico.ttf");
 
         View rootView = inflater.inflate(R.layout.fragment_sign_in_screen, container, false);
         txtName = (EditText) rootView.findViewById(R.id.signInUsername);
@@ -43,7 +42,6 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         btnSignIn = (Button) rootView.findViewById(R.id.signInBtn);
         txtTopText = (EditText) rootView.findViewById(R.id.register);
 
-        txtTopText.setTypeface(fontttype);
         initListeners();
 
         return rootView;
@@ -70,24 +68,20 @@ public class LogInFragment extends Fragment implements Callback<Token> {
     }
 
     private void signIn() {
-        getJppService().getToken("password", txtName.getText().toString(), txtPwd.getText().toString(), this);
+        getJppService().getToken("password", txtName.getText().toString()+1, txtPwd.getText().toString(), this);
     }
 
     @Override
     public void success(Token token, Response response) {
         SharedPreferences.Editor editor = getActivity().getSharedPreferences("Logindetails", MODE_PRIVATE).edit();
         editor.putString("token", token.getAccess_token());
+        editor.putString("email", txtName.getText().toString());
         editor.commit();
-        SharedPreferences prefs = getActivity().getSharedPreferences("Logindetails", MODE_PRIVATE);
-        String text = prefs.getString("token", null);
-        Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
-        AppMsg.makeText(getActivity(),text,AppMsg.STYLE_INFO).show();
-
+        AppMsg.makeText(getActivity(),"Succesvol ingelogd! :)",AppMsg.STYLE_INFO).show();
     }
 
     @Override
     public void failure(RetrofitError error) {
-       // Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
         AppMsg.makeText(getActivity(), error.toString(), AppMsg.STYLE_ALERT).show();
 
     }

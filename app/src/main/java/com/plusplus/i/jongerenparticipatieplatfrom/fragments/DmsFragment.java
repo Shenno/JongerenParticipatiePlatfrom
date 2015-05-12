@@ -133,7 +133,7 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
     public void success(DtoDmsDetailed dtoDmsDetailed, Response response) {
         startDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(dtoDmsDetailed.getStartDate()));
         endDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(dtoDmsDetailed.getEndDate()));
-        questioner.setText("QuestionerDummy");
+        questioner.setText(dtoDmsDetailed.getQuestioner());
         winner.setText(Integer.toString(dtoDmsDetailed.getWinnersCount()));
         question.setText(dtoDmsDetailed.getQuestion());
         extra.setText(dtoDmsDetailed.getExtraInfo());

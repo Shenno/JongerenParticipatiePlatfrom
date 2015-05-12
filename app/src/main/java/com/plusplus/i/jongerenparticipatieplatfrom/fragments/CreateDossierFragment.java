@@ -1,6 +1,7 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierPost;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
 /**
@@ -49,7 +52,9 @@ public class CreateDossierFragment extends Fragment implements Callback<DtoDossi
 
     private void submitDossier() {
         DtoDossierPost dtoDossierPost = new DtoDossierPost();
-        dtoDossierPost.setUserId("test");
+        SharedPreferences prefs = getActivity().getSharedPreferences("Logindetails", MODE_PRIVATE);
+        String text = prefs.getString("email", null);
+        dtoDossierPost.setUserId(text);
         if(getArguments() != null) {
             Bundle b = getArguments();
             int i = b.getInt("dId");
@@ -62,6 +67,9 @@ public class CreateDossierFragment extends Fragment implements Callback<DtoDossi
     @Override
     public void success(DtoDossierPost dtoDossierPost, Response response) {
         Toast.makeText(getActivity(), "JOEPIE", Toast.LENGTH_LONG).show();
+        SharedPreferences prefs = getActivity().getSharedPreferences("Logindetails", MODE_PRIVATE);
+        String text = prefs.getString("email", null);
+        Toast.makeText(getActivity(), text, Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -6,11 +6,12 @@ import java.util.Date;
  * Created by Shenno on 11/04/2015.
  */
 public class Account {
-    private String UserName;
+    private String FullName;
     private String Email;
     private String Password;
     private String ConfirmPassword;
     private Date BirthDate;
+    private int ZipCode;
 
     public Date getBirthDate() {
         return BirthDate;
@@ -20,12 +21,12 @@ public class Account {
         BirthDate = birthDate;
     }
 
-    public String getUserName() {
-        return UserName;
+    public String getFullName() {
+        return FullName;
     }
 
-    public void setUserName(String userName) {
-        this.UserName = userName;
+    public void setFullName(String fullName) {
+        this.FullName = fullName;
     }
 
     public String getEmail() {

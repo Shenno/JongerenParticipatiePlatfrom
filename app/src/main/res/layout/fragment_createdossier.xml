@@ -35,6 +35,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Verzenden"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/cdAnswer"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 

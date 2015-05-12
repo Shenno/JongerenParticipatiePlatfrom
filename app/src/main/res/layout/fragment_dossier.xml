@@ -58,7 +58,7 @@
         android:textColor="@color/WhiteSmoke"
         android:textSize="12sp" />
 
-    <ListView
+    <com.plusplus.i.jongerenparticipatieplatfrom.fragments.ExpandableHeightListView
         android:id="@+id/ddListEvents"
         style="@style/myTextView.Profile.dossier"
         android:layout_width="250dp"
@@ -67,7 +67,7 @@
         android:layout_below="@id/ddExtra"
         android:layout_gravity="center_horizontal" />
 
-    <ListView
+    <com.plusplus.i.jongerenparticipatieplatfrom.fragments.ExpandableHeightListView
         android:id="@+id/ddListQA"
         style="@style/myTextView.Profile.dossier"
         android:layout_width="match_parent"

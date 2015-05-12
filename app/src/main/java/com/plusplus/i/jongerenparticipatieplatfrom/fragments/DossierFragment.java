@@ -39,9 +39,9 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
     private TextView tUsername;
     private TextView tAnswer;
     private TextView tExtra;
-    private GridView tQA;
+    private ExpandableHeightListView tQA;
     private TextView tLocation;
-    private ListView tEvents;
+    private ExpandableHeightListView tEvents;
     EventAdapter tEventAdapter;
     QAAdapter tQAAdapter;
 
@@ -55,8 +55,10 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         tAnswer = (TextView) rootView.findViewById(R.id.ddAnswer);
         tExtra = (TextView) rootView.findViewById(R.id.ddExtra);
         tLocation = (TextView) rootView.findViewById(R.id.ddLocation);
-        tEvents = (ListView) rootView.findViewById(R.id.ddListEvents);
-        tQA = (GridView) rootView.findViewById(R.id.ddListQA);
+        tEvents = (ExpandableHeightListView) rootView.findViewById(R.id.ddListEvents);
+        tEvents.setExpanded(true);
+        tQA = (ExpandableHeightListView) rootView.findViewById(R.id.ddListQA);
+        tQA.setExpanded(true);
         tEventAdapter = new EventAdapter(getActivity());
         tQAAdapter = new QAAdapter(getActivity());
        // tQA.setScrollContainer(false);

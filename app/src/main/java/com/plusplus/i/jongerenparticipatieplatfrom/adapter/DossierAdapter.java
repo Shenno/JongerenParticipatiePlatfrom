@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
@@ -74,10 +75,14 @@ public class DossierAdapter extends BaseAdapter {
         viewHolder.usernameTextView.setText(dossier.getUsername());
         viewHolder.votesTextView.setText(Integer.toString(dossier.getVotes()));
         viewHolder.answerTextView.setText(dossier.getAnswer());
+
         viewHolder.likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
              //  "Hier komt nog ne push naar de db met fragment switch"
+                Toast.makeText(context,"Je stem wordt verwerkt.",Toast.LENGTH_LONG).show();
+
+
             }
         });
         return convertView;

@@ -25,6 +25,15 @@
             android:id="@+id/edBtn"
             android:layout_gravity="center_horizontal" />
 
+        <GridView
+            android:numColumns="auto_fit"
+            android:gravity="center"
+            android:columnWidth="100dp"
+            android:stretchMode="columnWidth"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/grid" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -92,6 +101,12 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:id="@+id/ddListQA"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ddImageView"
             android:layout_gravity="center_horizontal" />
 
 

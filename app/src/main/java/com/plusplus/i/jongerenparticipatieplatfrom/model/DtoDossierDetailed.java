@@ -13,6 +13,7 @@ public class DtoDossierDetailed {
     public String location;
     public List<DtoEvent> calendar;
     public List<DtoFixedQuestion> fixedQuestion;
+    public String[] photos;
 
     public int getId() {
         return id;
@@ -68,5 +69,13 @@ public class DtoDossierDetailed {
 
     public void setFixedQuestion(List<DtoFixedQuestion> fixedQuestion) {
         this.fixedQuestion = fixedQuestion;
+    }
+
+    public String[] getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(String[] photos) {
+        this.photos = photos;
     }
 }

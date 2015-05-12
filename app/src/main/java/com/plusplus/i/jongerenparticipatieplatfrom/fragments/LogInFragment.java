@@ -27,7 +27,6 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 public class LogInFragment extends Fragment implements Callback<Token> {
     private EditText txtName;
     private EditText txtPwd;
-    private EditText txtTopText;
     private Button btnSignIn;
 	
 	public LogInFragment(){}
@@ -40,8 +39,6 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         txtName = (EditText) rootView.findViewById(R.id.signInUsername);
         txtPwd = (EditText) rootView.findViewById(R.id.signInPassword);
         btnSignIn = (Button) rootView.findViewById(R.id.signInBtn);
-        txtTopText = (EditText) rootView.findViewById(R.id.register);
-
         initListeners();
 
         return rootView;

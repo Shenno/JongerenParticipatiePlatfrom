@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,6 +17,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -23,6 +28,7 @@ import android.widget.ToggleButton;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.EventAdapter;
+import com.plusplus.i.jongerenparticipatieplatfrom.adapter.ImageGridAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.QAAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoEvent;
@@ -46,8 +52,11 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
     private ListView tQA;
     private TextView tLocation;
     private ListView tEvents;
+    private ImageView tPhotos;
+    private GridView tGrid;
     EventAdapter tEventAdapter;
     QAAdapter tQAAdapter;
+    ImageGridAdapter tGridAdapter;
     OnSelectedListener mCallback;
     Spinner spinner;
     Button button;
@@ -63,6 +72,8 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
         tLocation = (TextView) rootView.findViewById(R.id.ddLocation);
         tEvents = (ListView) rootView.findViewById(R.id.ddListEvents);
         tQA = (ListView) rootView.findViewById(R.id.ddListQA);
+        tPhotos = (ImageView) rootView.findViewById(R.id.ddImageView);
+        tGrid = (GridView) rootView.findViewById(R.id.grid);
         tEventAdapter = new EventAdapter(getActivity());
         tQAAdapter = new QAAdapter(getActivity());
         spinner = (Spinner) rootView.findViewById(R.id.edSpinner);
@@ -146,6 +157,11 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
 
     @Override
     public void success(DtoDossierDetailed dtoDossierDetailed, Response response) {
+        tGridAdapter = new ImageGridAdapter(getActivity(), dtoDossierDetailed.getPhotos());
+        tGrid.setAdapter(tGridAdapter);
+        byte[] decodedString = Base64.decode(dtoDossierDetailed.getPhotos()[0], Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        tPhotos.setImageBitmap(decodedByte);
         tUsername.setText(dtoDossierDetailed.getUsername());
         tAnswer.setText(dtoDossierDetailed.getAnswer());
         if(dtoDossierDetailed.getExtra() != null)

@@ -53,7 +53,7 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
     private TextView tLocation;
     private ListView tEvents;
     private ImageView tPhotos;
-    private GridView tGrid;
+    private ExpandableHeightGridView tGrid;
     EventAdapter tEventAdapter;
     QAAdapter tQAAdapter;
     ImageGridAdapter tGridAdapter;
@@ -73,7 +73,8 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
         tEvents = (ListView) rootView.findViewById(R.id.ddListEvents);
         tQA = (ListView) rootView.findViewById(R.id.ddListQA);
         tPhotos = (ImageView) rootView.findViewById(R.id.ddImageView);
-        tGrid = (GridView) rootView.findViewById(R.id.grid);
+        tGrid = (ExpandableHeightGridView) rootView.findViewById(R.id.grid);
+        tGrid.setExpanded(true);
         tEventAdapter = new EventAdapter(getActivity());
         tQAAdapter = new QAAdapter(getActivity());
         spinner = (Spinner) rootView.findViewById(R.id.edSpinner);

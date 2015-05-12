@@ -25,7 +25,7 @@
             android:id="@+id/edBtn"
             android:layout_gravity="center_horizontal" />
 
-        <GridView
+        <com.plusplus.i.jongerenparticipatieplatfrom.fragments.ExpandableHeightGridView
             android:numColumns="auto_fit"
             android:gravity="center"
             android:columnWidth="100dp"

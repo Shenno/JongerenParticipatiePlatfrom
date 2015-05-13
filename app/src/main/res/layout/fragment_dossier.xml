@@ -2,7 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/BlueGrey800">
+    android:background="@color/BlueGrey800"
+
+>
 
     <!-- everything you already have -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -11,27 +13,21 @@
     android:layout_height="match_parent"
     android:background="@color/BlueGrey800"
     android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
     android:weightSum="1">
 
     <TextView
         android:id="@+id/ddUsername"
-        android:layout_width="wrap_content"
+        style="@style/myTextView.Profile.dossier"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:padding="2dp"
         android:text="Username"
-        android:textColor="@color/WhiteSmoke" />
-
-    <TextView
-        android:id="@+id/ddLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ddUsername"
-        android:layout_gravity="center_horizontal"
-        android:text="Location"
-        android:padding="2dp"
-        android:textColor="@color/WhiteSmoke" />
+        android:textSize="12sp"
+        android:textColor="@color/WhiteSmoke"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/ddAnswer"
@@ -40,10 +36,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@id/ddLocation"
         android:text="Answer"
         android:textColor="@color/WhiteSmoke"
-        android:textSize="12sp" />
+        android:textSize="12sp"
+        android:layout_below="@id/ddUsername" />
 
     <TextView
         android:id="@+id/ddExtra"

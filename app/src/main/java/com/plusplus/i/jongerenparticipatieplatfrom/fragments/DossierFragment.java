@@ -44,6 +44,7 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
     private ExpandableHeightListView tEvents;
     EventAdapter tEventAdapter;
     QAAdapter tQAAdapter;
+    String tempstring;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,7 +82,8 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
 
     @Override
     public void success(DtoDossierDetailed dtoDossierDetailed, Response response) {
-        tUsername.setText("Dossier van: " + dtoDossierDetailed.getUsername());
+        tempstring = "Dossier van : "+ dtoDossierDetailed.getUsername();
+        tUsername.setText(tempstring);
         tAnswer.setText(dtoDossierDetailed.getAnswer());
         if (dtoDossierDetailed.getExtra() != null) {
             tExtra.setText(dtoDossierDetailed.getExtra());
@@ -90,7 +92,9 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         }
 
         if (dtoDossierDetailed.getLocation() != null) {
-            tLocation.setText("Locatie: " + dtoDossierDetailed.getLocation());
+            tempstring = tempstring + " \nLocatie: " + dtoDossierDetailed.getLocation();
+            tUsername.setText(tempstring);
+           // tLocation.setText("Locatie: " + dtoDossierDetailed.getLocation());
         } else {
             tLocation.setVisibility(View.GONE);
         }

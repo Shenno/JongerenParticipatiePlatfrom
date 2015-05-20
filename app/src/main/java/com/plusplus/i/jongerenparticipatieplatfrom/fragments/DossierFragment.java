@@ -4,12 +4,16 @@ import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -44,6 +48,7 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
     private TextView tLocation;
     private ExpandableHeightListView tEvents;
     private ExpandableHeightGridView tImages;
+    private ImageView tImage;
     ImageGridAdapter tGridAdapter;
     EventAdapter tEventAdapter;
     QAAdapter tQAAdapter;
@@ -59,6 +64,7 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         tExtra = (TextView) rootView.findViewById(R.id.ddExtra);
         tLocation = (TextView) rootView.findViewById(R.id.ddLocation);
         tEvents = (ExpandableHeightListView) rootView.findViewById(R.id.ddListEvents);
+        tImage = (ImageView) rootView.findViewById(R.id.ddImage);
         tEvents.setExpanded(true);
         tQA = (ExpandableHeightListView) rootView.findViewById(R.id.ddListQA);
         tQA.setExpanded(true);
@@ -81,6 +87,9 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
 
     @Override
     public void success(DtoDossierDetailed dtoDossierDetailed, Response response) {
+        byte[] decodedString = Base64.decode(dtoDossierDetailed.getPhotos()[0], Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        tImage.setImageBitmap(decodedByte);
         tGridAdapter = new ImageGridAdapter(getActivity(), dtoDossierDetailed.getPhotos());
         tImages.setAdapter(tGridAdapter);
         tempstring = "Dossier van : "+ dtoDossierDetailed.getUsername();

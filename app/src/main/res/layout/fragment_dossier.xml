@@ -70,6 +70,13 @@
         android:layout_below="@id/ddListEvents"
         android:layout_gravity="center_horizontal" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ddImage"
+        android:layout_below="@id/ddListQA"
+        android:layout_gravity="center_horizontal" />
+
     <com.plusplus.i.jongerenparticipatieplatfrom.fragments.ExpandableHeightGridView
         android:numColumns="auto_fit"
         android:gravity="center"
@@ -77,8 +84,10 @@
         android:stretchMode="columnWidth"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@id/ddListQA"
+        android:layout_below="@id/ddImage"
         android:id="@+id/ddGrid" />
+
+
 
 
 </RelativeLayout>

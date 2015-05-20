@@ -56,22 +56,15 @@ public class MyProfileFragment extends Fragment {
                 String token = userDetails.getString("token", "");
                 String email = userDetails.getString("email", "");
 
-
-                if (!token.equalsIgnoreCase("") || !email.equalsIgnoreCase("")) // als er iets in de token zit, wis het dan!
-                {
-
-                    SharedPreferences.Editor editor = userDetails.edit();
-                    editor.putString("token", null);
-                    editor.putString("email", null);
-                    editor.apply();
-                    AppMsg.makeText(getActivity(), "Succesvol uitgelogd", AppMsg.STYLE_ALERT).show();
-
-
-                } else {
+                if (token.isEmpty() && email.isEmpty()) {
                     AppMsg.makeText(getActivity(), "Je bent al uitgelogd", AppMsg.STYLE_ALERT).show();
 
-                }
+                } else {
+                    userDetails.edit().remove("token").commit();
+                    userDetails.edit().remove("email").commit();
+                    AppMsg.makeText(getActivity(), "Je bent succesvol uitgelogd", AppMsg.STYLE_INFO).show();
 
+                }
 
             }
         });

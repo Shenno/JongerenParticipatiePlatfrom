@@ -19,7 +19,7 @@
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         android:paddingTop="2dp"
-        android:text="Date"
+        android:text="@string/date"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/WhiteSmoke"
         android:textSize="10sp" />
@@ -37,7 +37,7 @@
         android:paddingBottom="2dp"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:text="Title"
+        android:text="@string/title"
         android:textColor="@color/WhiteSmoke"
         android:textSize="14sp"
         android:textStyle="bold" />
@@ -51,7 +51,7 @@
         android:maxLength="150"
         android:maxLines="2"
         android:paddingLeft="2dp"
-        android:text="Question Details"
+        android:text="@string/question_details"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/WhiteSmoke"
         android:textSize="10sp" />
@@ -65,7 +65,7 @@
         android:layout_margin="2dp"
         android:background="@drawable/circlebackgroundfortextview"
         android:gravity="center"
-        android:text="Medium Text"
+        android:text="@string/letter_a"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/WhiteSmoke"
         android:textSize="20sp"

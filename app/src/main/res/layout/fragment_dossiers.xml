@@ -13,7 +13,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:padding="5dp"
-        android:text="Titel"
+        android:text="@string/title"
         android:textColor="@color/WhiteSmoke"
         android:textSize="18sp"
 

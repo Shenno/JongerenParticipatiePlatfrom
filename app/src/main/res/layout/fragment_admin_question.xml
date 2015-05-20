@@ -14,7 +14,7 @@
         android:paddingBottom="2dp"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
-        android:text="Startdatum"
+        android:text="@string/start_date"
         android:textColor="@color/WhiteSmoke" />
 
     <TextView
@@ -26,7 +26,7 @@
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         android:paddingTop="2dp"
-        android:text="Einddatum"
+        android:text="@string/end_date"
         android:textColor="@color/WhiteSmoke" />
 
     <TextView
@@ -36,7 +36,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:padding="5dp"
-        android:text="Titel"
+        android:text="@string/title"
         android:textColor="@color/WhiteSmoke"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -52,10 +52,9 @@
         android:layout_below="@+id/dmsDetEndDate"
         android:layout_margin="3dp"
         android:gravity="top"
-        android:hint="Hier komt de extra uitleg"
+        android:hint="@string/extra_info"
         android:inputType="textFilter|textMultiLine|textNoSuggestions"
         android:scrollbars="vertical"
-        android:text="Extra"
         android:textColor="@color/WhiteSmoke"
         android:textColorHint="@color/LightGrey"
         android:textSize="12sp" />
@@ -71,7 +70,7 @@
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         android:scrollbars="vertical"
-        android:text="OP"
+        android:text="@string/op"
         android:textColor="@color/WhiteSmoke"
         android:textStyle="italic" />
 
@@ -93,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/dmsDetExtra"
         android:layout_alignStart="@+id/dmsDetExtra"
-        android:text="Tags"
+        android:text="@string/tags"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/WhiteSmoke"
         android:textSize="10sp" />
@@ -117,6 +116,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="2dp"
-        android:text="Laad dossiers" />
+        android:text="@string/load_dossiers" />
 
 </RelativeLayout>

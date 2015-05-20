@@ -22,7 +22,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:padding="2dp"
-            android:text="Username"
+            android:text="@string/username"
             android:textColor="@color/WhiteSmoke"
             android:textSize="12sp"
             android:textStyle="bold" />
@@ -35,7 +35,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentStart="true"
             android:layout_below="@id/ddUsername"
-            android:text="Answer"
+            android:text="@string/anwser"
             android:textColor="@color/WhiteSmoke"
             android:textSize="12sp" />
 
@@ -47,7 +47,7 @@
             android:layout_alignParentEnd="true"
             android:layout_below="@id/ddAnswer"
             android:layout_gravity="center_horizontal"
-            android:text="Extra"
+            android:text="@string/extra"
             android:textColor="@color/WhiteSmoke"
             android:textSize="12sp" />
 

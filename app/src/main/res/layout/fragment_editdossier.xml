@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Voeg toe aan mijn dossier" />
+            android:text="@string/add_to_my_dossier" />
 
         <com.plusplus.i.jongerenparticipatieplatfrom.fragments.ExpandableHeightGridView
             android:id="@+id/grid"
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Dossier van"
+            android:text="@string/dossier_belongs_to"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -47,14 +47,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Username" />
+            android:text="@string/username" />
 
         <TextView
             android:id="@+id/ddLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Location" />
+            android:text="@string/location" />
 
         <TextView
             android:id="@+id/ddAnswer"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
-            android:text="Answer"
+            android:text="@string/anwser"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
-            android:text="Extra" />
+            android:text="@string/extra" />
 
         <TextView
             android:id="@+id/textView3"
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:text="Evenementen"
+            android:text="@string/events"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ListView
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:text="Vraag en antwoord"
+            android:text="@string/question_and_anwser"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <ListView

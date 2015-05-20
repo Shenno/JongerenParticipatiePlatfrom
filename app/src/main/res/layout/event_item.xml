@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Titel"
+        android:text="@string/title"
         android:textColor="@color/WhiteSmoke" />
 
     <TextView
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Description"
+        android:text="@string/description"
         android:textColor="@color/WhiteSmoke" />
 
     <TextView
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Datum"
+        android:text="@string/date"
         android:textColor="@color/WhiteSmoke" />
 
 </LinearLayout>

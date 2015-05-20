@@ -49,7 +49,6 @@
     <string name="Register">Registreer</string>
     <string name="EmptyTextFieldCannotBeEmpty">Dit veld mag niet leeg zijn</string>
     <string name="PasswordsMisMatch">Wachtwoorden komen niet overeen</string>
-    <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="baseUrlRetro2">http://10.0.3.2:57252</string>
     <string name="baseUrlRetro">http://10.134.216.25:8009</string>
@@ -82,6 +81,7 @@
     <string name="events">Evenementen</string>
     <string name="question_and_anwser">Vraag en antwoord</string>
     <string name="amount_votes">#Votes</string>
+    <string name="description">Description</string>
 
     <!-- http://10.134.216.25:8009 -->
 </resources>

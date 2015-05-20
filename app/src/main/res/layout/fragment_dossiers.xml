@@ -16,7 +16,6 @@
         android:text="@string/title"
         android:textColor="@color/WhiteSmoke"
         android:textSize="18sp"
-
         android:textStyle="bold" />
 
     <ListView
@@ -58,7 +57,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
-        android:layout_weight="1"
         android:gravity="center"
         android:text="Niks te zien" />
 

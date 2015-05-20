@@ -4,11 +4,15 @@ import com.plusplus.i.jongerenparticipatieplatfrom.model.Account;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddEvent;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddExtra;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddLocation;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAmsDetailed;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAsm;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDmsDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierPost;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReaction;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReactionDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Token;
 
 import java.util.List;
@@ -55,5 +59,19 @@ public interface JppService {
 
     @POST("/api/dms/dossier/event")
     void addEventToDossier(@Body DtoAddEvent dtoAddEvent, Callback<DtoAddEvent> callback);
+
+    @GET("/api/ams/open/{asmId}")
+    void getOpenAms(@Path("asmId") int asmId, Callback<List<DtoAsm>> callBack);
+
+    @GET("/api/ams/{amsId}")
+    void getAms(@Path("amsId") int amsId, Callback<DtoAmsDetailed> callBack);
+
+    @GET("/api/ams/{amsId}/reactions")
+    void getReactions(@Path("amsId") int amsId, Callback<List<DtoReaction>> callBack);
+
+    @GET("/api/ams/reactions/{rId}")
+    void getReaction(@Path("rId") int rId, Callback<DtoReactionDetailed> callBack);
+
+
 
 }

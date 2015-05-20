@@ -24,6 +24,7 @@ import com.plusplus.i.jongerenparticipatieplatfrom.adapter.NavDrawerListAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddEventToDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddExtraToDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddLocationToDossierFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AmsHomeFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.CreateDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DmsFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DossierFragment;
@@ -183,10 +184,10 @@ public class MainActivity extends Activity implements OnSelectedListener {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new QuestionFragment();
+                fragment = new AmsHomeFragment();
                 break;
             case 1:
-                fragment = new SolutionFragment();
+                fragment = new QuestionFragment();
                 break;
             case 2:
                 fragment = new LogInFragment();

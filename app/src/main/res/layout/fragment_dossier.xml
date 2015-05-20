@@ -70,6 +70,16 @@
         android:layout_below="@id/ddListEvents"
         android:layout_gravity="center_horizontal" />
 
+    <com.plusplus.i.jongerenparticipatieplatfrom.fragments.ExpandableHeightGridView
+        android:numColumns="auto_fit"
+        android:gravity="center"
+        android:columnWidth="100dp"
+        android:stretchMode="columnWidth"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/ddListQA"
+        android:id="@+id/ddGrid" />
+
 
 </RelativeLayout>
 

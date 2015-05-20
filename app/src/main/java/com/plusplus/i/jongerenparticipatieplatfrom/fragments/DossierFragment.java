@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.EventAdapter;
+import com.plusplus.i.jongerenparticipatieplatfrom.adapter.ImageGridAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.QAAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoEvent;
@@ -42,6 +43,8 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
     private ExpandableHeightListView tQA;
     private TextView tLocation;
     private ExpandableHeightListView tEvents;
+    private ExpandableHeightGridView tImages;
+    ImageGridAdapter tGridAdapter;
     EventAdapter tEventAdapter;
     QAAdapter tQAAdapter;
     String tempstring;
@@ -61,6 +64,8 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         tQA.setExpanded(true);
         tEventAdapter = new EventAdapter(getActivity());
         tQAAdapter = new QAAdapter(getActivity());
+        tImages = (ExpandableHeightGridView) rootView.findViewById(R.id.ddGrid);
+        tImages.setExpanded(true);
         return rootView;
     }
 
@@ -76,6 +81,8 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
 
     @Override
     public void success(DtoDossierDetailed dtoDossierDetailed, Response response) {
+        tGridAdapter = new ImageGridAdapter(getActivity(), dtoDossierDetailed.getPhotos());
+        tImages.setAdapter(tGridAdapter);
         tempstring = "Dossier van : "+ dtoDossierDetailed.getUsername();
         tUsername.setText(tempstring);
         tAnswer.setText(dtoDossierDetailed.getAnswer());
@@ -112,6 +119,10 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         } else {
             tQA.setVisibility(View.GONE);
         }
+
+
+
+
     }
 
     @Override

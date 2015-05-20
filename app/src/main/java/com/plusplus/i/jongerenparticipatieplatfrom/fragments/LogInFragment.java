@@ -1,6 +1,8 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -75,6 +77,13 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         editor.putString("email", txtName.getText().toString());
         editor.apply();
         AppMsg.makeText(getActivity(),"Succesvol ingelogd! :)",AppMsg.STYLE_INFO).show();
+
+        Fragment frag = new QuestionFragment();
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, frag);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
     }
 
     @Override

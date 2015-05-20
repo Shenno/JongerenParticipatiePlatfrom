@@ -11,6 +11,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -25,6 +26,8 @@ import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.EventAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.ImageGridAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.QAAdapter;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAsm;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoEvent;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoFixedQuestion;
@@ -87,11 +90,19 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
 
     @Override
     public void success(DtoDossierDetailed dtoDossierDetailed, Response response) {
-        byte[] decodedString = Base64.decode(dtoDossierDetailed.getPhotos()[0], Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        tImage.setImageBitmap(decodedByte);
+        tImage.setVisibility(View.GONE);
         tGridAdapter = new ImageGridAdapter(getActivity(), dtoDossierDetailed.getPhotos());
         tImages.setAdapter(tGridAdapter);
+        tImages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                    long arg3) {
+                tImage.setVisibility(View.VISIBLE);
+                tImage.setImageBitmap(tGridAdapter.getItem(arg2));
+            }
+
+        });
         tempstring = "Dossier van : "+ dtoDossierDetailed.getUsername();
         tUsername.setText(tempstring);
         tAnswer.setText(dtoDossierDetailed.getAnswer());

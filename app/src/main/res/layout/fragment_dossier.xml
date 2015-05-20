@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/BlueGrey800"
-
 >
 
     <!-- everything you already have -->
@@ -71,9 +70,10 @@
         android:layout_gravity="center_horizontal" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/ddImage"
+        style="@style/myTextView.Profile.dossier"
         android:layout_below="@id/ddListQA"
         android:layout_gravity="center_horizontal" />
 
@@ -85,7 +85,8 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/ddImage"
-        android:id="@+id/ddGrid" />
+        android:id="@+id/ddGrid"
+        style="@style/myTextView.Profile.dossier" />
 
 
 

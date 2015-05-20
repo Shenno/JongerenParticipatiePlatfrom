@@ -82,6 +82,7 @@
     <string name="question_and_anwser">Vraag en antwoord</string>
     <string name="amount_votes">#Votes</string>
     <string name="description">Beschrijving</string>
+    <string name="no_questions_now">Er zijn op dit moment geen vragen</string>
 
     <!-- http://10.134.216.25:8009 -->
 </resources>

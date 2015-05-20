@@ -3,17 +3,21 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 
 public class MyProfileFragment extends Fragment {
-    private Button button;
+    private Button updatePassword;
+    private Button logOut;
 
 
     public MyProfileFragment() {
@@ -27,9 +31,9 @@ public class MyProfileFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_myprofile, container, false);
 
 
-        button = (Button) rootView.findViewById(R.id.btnUpdatePassword);
+        updatePassword = (Button) rootView.findViewById(R.id.btnUpdatePassword);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        updatePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Fragment frag = new UpdatePassWordFragment();
@@ -40,6 +44,35 @@ public class MyProfileFragment extends Fragment {
                 fragTran.commit();
             }
         });
+
+        logOut = (Button)rootView.findViewById(R.id.btnSignOut);
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                String token = preferences.getString("token", "");
+                AppMsg.makeText(getActivity(),"Dit is de token: "+ token, AppMsg.STYLE_ALERT).show();
+
+              /*
+                if(!token.equalsIgnoreCase("")) // als er iets in de token zit, wis het dan!
+                {
+
+                    //AppMsg.makeText(getActivity(),"Dit is de token: "+ token, AppMsg.STYLE_ALERT).show();
+
+                    //SharedPreferences.Editor editor = preferences.edit();
+                    //editor.putString("token","");
+                    //editor.apply();
+                }else{
+                    AppMsg.makeText(getActivity(), "Je bent al uitgelogd", AppMsg.STYLE_ALERT).show();
+
+                }
+                */
+
+
+            }
+        });
+
 
 
         return rootView;

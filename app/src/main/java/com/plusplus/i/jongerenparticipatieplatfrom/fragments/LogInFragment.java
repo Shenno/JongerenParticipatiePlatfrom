@@ -73,7 +73,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         SharedPreferences.Editor editor = getActivity().getSharedPreferences("Logindetails", MODE_PRIVATE).edit();
         editor.putString("token", token.getAccess_token());
         editor.putString("email", txtName.getText().toString());
-        editor.commit();
+        editor.apply();
         AppMsg.makeText(getActivity(),"Succesvol ingelogd! :)",AppMsg.STYLE_INFO).show();
     }
 

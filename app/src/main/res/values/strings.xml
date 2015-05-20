@@ -54,11 +54,11 @@
     <string name="baseUrlRetro">http://10.134.216.25:8009</string>
     <string name="title">Title</string>
     <string name="question_details">Question Details</string>
-    <string name="date">Date</string>
+    <string name="date">Datum</string>
     <string name="letter_a">A</string>
     <string name="author">Auteur</string>
     <string name="anwser">Antwoord</string>
-    <string name="votes">Votes</string>
+    <string name="votes">Stemmen</string>
     <string name="add_event">Voeg evenement toe</string>
     <string name="event_title">Event title</string>
     <string name="event_description">Event description</string>
@@ -77,11 +77,11 @@
     <string name="username">Username</string>
     <string name="add_to_my_dossier">Voeg toe aan mijn dossier</string>
     <string name="dossier_belongs_to">Dossier van</string>
-    <string name="location">Location</string>
+    <string name="location">Locatie</string>
     <string name="events">Evenementen</string>
     <string name="question_and_anwser">Vraag en antwoord</string>
     <string name="amount_votes">#Votes</string>
-    <string name="description">Description</string>
+    <string name="description">Beschrijving</string>
 
     <!-- http://10.134.216.25:8009 -->
 </resources>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BlueGrey800"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dmsDetStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="2dp"
+        android:text="Startdatum"
+        android:textColor="@color/WhiteSmoke"
+        android:layout_below="@+id/dmsDetQuestion"
+        android:layout_alignEnd="@+id/dmsDetExtra" />
+
+    <TextView
+        android:id="@+id/dmsDetEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignStart="@+id/dmsDetStartDate"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
+        android:text="Einddatum"
+        android:textColor="@color/WhiteSmoke" />
+
+    <TextView
+        android:id="@+id/dmsDetQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="5dp"
+        android:text="Titel"
+        android:textColor="@color/WhiteSmoke"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/dmsDetExtra"
+        style="@style/myTextView.Profile.dossier"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dmsDetEndDate"
+        android:gravity="top"
+        android:hint="Hier komt de extra uitleg"
+        android:inputType="textFilter|textMultiLine|textNoSuggestions"
+        android:layout_margin="3dp"
+        android:scrollbars="vertical"
+        android:textSize="12sp"
+        android:text="Extra"
+        android:textColor="@color/WhiteSmoke"
+        android:textColorHint="@color/LightGrey"
+       />
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/dmsDetQuestioner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dmsDetQuestion"
+        android:paddingBottom="2dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:scrollbars="vertical"
+        android:text="OP"
+        android:textColor="@color/WhiteSmoke"
+        android:textStyle="italic" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/dmsDetStartDate"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_toStartOf="@+id/dmsDetStartDate"
+        android:background="@drawable/round_corners_imageview"
+        android:src="@drawable/cal_icon" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Tags"
+        android:id="@+id/txtvTags"
+        android:textSize="10sp"
+        android:textColor="@color/WhiteSmoke"
+        android:layout_above="@+id/dmsDetExtra"
+        android:layout_alignStart="@+id/dmsDetExtra" />
+
+    <ImageView
+        android:id="@+id/imageIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="@drawable/round_corners_imageview"
+        android:src="@drawable/infoicon"
+        android:layout_below="@+id/dmsDetQuestion"
+        android:layout_toStartOf="@+id/imageView2" />
+
+</RelativeLayout>

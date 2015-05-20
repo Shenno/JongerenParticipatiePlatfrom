@@ -3,6 +3,7 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -45,34 +46,35 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
-        logOut = (Button)rootView.findViewById(R.id.btnSignOut);
+        logOut = (Button) rootView.findViewById(R.id.btnSignOut);
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                String token = preferences.getString("token", "");
-                AppMsg.makeText(getActivity(),"Dit is de token: "+ token, AppMsg.STYLE_ALERT).show();
+                SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
 
-              /*
-                if(!token.equalsIgnoreCase("")) // als er iets in de token zit, wis het dan!
+                String token = userDetails.getString("token", "");
+                String email = userDetails.getString("email", "");
+
+
+                if (!token.equalsIgnoreCase("") || !email.equalsIgnoreCase("")) // als er iets in de token zit, wis het dan!
                 {
 
-                    //AppMsg.makeText(getActivity(),"Dit is de token: "+ token, AppMsg.STYLE_ALERT).show();
+                    SharedPreferences.Editor editor = userDetails.edit();
+                    editor.putString("token", null);
+                    editor.putString("email", null);
+                    editor.apply();
+                    AppMsg.makeText(getActivity(), "Succesvol uitgelogd", AppMsg.STYLE_ALERT).show();
 
-                    //SharedPreferences.Editor editor = preferences.edit();
-                    //editor.putString("token","");
-                    //editor.apply();
-                }else{
+
+                } else {
                     AppMsg.makeText(getActivity(), "Je bent al uitgelogd", AppMsg.STYLE_ALERT).show();
 
                 }
-                */
 
 
             }
         });
-
 
 
         return rootView;

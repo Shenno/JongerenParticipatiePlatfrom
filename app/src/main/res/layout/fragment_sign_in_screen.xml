@@ -3,8 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BlueGrey400"
-
-
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -14,7 +12,6 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/register"
         android:orientation="vertical">
-
 
         <EditText
             android:id="@+id/signInUsername"
@@ -57,7 +54,6 @@
             android:background="@drawable/custom_btn_arsenic_fb"
             android:padding="5dp"
             android:text="@string/LogInFb"
-
             android:textColor="@color/WhiteSmoke" />
 
         <Button

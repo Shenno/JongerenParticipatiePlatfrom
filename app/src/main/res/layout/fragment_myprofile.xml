@@ -10,7 +10,6 @@
         style="@style/myTextViewTop"
         android:background="@drawable/topedittextstyle"
         android:text="@string/MyProfile"
-
         />
 
     <RelativeLayout
@@ -94,6 +93,5 @@
             android:layout_below="@+id/btnUpdatePassword"
             android:text="@string/LogOut" />
     </RelativeLayout>
-
 
 </RelativeLayout>

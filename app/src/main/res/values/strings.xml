@@ -25,7 +25,6 @@
         <item>@drawable/registericon_white</item>
         <item>@drawable/user_white</item>
         <item>@drawable/ic_whats_hot</item>
-
     </array>
 
     <string name="SplashScreenLoadText">Even geduld, de applicatie wordt geladen.</string>

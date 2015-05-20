@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/BlueGrey400"
-
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -16,7 +15,6 @@
         android:paddingTop="10dp"
         android:weightSum="1">
 
-
         <EditText
             android:id="@+id/txtName"
             style="@style/myTextView"
@@ -24,10 +22,7 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/user"
             android:drawableStart="@drawable/user"
-            android:hint="@string/NameHint"
-
-
-            />
+            android:hint="@string/NameHint" />
 
         <EditText
             android:id="@+id/etEmail"
@@ -47,9 +42,7 @@
             android:drawableLeft="@drawable/birthdayicon"
             android:drawableStart="@drawable/birthdayicon"
             android:hint="@string/BirthdateHint"
-            android:inputType="date"
-
-            />
+            android:inputType="date" />
 
         <EditText
             android:id="@+id/txtSignUpPassword"
@@ -59,9 +52,7 @@
             android:drawableLeft="@drawable/password"
             android:drawableStart="@drawable/password"
             android:hint="@string/Password"
-            android:inputType="textPassword"
-
-            />
+            android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/txtConfirmSignUpPassword"

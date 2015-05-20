@@ -16,16 +16,16 @@
     <EditText
         android:id="@+id/cdAnswer"
         style="@style/myTextView"
-        android:hint="Geef hier je antwoord op"
-        android:textColorHint="#cccccc"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_below="@id/cdTitel"
         android:layout_gravity="center_horizontal"
         android:gravity="top"
+        android:hint="Geef hier je antwoord op"
         android:inputType="textMultiLine"
         android:maxLength="255"
-        android:layout_below="@id/cdTitel"
-        android:padding="5dp" />
+        android:padding="5dp"
+        android:textColorHint="#cccccc" />
 
 
     <Button
@@ -33,12 +33,12 @@
         style="@style/btnStyleArsenic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Verzenden"
-        android:layout_marginTop="10dp"
         android:layout_below="@id/cdAnswer"
+        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Verzenden" />
 
 
 </RelativeLayout>

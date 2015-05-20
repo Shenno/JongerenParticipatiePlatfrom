@@ -7,23 +7,22 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-
     <TextView
+        android:id="@+id/qaiQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vraag"
-        android:id="@+id/qaiQuestion"
-        android:textColor="@color/WhiteSmoke"
         android:layout_gravity="center_horizontal"
+        android:text="Vraag"
+        android:textColor="@color/WhiteSmoke"
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/qaiAnswer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Antwoord"
-        android:id="@+id/qaiAnswer"
-        android:textColor="@color/WhiteSmoke"
         android:layout_gravity="center"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:text="Antwoord"
+        android:textColor="@color/WhiteSmoke" />
 
 </LinearLayout>

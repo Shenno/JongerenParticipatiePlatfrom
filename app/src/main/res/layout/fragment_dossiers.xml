@@ -10,14 +10,15 @@
         android:id="@+id/dTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:padding="5dp"
         android:text="Titel"
         android:textColor="@color/WhiteSmoke"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_alignParentStart="true"
 
-        android:layout_alignParentTop="true" />
+        android:textStyle="bold" />
+
     <ListView
         android:id="@+id/dList"
         android:layout_width="match_parent"
@@ -33,24 +34,24 @@
         android:id="@+id/dsNewDossier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginRight="@dimen/fab_margin"
-        fab:type="DEFAULT"
         fab:button_color="@color/BlueGrey50"
         fab:button_colorPressed="@color/fab_material_blue_grey_500"
+        fab:hide_animation="@anim/fab_roll_to_down"
         fab:image="@drawable/plusicon"
         fab:image_size="30dp"
         fab:shadow_color="#757575"
         fab:shadow_radius="1.0dp"
         fab:shadow_xOffset="0.5dp"
         fab:shadow_yOffset="1.0dp"
+        fab:show_animation="@anim/fab_roll_from_down"
         fab:stroke_color="@color/fab_material_blue_grey_500"
         fab:stroke_width="1.0dp"
-        fab:show_animation="@anim/fab_roll_from_down"
-        fab:hide_animation="@anim/fab_roll_to_down"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp" />
+        fab:type="DEFAULT" />
 
     <TextView
         android:id="@+id/dEmpty"

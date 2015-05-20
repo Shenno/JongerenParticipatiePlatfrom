@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/BlueGrey400">
-
+    android:background="@color/BlueGrey400"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/alExtra"
@@ -17,14 +17,14 @@
         android:textColorHint="#cccccc" />
 
     <Button
+        android:id="@+id/alSubmit"
         style="@style/btnStyleArsenic"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:text="Verzenden"
-        android:id="@+id/alSubmit"
-        android:padding="2dp"
         android:layout_below="@+id/alExtra"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp" />
+        android:layout_marginTop="47dp"
+        android:padding="2dp"
+        android:text="Verzenden" />
 
 </RelativeLayout>

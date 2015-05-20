@@ -5,33 +5,30 @@
     android:background="@color/BlueGrey400"
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical"
-
     android:weightSum="1">
 
-
     <TextView
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Titel"
         android:id="@+id/eiTitle"
-        android:textColor="@color/WhiteSmoke"
-        android:layout_gravity="center_horizontal" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
+        android:layout_gravity="center_horizontal"
+        android:text="Titel"
+        android:textColor="@color/WhiteSmoke" />
+
+    <TextView
         android:id="@+id/eiDesc"
-        android:textColor="@color/WhiteSmoke"
-        android:layout_gravity="center_horizontal" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Datum"
+        android:layout_gravity="center_horizontal"
+        android:text="Description"
+        android:textColor="@color/WhiteSmoke" />
+
+    <TextView
         android:id="@+id/eiDate"
-        android:textColor="@color/WhiteSmoke"
-        android:layout_gravity="center_horizontal" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Datum"
+        android:textColor="@color/WhiteSmoke" />
 
 </LinearLayout>

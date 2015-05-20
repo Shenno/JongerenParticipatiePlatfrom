@@ -19,12 +19,12 @@
         style="@style/myTextView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_below="@id/alTitle"
         android:gravity="top"
         android:hint="Geef hier je extra uitleg"
         android:inputType="textMultiLine"
         android:maxLength="255"
         android:padding="5dp"
-        android:layout_below="@id/alTitle"
         android:textColorHint="#cccccc" />
 
 
@@ -33,10 +33,10 @@
         style="@style/btnStyleArsenic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/aeExtra"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/aeExtra"
         android:text="Verzenden" />
 
 </RelativeLayout>

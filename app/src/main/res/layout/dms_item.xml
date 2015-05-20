@@ -4,9 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgroundandbordersforquestions"
     android:descendantFocusability="blocksDescendants"
-
     android:weightSum="1">
-
 
     <TextView
         android:id="@+id/dmsDate"
@@ -32,16 +30,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_gravity="center_horizontal"
+        android:layout_toEndOf="@+id/dmsImage"
+        android:layout_toStartOf="@+id/dmsDate"
         android:maxLength="40"
+        android:maxLines="1"
         android:paddingBottom="2dp"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
         android:text="Title"
-        android:maxLines="1"
         android:textColor="@color/WhiteSmoke"
         android:textSize="14sp"
-        android:layout_toEndOf="@+id/dmsImage"
-        android:layout_toStartOf="@+id/dmsDate"
         android:textStyle="bold" />
 
     <TextView
@@ -64,13 +62,13 @@
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="Medium Text"
-        android:gravity="center"
-        android:textColor="@color/WhiteSmoke"
-        android:textSize="20sp"
         android:layout_margin="2dp"
         android:background="@drawable/circlebackgroundfortextview"
+        android:gravity="center"
+        android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/WhiteSmoke"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

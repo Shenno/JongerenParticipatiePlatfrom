@@ -51,7 +51,6 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_dossier, container, false);
-        //rl = (LinearLayout) rootView.findViewById(R.id.linLay);
         tUsername = (TextView) rootView.findViewById(R.id.ddUsername);
         tAnswer = (TextView) rootView.findViewById(R.id.ddAnswer);
         tExtra = (TextView) rootView.findViewById(R.id.ddExtra);
@@ -62,11 +61,6 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         tQA.setExpanded(true);
         tEventAdapter = new EventAdapter(getActivity());
         tQAAdapter = new QAAdapter(getActivity());
-       // tQA.setScrollContainer(false);
-       // tEvents.setScrollContainer(false);
-
-
-
         return rootView;
     }
 
@@ -96,14 +90,13 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
             tUsername.setText(tempstring);
            // tLocation.setText("Locatie: " + dtoDossierDetailed.getLocation());
         } else {
-            tLocation.setVisibility(View.GONE);
+        //    tLocation.setVisibility(View.GONE);
         }
 
         if (dtoDossierDetailed.getCalendar() != null) {
             tEventAdapter.setEvents(dtoDossierDetailed.getCalendar());
 
             tEvents.setAdapter(tEventAdapter);
-            justifyListViewHeightBasedOnChildren(tEvents);
 
 
 
@@ -115,7 +108,6 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         if (dtoDossierDetailed.getFixedQuestion() != null) {
             tQAAdapter.setEvents(dtoDossierDetailed.getFixedQuestion());
             tQA.setAdapter(tQAAdapter);
-            //justifyListViewHeightBasedOnChildren(tQA);
 
         } else {
             tQA.setVisibility(View.GONE);
@@ -127,24 +119,4 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         Toast.makeText(getActivity(), "niet goed", Toast.LENGTH_LONG).show();
     }
 
-    public void justifyListViewHeightBasedOnChildren (ListView listView) {
-
-        ListAdapter adapter = listView.getAdapter();
-
-        if (adapter == null) {
-            return;
-        }
-        ViewGroup vg = listView;
-        int totalHeight = 0;
-        for (int i = 0; i < adapter.getCount(); i++) {
-            View listItem = adapter.getView(i, null, vg);
-            listItem.measure(0, 0);
-            totalHeight += listItem.getMeasuredHeight();
-        }
-
-        ViewGroup.LayoutParams par = listView.getLayoutParams();
-        par.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1));
-        listView.setLayoutParams(par);
-        listView.requestLayout();
-    }
 }

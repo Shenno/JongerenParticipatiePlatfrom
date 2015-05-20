@@ -69,7 +69,7 @@
         android:drawableLeft="@drawable/fblike"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="#Votes"
-        android:id="@+id/textView5"
+        android:id="@+id/fbvote"
         android:layout_marginRight="3dp"
         android:layout_alignBottom="@+id/dmsDetEndDate"
         android:layout_alignEnd="@+id/dmsDetExtra" />

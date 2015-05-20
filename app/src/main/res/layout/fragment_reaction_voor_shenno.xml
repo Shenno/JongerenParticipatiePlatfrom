@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/BlueGrey800"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dmsDetEndDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingTop="2dp"
+        android:text="Einddatum"
+        android:layout_below="@+id/dmsDetQuestioner"
+        android:textColor="@color/WhiteSmoke" />
+
+    <TextView
+        android:id="@+id/dmsDetQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="5dp"
+        android:text="Titel"
+        android:textColor="@color/WhiteSmoke"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/dmsDetExtra"
+        style="@style/myTextView.Profile.dossier"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dmsDetEndDate"
+        android:gravity="top"
+        android:hint="Hier komt de extra uitleg"
+        android:inputType="textFilter|textMultiLine|textNoSuggestions"
+        android:layout_margin="3dp"
+        android:scrollbars="vertical"
+        android:textSize="12sp"
+        android:text="Extra"
+        android:textColor="@color/WhiteSmoke"
+        android:textColorHint="@color/LightGrey" />
+
+
+    <TextView
+        android:id="@+id/dmsDetQuestioner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dmsDetQuestion"
+        android:paddingBottom="2dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:scrollbars="vertical"
+        android:text="OP"
+        android:textColor="@color/WhiteSmoke"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/WhiteSmoke"
+        android:drawableLeft="@drawable/fblike"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="#Votes"
+        android:id="@+id/textView5"
+        android:layout_marginRight="3dp"
+        android:layout_alignBottom="@+id/dmsDetEndDate"
+        android:layout_alignEnd="@+id/dmsDetExtra" />
+
+</RelativeLayout>

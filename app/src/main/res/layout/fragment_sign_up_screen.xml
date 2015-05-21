@@ -42,7 +42,9 @@
             android:drawableLeft="@drawable/birthdayicon"
             android:drawableStart="@drawable/birthdayicon"
             android:hint="@string/BirthdateHint"
-            android:inputType="date" />
+            android:inputType="date"
+            android:maxLength="10"
+            android:maxLines="1"/>
 
         <EditText
             android:id="@+id/txtZipCode"

@@ -48,7 +48,6 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
     private TextView tExtra;
     private ExpandableHeightListView tQA;
     private ExpandableHeightListView tEvents;
-
     private ExpandableHeightGridView tImages;
     private ImageView tImage;
     ImageGridAdapter tGridAdapter;

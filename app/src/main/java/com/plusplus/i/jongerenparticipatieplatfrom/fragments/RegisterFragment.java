@@ -129,7 +129,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         //{"Message":"The request is invalid.","ModelState":{"":["Passwords must be at least 6 characters."]}}
         //{"Message":"The request is invalid.","ModelState":{"":["Name maxim.vandebroeck@gmail.com1 is already taken."]}}
         //{"Message":"The request is invalid.","ModelState":{"model.Email":["The Emailadres field is not a valid e-mail address."]}}
-
+    //test
 
     }
 }

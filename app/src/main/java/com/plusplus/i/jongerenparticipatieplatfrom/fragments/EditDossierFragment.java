@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -49,36 +50,37 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
     private TextView tUsername;
     private TextView tAnswer;
     private TextView tExtra;
-    private ListView tQA;
-    private TextView tLocation;
-    private ListView tEvents;
-    private ImageView tPhotos;
-    private ExpandableHeightGridView tGrid;
+    private ExpandableHeightListView tQA;
+    private ExpandableHeightListView tEvents;
+    private ExpandableHeightGridView tImages;
+    private ImageView tImage;
+    ImageGridAdapter tGridAdapter;
     EventAdapter tEventAdapter;
     QAAdapter tQAAdapter;
-    ImageGridAdapter tGridAdapter;
-    OnSelectedListener mCallback;
+    String tempstring;
     Spinner spinner;
     Button button;
+    OnSelectedListener mCallback;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_editdossier, container, false);
         tUsername = (TextView) rootView.findViewById(R.id.ddUsername);
         tAnswer = (TextView) rootView.findViewById(R.id.ddAnswer);
         tExtra = (TextView) rootView.findViewById(R.id.ddExtra);
-        tLocation = (TextView) rootView.findViewById(R.id.ddLocation);
-        tEvents = (ListView) rootView.findViewById(R.id.ddListEvents);
-        tQA = (ListView) rootView.findViewById(R.id.ddListQA);
-        tPhotos = (ImageView) rootView.findViewById(R.id.ddImageView);
-        tGrid = (ExpandableHeightGridView) rootView.findViewById(R.id.grid);
-        tGrid.setExpanded(true);
+        tEvents = (ExpandableHeightListView) rootView.findViewById(R.id.ddListEvents);
+        tImage = (ImageView) rootView.findViewById(R.id.ddImage);
+        tEvents.setExpanded(true);
+        tQA = (ExpandableHeightListView) rootView.findViewById(R.id.ddListQA);
+        tQA.setExpanded(true);
         tEventAdapter = new EventAdapter(getActivity());
         tQAAdapter = new QAAdapter(getActivity());
-        spinner = (Spinner) rootView.findViewById(R.id.edSpinner);
-        button = (Button) rootView.findViewById(R.id.edBtn);
+        tImages = (ExpandableHeightGridView) rootView.findViewById(R.id.ddGrid);
+        tImages.setExpanded(true);
+        spinner = (Spinner) rootView.findViewById(R.id.ddSpinner);
+        button = (Button) rootView.findViewById(R.id.button);
         List<String> list = new ArrayList<>();
         list.add("Extra");
         list.add("Locatie");
@@ -97,7 +99,6 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
 
         // Button click Listener
         addListenerOnButton();
-
         return rootView;
     }
 
@@ -149,64 +150,81 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
     @Override
     public void onStart() {
         super.onStart();
-//        if(getArguments() != null) {
-//            Bundle b = getArguments();
-//            int i = b.getInt("dId");
+      /*  if (getArguments() != null) {
+            Bundle b = getArguments();
+            int i = b.getInt("dId");
             getJppService().getDossier(3, this);
-//        }
+        }*/
+        getJppService().getDossier(3, this);
     }
 
     @Override
     public void success(DtoDossierDetailed dtoDossierDetailed, Response response) {
-        tGridAdapter = new ImageGridAdapter(getActivity(), dtoDossierDetailed.getPhotos());
-        tGrid.setAdapter(tGridAdapter);
-        byte[] decodedString = Base64.decode(dtoDossierDetailed.getPhotos()[0], Base64.DEFAULT);
-        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-        tPhotos.setImageBitmap(decodedByte);
-        tUsername.setText(dtoDossierDetailed.getUsername());
-        tAnswer.setText(dtoDossierDetailed.getAnswer());
-        if(dtoDossierDetailed.getExtra() != null)
-        {
-            tExtra.setText(dtoDossierDetailed.getExtra());
+        if(dtoDossierDetailed.getPhotos().length != 0) {
+            tImage.setVisibility(View.GONE);
+            tGridAdapter = new ImageGridAdapter(getActivity(), dtoDossierDetailed.getPhotos());
+            tImages.setAdapter(tGridAdapter);
+            tImages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                        long arg3) {
+                    tImage.setVisibility(View.VISIBLE);
+                    tImage.setImageBitmap(tGridAdapter.getItem(arg2));
+                }
+
+            });
         }
         else
         {
+            tImage.setVisibility(View.GONE);
+            tImages.setVisibility(View.GONE);
+        }
+        tempstring = "Dossier van : "+ dtoDossierDetailed.getUsername();
+        tUsername.setText(tempstring);
+        tAnswer.setText(dtoDossierDetailed.getAnswer());
+        if (dtoDossierDetailed.getExtra() != null) {
+            tExtra.setText(dtoDossierDetailed.getExtra());
+        } else {
             tExtra.setVisibility(View.GONE);
         }
 
-        if(dtoDossierDetailed.getLocation() != null)
-        {
-            tLocation.setText(dtoDossierDetailed.getLocation());
-        }
-        else
-        {
-            tLocation.setVisibility(View.GONE);
+        if (dtoDossierDetailed.getLocation() != null) {
+            tempstring = tempstring + " \nLocatie: " + dtoDossierDetailed.getLocation();
+            tUsername.setText(tempstring);
+            // tLocation.setText("Locatie: " + dtoDossierDetailed.getLocation());
+        } else {
+            //    tLocation.setVisibility(View.GONE);
         }
 
-        if(dtoDossierDetailed.getCalendar() != null)
-        {
+        if (dtoDossierDetailed.getCalendar() != null) {
             tEventAdapter.setEvents(dtoDossierDetailed.getCalendar());
+
             tEvents.setAdapter(tEventAdapter);
-        }
-        else
-        {
+
+
+
+        } else {
 
             tEvents.setVisibility(View.GONE);
         }
 
-        if(dtoDossierDetailed.getFixedQuestion() != null)
-        {
+        if (dtoDossierDetailed.getFixedQuestion() != null) {
             tQAAdapter.setEvents(dtoDossierDetailed.getFixedQuestion());
             tQA.setAdapter(tQAAdapter);
-        }
-        else
-        {
+
+        } else {
             tQA.setVisibility(View.GONE);
         }
+
+
+
+
     }
 
     @Override
     public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(),"niet goed",Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "niet goed", Toast.LENGTH_LONG).show();
     }
+
 }

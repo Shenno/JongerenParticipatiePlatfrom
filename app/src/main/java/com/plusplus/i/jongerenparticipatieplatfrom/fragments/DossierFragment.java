@@ -43,12 +43,10 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 28/04/2015.
  */
 public class DossierFragment extends Fragment implements Callback<DtoDossierDetailed> {
-    LinearLayout rl;
     private TextView tUsername;
     private TextView tAnswer;
     private TextView tExtra;
     private ExpandableHeightListView tQA;
-    private TextView tLocation;
     private ExpandableHeightListView tEvents;
     private ExpandableHeightGridView tImages;
     private ImageView tImage;
@@ -65,7 +63,6 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         tUsername = (TextView) rootView.findViewById(R.id.ddUsername);
         tAnswer = (TextView) rootView.findViewById(R.id.ddAnswer);
         tExtra = (TextView) rootView.findViewById(R.id.ddExtra);
-        tLocation = (TextView) rootView.findViewById(R.id.ddLocation);
         tEvents = (ExpandableHeightListView) rootView.findViewById(R.id.ddListEvents);
         tImage = (ImageView) rootView.findViewById(R.id.ddImage);
         tEvents.setExpanded(true);
@@ -90,19 +87,26 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
 
     @Override
     public void success(DtoDossierDetailed dtoDossierDetailed, Response response) {
-        tImage.setVisibility(View.GONE);
-        tGridAdapter = new ImageGridAdapter(getActivity(), dtoDossierDetailed.getPhotos());
-        tImages.setAdapter(tGridAdapter);
-        tImages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        if(dtoDossierDetailed.getPhotos().length != 0) {
+            tImage.setVisibility(View.GONE);
+            tGridAdapter = new ImageGridAdapter(getActivity(), dtoDossierDetailed.getPhotos());
+            tImages.setAdapter(tGridAdapter);
+            tImages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                    long arg3) {
-                tImage.setVisibility(View.VISIBLE);
-                tImage.setImageBitmap(tGridAdapter.getItem(arg2));
-            }
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                        long arg3) {
+                    tImage.setVisibility(View.VISIBLE);
+                    tImage.setImageBitmap(tGridAdapter.getItem(arg2));
+                }
 
-        });
+            });
+        }
+        else
+        {
+            tImage.setVisibility(View.GONE);
+            tImages.setVisibility(View.GONE);
+        }
         tempstring = "Dossier van : "+ dtoDossierDetailed.getUsername();
         tUsername.setText(tempstring);
         tAnswer.setText(dtoDossierDetailed.getAnswer());

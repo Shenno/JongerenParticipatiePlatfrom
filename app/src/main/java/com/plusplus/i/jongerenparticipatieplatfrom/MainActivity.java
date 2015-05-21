@@ -24,6 +24,7 @@ import com.plusplus.i.jongerenparticipatieplatfrom.adapter.NavDrawerListAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddEventToDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddExtraToDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AddLocationToDossierFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AmsFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.AmsHomeFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.CreateDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DmsFragment;
@@ -330,6 +331,18 @@ public class MainActivity extends Activity implements OnSelectedListener {
         Fragment fragment = new AddEventToDossierFragment();
         Bundle args = new Bundle();
         args.putInt("dId", id);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+    @Override
+    public void onHomeAmsItemClicked(int i) {
+        Fragment fragment = new AmsFragment();
+        Bundle args = new Bundle();
+        args.putInt("parameter", i);
         fragment.setArguments(args);
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTran = fragMan.beginTransaction();

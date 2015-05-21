@@ -11,4 +11,5 @@ public interface OnSelectedListener {
     public void onAddExtraToDossier(int id);
     public void onAddLocationToDossier(int id);
     public void onAddEventToDossier(int id);
+    public void onHomeAmsItemClicked(int id);
 }

@@ -43,16 +43,16 @@ public class AmsHomeFragment extends Fragment implements Callback<List<DtoAsm>> 
         listView.setAdapter(amsAdapter);
         View emptyView = rootView.findViewById(R.id.empty);
         listView.setEmptyView(emptyView);
-     /*   listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                     long arg3) {
-                DtoDms dto = amsAdapter.getItem(arg2);
-                mCallback.onItemClicked(dto.getId());
+                DtoAsm dto = amsAdapter.getItem(arg2);
+                mCallback.onHomeAmsItemClicked(dto.getId());
             }
 
-        });*/
+        });
 
         getJppService().getOpenAms(1, this);
 

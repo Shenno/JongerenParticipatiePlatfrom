@@ -88,7 +88,8 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
 
                 }
 
-                // maak alle textfields leeg op de mijn profiel fragment
+                // maak alle textfields leeg op de mijn profiel fragment als de gebruiker op de uitlog knop duwt.
+
                 name.setText("");
                 email2.setText("");
                 gemeente.setText("");

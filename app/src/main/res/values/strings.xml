@@ -12,7 +12,9 @@
         <item >Log In</item>
         <item >Registreer</item>
         <item >Mijn Profiel</item>
-        <item >Extra</item>
+        <item >Mijn Dossiers</item>
+        <item >Mijn Vragen</item>
+
 
     </string-array>
 
@@ -25,6 +27,8 @@
         <item>@drawable/registericon_white</item>
         <item>@drawable/user_white</item>
         <item>@drawable/ic_whats_hot</item>
+        <item>@drawable/ic_whats_hot</item>
+
     </array>
 
     <string name="SplashScreenLoadText">Even geduld, de applicatie wordt geladen.</string>

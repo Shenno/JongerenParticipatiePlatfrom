@@ -88,6 +88,11 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
 
                 }
 
+                // maak alle textfields leeg op de mijn profiel fragment
+                name.setText("");
+                email2.setText("");
+                gemeente.setText("");
+                birthDate.setText("");
             }
         });
 

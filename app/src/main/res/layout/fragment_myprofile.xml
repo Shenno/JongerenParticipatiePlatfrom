@@ -58,15 +58,6 @@
             android:inputType="textPostalAddress"
             android:textColorHint="#cccccc" />
 
-        <EditText
-            android:id="@+id/txtPassword"
-            style="@style/myTextView.Profile"
-            android:layout_below="@+id/txtGeboorteDatum"
-            android:drawableLeft="@drawable/password"
-            android:drawableStart="@drawable/password"
-            android:hint="@string/Password"
-            android:inputType="textPassword"
-            android:textColorHint="#cccccc" />
 
 
         <Button
@@ -74,11 +65,11 @@
             style="@style/btnStyleArsenic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtPassword"
+            android:layout_below="@+id/txtGeboorteDatum"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:text="@string/ChangePassword" />
 
         <Button

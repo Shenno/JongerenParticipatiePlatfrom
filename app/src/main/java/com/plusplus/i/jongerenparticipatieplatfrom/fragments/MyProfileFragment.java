@@ -12,12 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
 
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.Account;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoUserInfo;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -26,6 +31,10 @@ import retrofit.client.Response;
 public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo> {
     private Button updatePassword;
     private Button logOut;
+    private EditText name;
+    private EditText email2;
+    private EditText gemeente;
+    private EditText birthDate;
 
     public MyProfileFragment() {
     }
@@ -34,6 +43,13 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_myprofile, container, false);
+
+        name = (EditText) rootView.findViewById(R.id.txtName);
+        email2 = (EditText) rootView.findViewById(R.id.txtEmail);
+        gemeente = (EditText) rootView.findViewById(R.id.txtGemeente);
+        birthDate = (EditText) rootView.findViewById(R.id.txtGeboorteDatum);
+
+
         initTextFields();
         updatePassword = (Button) rootView.findViewById(R.id.btnUpdatePassword);
 
@@ -68,7 +84,7 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
                     userDetails.edit().remove("email").apply();
                     userDetails.edit().remove("password").apply();
 
-                    AppMsg.makeText(getActivity(),getResources().getString(R.string.succesfullLogOut), AppMsg.STYLE_INFO).show();
+                    AppMsg.makeText(getActivity(), getResources().getString(R.string.succesfullLogOut), AppMsg.STYLE_INFO).show();
 
                 }
 
@@ -86,15 +102,9 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
 
         if (token.isEmpty() && email.isEmpty()) {
             AppMsg.makeText(getActivity(), getResources().getString(R.string.profileDateWillAppearAfterLogin), AppMsg.STYLE_INFO).show();
-        }
-
-        else
-        {
+        } else {
             getJppService().getUserInfo(email, this);
         }
-
-
-
         //TODO: Als de SP gegevens bevat, de account opvragen met (HOE? getaccount methode maken?) Dan de gegevens van deze account (naam, email, pw, geboortedatum en gemeente plaatsen in de textfields
     }
 
@@ -102,6 +112,19 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
     @Override
     public void success(DtoUserInfo dtoUserInfo, Response response) {
         AppMsg.makeText(getActivity(), "Hier init je alles he", AppMsg.STYLE_INFO).show();
+
+
+
+        name.setText(dtoUserInfo.getName());
+        email2.setText(dtoUserInfo.getEmail());
+        gemeente.setText(Integer.toString(dtoUserInfo.getZip()));
+        Date geboortedatum = dtoUserInfo.getBday();
+
+        SimpleDateFormat formatter5=new SimpleDateFormat("dd-MM-yyyy");
+        String formats1 = formatter5.format(geboortedatum);
+        System.out.println(formats1);
+
+        birthDate.setText(formats1);
 
     }
 

@@ -21,6 +21,7 @@ import java.util.Date;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.mime.TypedByteArray;
 
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
@@ -117,5 +118,6 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
     @Override
     public void failure(RetrofitError error) {
         AppMsg.makeText(getActivity(), "Er is iets mis gegaan :(", AppMsg.STYLE_ALERT).show();
+
     }
 }

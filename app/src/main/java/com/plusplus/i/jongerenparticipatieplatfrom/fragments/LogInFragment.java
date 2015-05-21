@@ -11,12 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Token;
+
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import retrofit.mime.TypedByteArray;
+
 import static android.content.Context.MODE_PRIVATE;
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
@@ -25,6 +29,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
     private EditText txtName;
     private EditText txtPwd;
     private Button btnSignIn;
+    private boolean alreadyLoggedIn;
 
     public LogInFragment() {
     }
@@ -64,29 +69,49 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                /*
+                Bij het klikken op de knop wordt er gekeken of de email van de gebruiker nog in de Sharedprefence zit.
+                Staat hier niets in, dan is de gebruiker niet aangelogd. ==> We controleren dan elke veld om te zien of deze een waarde bevat. Zoja probeer dan in te loggen.
+                Staat in de Sharedpref wel een waarde dan is de gebruiker al inglogd. Probeert hij opnieuw in te loggen met de gegevens die al in de sharedpref staan dan krijgt hij een melding dat hij al aangmeld is
+                Probeert hij in te loggen met andere gegevens dan in de sharedpref staan dan probeert het systeem gewoon in te loggen.
+                Zijn de inlog gegevens verkeerd dan wordt er een melding weergegeven.
+                 */
                 SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
                 String email = userDetails.getString("email", ""); // email uit de SP ophalen
-                String password = userDetails.getString("password", ""); //password uit de SP ophalen
+                String password = userDetails.getString("password",""); //pw uit de SP ophalen
 
-                if (email.equalsIgnoreCase(txtName.getText().toString()) && password.equals(txtPwd.getText().toString())) { //Pw & Email uit de SP zijn hetzelfde als ingegeven PW en email? ==> Al ingelogd
+                if (txtName.getText().length() == 0) {
+                    txtName.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
+                }
+                if (txtPwd.getText().length() == 0) {
+                    txtPwd.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
+                }
+
+                if (email.equalsIgnoreCase(txtName.getText().toString()) && password.equals(txtPwd.getText().toString())) { // Email uit de SP zijn hetzelfde als ingegeven email? ==> Al ingelogd
+                    alreadyLoggedIn = true;
+                } else {
+                    alreadyLoggedIn = false;
+                }
+
+                if (email.isEmpty() || password.isEmpty()) {
+                    alreadyLoggedIn = false;
+                }
+
+
+                if (alreadyLoggedIn) {
                     AppMsg.makeText(getActivity(), "Je bent al ingelogd als " + email, AppMsg.STYLE_ALERT).show();
 
                 } else {
-
-                    if (txtName.getText().length() == 0) {
-                        txtName.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
-                    }
-                    if (txtPwd.getText().length() == 0) {
-                        txtPwd.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
-                    }
-
                     if (!(txtName.getText().length() == 0 || txtPwd.getText().length() == 0)) { // Als beide velden een waarde bevatten mag er een inlog poging gebeuren.
                         signIn();
                     }
-
-                    //TODO Als de user foute username gebruik of foute pw de error code van retrofit opvangen en error weergeven in de textfields
                 }
+
+
+                //TODO Als de user foute username gebruik of foute pw de error code van retrofit opvangen en error weergeven in de textfields
             }
+
         });
     }
 
@@ -115,7 +140,9 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 
     @Override
     public void failure(RetrofitError error) {
-        AppMsg.makeText(getActivity(), error.getMessage(), AppMsg.STYLE_ALERT).show();
+        // AppMsg.makeText(getActivity(), error.getMessage(), AppMsg.STYLE_ALERT).show();
+        String json = new String(((TypedByteArray) error.getResponse().getBody()).getBytes());
+        AppMsg.makeText(getActivity(), json, AppMsg.STYLE_ALERT).show();
 
 
     }

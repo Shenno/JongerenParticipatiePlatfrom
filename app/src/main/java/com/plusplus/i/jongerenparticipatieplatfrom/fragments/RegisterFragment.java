@@ -106,7 +106,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
     @Override
     public void success(Account account, Response response) {
         //Registratie succesvol? Geef melding weer en breng de user naar het LogInScherm zpdat hij daar kan inloggen.
-        AppMsg.makeText(getActivity(), "Succesvol geregistreerd", AppMsg.STYLE_INFO).show();
+        AppMsg.makeText(getActivity(), getResources().getString(R.string.succesfullregister), AppMsg.STYLE_INFO).show();
         Fragment frag = new LogInFragment();
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTran = fragMan.beginTransaction();
@@ -117,15 +117,15 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
 
     @Override
     public void failure(RetrofitError error) {
-        // AppMsg.makeText(getActivity(), "Er is iets mis gegaan :(", AppMsg.STYLE_ALERT).show();
+        //controle op veel voorkomende fouten, is het passwoord lang genoeg? Email in juiste formaat, is het emailadres al eens geregistreerd?
         String json = new String(((TypedByteArray) error.getResponse().getBody()).getBytes());
 
         if (json.equals(getResources().getString(R.string.retrofit_invalid_emailformat))) {
-            AppMsg.makeText(getActivity(), "Foutief email adres", AppMsg.STYLE_ALERT).show();
+            AppMsg.makeText(getActivity(), getResources().getString(R.string.emailAdresError), AppMsg.STYLE_ALERT).show();
         } else if (json.equals(getResources().getString(R.string.retrofit_password_minimum))) {
-            AppMsg.makeText(getActivity(), "Wachtwoord moet minstens 6 tekens zijn", AppMsg.STYLE_ALERT).show();
+            AppMsg.makeText(getActivity(), getResources().getString(R.string.minimum_password_length_error), AppMsg.STYLE_ALERT).show();
         } else if (json.equals("{\"Message\":\"The request is invalid.\",\"ModelState\":{\"\":[\"Name " + txtEmail.getText().toString() + "1 is already taken.\"]}}")) {
-            AppMsg.makeText(getActivity(), "Dit email adres is al geregistreerd", AppMsg.STYLE_ALERT).show();
+            AppMsg.makeText(getActivity(), getResources().getString(R.string.email_already_registered), AppMsg.STYLE_ALERT).show();
         }else {
             AppMsg.makeText(getActivity(), getResources().getString(R.string.something_went_wrong) + " "+error, AppMsg.STYLE_ALERT).show();
 

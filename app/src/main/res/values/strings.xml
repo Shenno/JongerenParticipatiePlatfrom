@@ -88,6 +88,10 @@
     <string name="alreadyloggedOut">Je bent al uitgelogd</string>
     <string name="succesfullLogOut">Je bent succesvol uitgelogd</string>
     <string name="profileDateWillAppearAfterLogin">"Je profielgegevens verschijnen na het inloggen (TODO)"</string>
+    <string name="succesfullregister">Succesvol geregistreerd</string>
+    <string name="emailAdresError">Foutief email adres</string>
+    <string name="minimum_password_length_error">Wachtwoord moet minstens 6 tekens zijn"</string>
+    <string name="email_already_registered">Dit email adres is al geregistreerd</string>
 
     <string name="baseUrlRetro2">http://10.0.3.2:57252</string>
     <string name="baseUrlRetro">http://10.134.216.25:8009</string>

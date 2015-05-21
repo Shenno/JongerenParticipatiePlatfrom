@@ -52,9 +52,10 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 
     public void initUsernameAndPassWordFields() {
         SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
-
         String email = userDetails.getString("email", "");
         String password = userDetails.getString("password", "");
+
+        //Haalt in de SP het email & PW op zodat deze gegevens al ingevuld kunnen worden op beide textFields in het inlogscherm.
 
         if (!email.isEmpty()) {
             txtName.setText(email);

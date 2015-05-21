@@ -5,24 +5,18 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.Account;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Token;
-
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-
 import static android.content.Context.MODE_PRIVATE;
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
@@ -74,7 +68,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
                 String password = userDetails.getString("password", ""); //password uit de SP ophalen
 
                 if (email.equalsIgnoreCase(txtName.getText().toString()) && password.equals(txtPwd.getText().toString())) { //Pw & Email uit de SP zijn hetzelfde als ingegeven PW en email? ==> Al ingelogd
-                    AppMsg.makeText(getActivity(), "Je bent al ingelogd als " + txtName.getText().toString(), AppMsg.STYLE_ALERT).show();
+                    AppMsg.makeText(getActivity(), "Je bent al ingelogd als " + email, AppMsg.STYLE_ALERT).show();
 
                 } else {
 
@@ -101,6 +95,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 
     @Override
     public void success(Token token, Response response) {
+        //Als de login succes vol is, zet dan de token, email en password in een sharedPrefence zodat deze gegevens later kunnen worden opgehaald.
         SharedPreferences.Editor editor = getActivity().getSharedPreferences("Logindetails", MODE_PRIVATE).edit();
         editor.putString("token", token.getAccess_token());
         editor.putString("email", txtName.getText().toString());
@@ -108,6 +103,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         editor.apply();
         AppMsg.makeText(getActivity(), "Succesvol ingelogd! :)", AppMsg.STYLE_INFO).show();
 
+        //Als het inloggen succesvol is gebeurd wissel dan naar het QuestionFragment (lijst met vragen)
         Fragment frag = new QuestionFragment();
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTran = fragMan.beginTransaction();
@@ -118,8 +114,6 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 
     @Override
     public void failure(RetrofitError error) {
-
-
         AppMsg.makeText(getActivity(), error.getMessage(), AppMsg.STYLE_ALERT).show();
 
 

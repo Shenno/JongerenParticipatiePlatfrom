@@ -12,11 +12,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
+
 
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoUserInfo;
 
-public class MyProfileFragment extends Fragment {
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
+public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo> {
     private Button updatePassword;
     private Button logOut;
 
@@ -81,10 +88,26 @@ public class MyProfileFragment extends Fragment {
             AppMsg.makeText(getActivity(), getResources().getString(R.string.profileDateWillAppearAfterLogin), AppMsg.STYLE_INFO).show();
         }
 
+        else
+        {
+            getJppService().getUserInfo(email, this);
+        }
+
 
 
         //TODO: Als de SP gegevens bevat, de account opvragen met (HOE? getaccount methode maken?) Dan de gegevens van deze account (naam, email, pw, geboortedatum en gemeente plaatsen in de textfields
     }
 
 
+    @Override
+    public void success(DtoUserInfo dtoUserInfo, Response response) {
+        AppMsg.makeText(getActivity(), "Hier init je alles he", AppMsg.STYLE_INFO).show();
+
+    }
+
+    @Override
+    public void failure(RetrofitError error) {
+        AppMsg.makeText(getActivity(), "Foutje he", AppMsg.STYLE_INFO).show();
+
+    }
 }

@@ -13,6 +13,7 @@ import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierPost;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReaction;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReactionDetailed;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoUserInfo;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Token;
 
 import java.util.List;
@@ -31,6 +32,9 @@ import retrofit.http.Path;
 public interface JppService {
     @POST("/api/Account/Register")
     void registerAccount(@Body Account account, Callback<Account> created);
+
+    @GET("/api/Account/getInfo/{email}/")
+    void getUserInfo(@Path("email") String email, Callback<DtoUserInfo> callback);
 
     @FormUrlEncoded
     @POST("/token")
@@ -71,6 +75,8 @@ public interface JppService {
 
     @GET("/api/ams/reactions/{rId}")
     void getReaction(@Path("rId") int rId, Callback<DtoReactionDetailed> callBack);
+
+
 
 
 

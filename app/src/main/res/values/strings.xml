@@ -95,8 +95,8 @@
     <string name="email_already_registered">Dit email adres is al geregistreerd</string>
     <string name="networkconnectionrequired">Je hebt een netwerkverbinding nodig om deze app te kunnen gebruiken</string>
 
-    <string name="baseUrlRetro2">http://10.0.3.2:57252</string>
-    <string name="baseUrlRetro">http://10.134.216.25:8009</string>
+    <string name="baseUrlRetro">http://10.0.3.2:57252</string>
+    <string name="baseUrlRetro2">http://10.134.216.25:8009</string>
     <string name="retrofit_username_or_password_wrong_json">{\"error\":\"invalid_grant\",\"error_description\":\"The user name or password is incorrect.\"}</string>
     <string name="retrofit_invalid_emailformat">{\"Message\":\"The request is invalid.\",\"ModelState\":{\"model.Email\":[\"The Emailadres field is not a valid e-mail address.\"]}}</string>
     <string name="retrofit_password_minimum">{\"Message\":\"The request is invalid.\",\"ModelState\":{\"\":[\"Passwords must be at least 6 characters.\"]}}</string>

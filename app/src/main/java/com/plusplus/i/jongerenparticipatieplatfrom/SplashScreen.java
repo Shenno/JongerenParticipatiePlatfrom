@@ -65,7 +65,7 @@ public class SplashScreen extends Activity {
         }
         if (!haveConnectedMobile && !haveConnectedWifi){
             //Toast.makeText(getApplicationContext(),"Je hebt een netwerkverbinding nodig om deze app te kunnen gebruiken",Toast.LENGTH_LONG).show();
-            AppMsg.makeText(this,"Je hebt een netwerkverbinding nodig om deze app te kunnen gebruiken",AppMsg.STYLE_INFO).show();
+            AppMsg.makeText(this,getResources().getString(R.string.networkconnectionrequired),AppMsg.STYLE_INFO).show();
             SPLASH_TIME_OUT = 3000;
 
 

@@ -120,8 +120,6 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
         AppMsg.makeText(getActivity(), "Hier init je alles he", AppMsg.STYLE_INFO).show();
         //TODO fonttypes
 
-
-
         name.setText(dtoUserInfo.getName());
         email2.setText(dtoUserInfo.getEmail());
         gemeente.setText(Integer.toString(dtoUserInfo.getZip()));

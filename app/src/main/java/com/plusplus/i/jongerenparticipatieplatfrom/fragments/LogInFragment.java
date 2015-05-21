@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +45,13 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         btnSignIn = (Button) rootView.findViewById(R.id.signInBtn);
         initListeners();
         initUsernameAndPassWordFields();
+
+        Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
+
+        txtName.setTypeface(fontttype);
+        txtPwd.setTypeface(fontttype);
+
+
 
 
         return rootView;

@@ -3,6 +3,7 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,20 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         txtBirthdate = (EditText) rootView.findViewById(R.id.txtBirthDay);
         txtZipCode = (EditText) rootView.findViewById(R.id.txtZipCode);
         initListeners();
+
+
+
+        Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
+        Typeface robto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
+        Typeface opensans = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
+        Typeface paci = Typeface.createFromAsset(getActivity().getAssets(), "fonts/pacifico.ttf");
+
+
+        txtName.setTypeface(fontttype);
+        txtEmail.setTypeface(robto);
+        txtConfirmPwd.setTypeface(opensans);
+        txtZipCode.setTypeface(paci);
+
         return rootView;
     }
 

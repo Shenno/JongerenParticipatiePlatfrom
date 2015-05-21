@@ -88,6 +88,9 @@
     <string name="something_went_wrong">Er ging iets mis: </string>
     <string name="already_logged_in_as">Je bent al ingelogd als  </string>
     <string name="successfullLogin">Succesvol ingelogd als </string>
+    <string name="alreadyloggedOut">Je bent al uitgelogd</string>
+    <string name="succesfullLogOut">Je bent succesvol uitgelogd</string>
+    <string name="profileDateWillAppearAfterLogin">"Je profielgegevens verschijnen na het inloggen (TODO)"</string>
 
     <!-- http://10.134.216.25:8009 -->
 </resources>

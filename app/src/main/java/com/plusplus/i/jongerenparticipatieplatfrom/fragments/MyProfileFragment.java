@@ -54,14 +54,14 @@ public class MyProfileFragment extends Fragment {
                 String email = userDetails.getString("email", "");
 
                 if (token.isEmpty() && email.isEmpty()) {
-                    AppMsg.makeText(getActivity(), "Je bent al uitgelogd", AppMsg.STYLE_ALERT).show();
+                    AppMsg.makeText(getActivity(), getResources().getString(R.string.alreadyloggedOut), AppMsg.STYLE_ALERT).show();
 
                 } else {
                     userDetails.edit().remove("token").apply();
                     userDetails.edit().remove("email").apply();
                     userDetails.edit().remove("password").apply();
 
-                    AppMsg.makeText(getActivity(), "Je bent succesvol uitgelogd", AppMsg.STYLE_INFO).show();
+                    AppMsg.makeText(getActivity(),getResources().getString(R.string.succesfullLogOut), AppMsg.STYLE_INFO).show();
 
                 }
 
@@ -78,7 +78,7 @@ public class MyProfileFragment extends Fragment {
         String email = userDetails.getString("email", "");
 
         if (token.isEmpty() && email.isEmpty()) {
-            AppMsg.makeText(getActivity(), "Je profielgegevens verschijnen na het inloggen (TODO)", AppMsg.STYLE_ALERT).show();
+            AppMsg.makeText(getActivity(), getResources().getString(R.string.profileDateWillAppearAfterLogin), AppMsg.STYLE_INFO).show();
         }
 
         //TODO: Als de SP gegevens bevat, de account opvragen met (HOE? getaccount methode maken?) Dan de gegevens van deze account (naam, email, pw, geboortedatum en gemeente plaatsen in de textfields

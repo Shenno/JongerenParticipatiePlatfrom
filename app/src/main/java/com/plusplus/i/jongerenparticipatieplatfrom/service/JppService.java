@@ -80,8 +80,16 @@ public interface JppService {
     @GET("/api/ams/reaction/{email}/")
     void getReactionsByEmail(@Path("email") String email, Callback<List<DtoReaction>> callBack);
 
+    @GET("/api/dms/dossiers/{email}/")
+    void getDossiersByEmail(@Path("email") String email, Callback<List<DtoDossier>> callBack);
+
     @POST("/api/dms/dossier/vote")
     void addVote(@Body DtoVote dtoVote, Callback<DtoVote> callback);
+
+    @POST("/api/ams/reaction/vote")
+    void addVoteR(@Body DtoVote dtoVote, Callback<DtoVote> callback);
+
+
 
 
 

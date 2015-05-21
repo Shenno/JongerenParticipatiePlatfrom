@@ -49,19 +49,18 @@ public class AddLocationToDossierFragment extends Fragment implements Callback<D
 
     private void submitLocation() {
         DtoAddLocation dtoAddLocation = new DtoAddLocation();
-        dtoAddLocation.setdId(3);
+        if (getArguments() != null) {
+            Bundle b = getArguments();
+            int i = b.getInt("dId");
+            dtoAddLocation.setdId(i);
+        }
         dtoAddLocation.setLocation(location.getText().toString());
         getJppService().addLocationToDossier(dtoAddLocation, this);
     }
 
     @Override
     public void success(DtoAddLocation dtoAddLocation, Response response) {
-        Fragment fragment = new EditDossierFragment();
-        FragmentManager fragMan = getFragmentManager();
-        FragmentTransaction fragTran = fragMan.beginTransaction();
-        fragTran.replace(R.id.frame_container, fragment);
-        fragTran.addToBackStack(null);
-        fragTran.commit();
+        getFragmentManager().popBackStack();
     }
 
     @Override

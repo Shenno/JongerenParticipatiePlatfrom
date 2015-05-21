@@ -72,7 +72,11 @@ public class AddEventToDossierFragment extends Fragment implements Callback<DtoA
 
     private void submitEvent() {
         DtoAddEvent dtoAddEvent = new DtoAddEvent();
-        dtoAddEvent.setdId(3);
+        if (getArguments() != null) {
+            Bundle b = getArguments();
+            int i = b.getInt("dId");
+            dtoAddEvent.setdId(i);
+        }
         dtoAddEvent.setTitle(title.getText().toString());
         dtoAddEvent.setDescription(desc.getText().toString());
         DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
@@ -84,12 +88,7 @@ public class AddEventToDossierFragment extends Fragment implements Callback<DtoA
 
     @Override
     public void success(DtoAddEvent dtoAddEvent, Response response) {
-        Fragment fragment = new EditDossierFragment();
-        FragmentManager fragMan = getFragmentManager();
-        FragmentTransaction fragTran = fragMan.beginTransaction();
-        fragTran.replace(R.id.frame_container, fragment);
-        fragTran.addToBackStack(null);
-        fragTran.commit();
+        getFragmentManager().popBackStack();
     }
 
     @Override

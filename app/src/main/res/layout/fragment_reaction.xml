@@ -2,8 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollview"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    >
+    android:layout_height="fill_parent"
+    android:background="@color/BlueGrey800">
+
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:fab="http://schemas.android.com/apk/res-auto"
@@ -13,10 +14,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/dmsDetEndDate"
+            android:id="@+id/rDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/dmsDetQuestioner"
+            android:layout_below="@+id/rQuestioner"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
             android:paddingTop="2dp"
@@ -24,7 +25,7 @@
             android:textColor="@color/WhiteSmoke" />
 
         <TextView
-            android:id="@+id/dmsDetQuestion"
+            android:id="@+id/rQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -37,11 +38,11 @@
 
 
         <TextView
-            android:id="@+id/dmsDetQuestioner"
+            android:id="@+id/rQuestioner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/dmsDetQuestion"
+            android:layout_below="@+id/rQuestion"
             android:paddingBottom="2dp"
             android:paddingLeft="2dp"
             android:paddingRight="2dp"
@@ -55,15 +56,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/dmsDetEndDate"
+            android:layout_alignTop="@+id/rDate"
             android:layout_marginRight="3dp"
             android:drawableLeft="@drawable/fblike"
             android:text="@string/amount_votes"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/WhiteSmoke" />
 
-        <EditText
-            android:id="@+id/dmsDetExtra"
+        <TextView
+            android:id="@+id/rAnswer"
             style="@style/myTextView.Profile.dossier"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -71,27 +72,23 @@
             android:layout_below="@+id/fbvote"
             android:layout_marginTop="24dp"
             android:gravity="top"
-            android:inputType="textFilter|textMultiLine|textNoSuggestions"
             android:scrollbars="vertical"
-            android:text="@string/extra"
+            android:text="Answer"
             android:textColor="@color/WhiteSmoke"
-            android:textColorHint="@color/LightGrey"
             android:textSize="12sp" />
 
-        <EditText
-            android:id="@+id/editText2"
+        <TextView
+            android:id="@+id/rExtra"
             style="@style/myTextView.Profile.dossier"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/dmsDetExtra"
+            android:layout_below="@+id/rAnswer"
             android:layout_margin="3dp"
             android:gravity="top"
-            android:inputType="textFilter|textMultiLine|textNoSuggestions"
             android:scrollbars="vertical"
-            android:text="Text2"
+            android:text="Extra"
             android:textColor="@color/WhiteSmoke"
-            android:textColorHint="@color/LightGrey"
             android:textSize="12sp" />
 
     </RelativeLayout>

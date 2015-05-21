@@ -67,6 +67,17 @@ public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
         question.setTypeface(opensansBold);
         extra.setTypeface(fontttype);
 
+        showReactions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getArguments() != null) {
+                    Bundle b = getArguments();
+                    int i = b.getInt("parameter");
+                    mCallback.onAmsItemClicked(i, question.getText().toString());
+                }
+            }
+        });
+
 
    /*     showDossiers.setOnClickListener(new View.OnClickListener() {
             @Override

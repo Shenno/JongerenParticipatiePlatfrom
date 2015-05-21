@@ -15,6 +15,8 @@ import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Account;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import retrofit.Callback;
@@ -46,7 +48,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         txtConfirmPwd = (EditText) rootView.findViewById(R.id.txtConfirmSignUpPassword);
         btnRegister = (Button) rootView.findViewById(R.id.btnSingIn);
         txtBirthdate = (EditText) rootView.findViewById(R.id.txtBirthDay);
-        txtZipCode = (EditText)rootView.findViewById(R.id.txtZipCode);
+        txtZipCode = (EditText) rootView.findViewById(R.id.txtZipCode);
         initListeners();
         return rootView;
     }
@@ -85,9 +87,13 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
                     }
                 }
 
-                if (!(txtName.getText().length() == 0 || txtEmail.getText().length() == 0 || txtPassword.getText().length() == 0 || txtBirthdate.getText().length() == 0 || txtConfirmPwd.getText().length() == 0 || txtZipCode.getText().length() ==0)) {
+                if (!(txtName.getText().length() == 0 || txtEmail.getText().length() == 0 || txtPassword.getText().length() == 0 || txtBirthdate.getText().length() == 0 || txtConfirmPwd.getText().length() == 0 || txtZipCode.getText().length() == 0)) {
                     //Als alle velden een waarde bevatten wordt de account geregistreerd.
-                    registerAccount();
+                    try {
+                        registerAccount();
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
 
                 }
 
@@ -95,11 +101,28 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         });
     }
 
-    private void registerAccount() {
+    private void registerAccount() throws ParseException {
         final Account acc = new Account();
+        String birthDay = txtBirthdate.getText().toString();
+        String regex = "^\\d{1,2}\\-\\d{1,2}\\-\\d{4}$";
+        String regex2 = "^\\d{1,2}\\/\\d{1,2}\\/\\d{4}$";
+
+        Date date = null;
+
+        if (birthDay.matches(regex)) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            date = formatter.parse(birthDay);
+        } else if (birthDay.matches(regex2)) {
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            date = formatter.parse(birthDay);
+        } else {
+            AppMsg.makeText(getActivity(), "Datum formaat = dd-mm-yyyy of dd/mm/yyyy", AppMsg.STYLE_ALERT).show();
+            return;
+        }
+
         acc.setFullName(txtName.getText().toString());
         acc.setEmail(txtEmail.getText().toString());
-        acc.setBirthDate(new Date());
+        acc.setBirthDate(date);
         acc.setPassword(txtPassword.getText().toString());
         acc.setConfirmPassword(txtConfirmPwd.getText().toString());
 
@@ -130,8 +153,8 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
             AppMsg.makeText(getActivity(), getResources().getString(R.string.minimum_password_length_error), AppMsg.STYLE_ALERT).show();
         } else if (json.equals("{\"Message\":\"The request is invalid.\",\"ModelState\":{\"\":[\"Name " + txtEmail.getText().toString() + "1 is already taken.\"]}}")) {
             AppMsg.makeText(getActivity(), getResources().getString(R.string.email_already_registered), AppMsg.STYLE_ALERT).show();
-        }else {
-            AppMsg.makeText(getActivity(), getResources().getString(R.string.something_went_wrong) + " "+error, AppMsg.STYLE_ALERT).show();
+        } else {
+            AppMsg.makeText(getActivity(), getResources().getString(R.string.something_went_wrong) + " " + error, AppMsg.STYLE_ALERT).show();
 
         }
 

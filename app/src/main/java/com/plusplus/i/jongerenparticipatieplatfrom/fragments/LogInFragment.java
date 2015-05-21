@@ -30,12 +30,13 @@ public class LogInFragment extends Fragment implements Callback<Token> {
     private EditText txtName;
     private EditText txtPwd;
     private Button btnSignIn;
-	
-	public LogInFragment(){}
-	
-	@Override
+
+    public LogInFragment() {
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_sign_in_screen, container, false);
         txtName = (EditText) rootView.findViewById(R.id.signInUsername);
@@ -57,7 +58,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
                     txtPwd.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
                 }
 
-                if (!(txtName.getText().length() == 0 || txtPwd.getText().length() == 0)){
+                if (!(txtName.getText().length() == 0 || txtPwd.getText().length() == 0)) {
                     signIn();
                 }
 
@@ -67,7 +68,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
     }
 
     private void signIn() {
-        getJppService().getToken("password", txtName.getText().toString()+1, txtPwd.getText().toString(), this);
+        getJppService().getToken("password", txtName.getText().toString() + 1, txtPwd.getText().toString(), this);
     }
 
     @Override
@@ -76,7 +77,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         editor.putString("token", token.getAccess_token());
         editor.putString("email", txtName.getText().toString());
         editor.apply();
-        AppMsg.makeText(getActivity(),"Succesvol ingelogd! :)",AppMsg.STYLE_INFO).show();
+        AppMsg.makeText(getActivity(), "Succesvol ingelogd! :)", AppMsg.STYLE_INFO).show();
 
         Fragment frag = new QuestionFragment();
         FragmentManager fragMan = getFragmentManager();
@@ -88,7 +89,10 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 
     @Override
     public void failure(RetrofitError error) {
-        AppMsg.makeText(getActivity(), error.toString(), AppMsg.STYLE_ALERT).show();
+
+
+         AppMsg.makeText(getActivity(), error.getMessage(), AppMsg.STYLE_ALERT).show();
+
 
     }
 }

@@ -32,6 +32,7 @@ import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DossiersFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.EditDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.LogInFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyDossiersFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyProfileFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyReactionsFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.OnSelectedListener;
@@ -40,6 +41,7 @@ import com.plusplus.i.jongerenparticipatieplatfrom.fragments.ReactionFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.ReactionsFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.RegisterFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.SolutionFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.VoteAgendaFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.VoteFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.NavDrawerItem;
 
@@ -207,7 +209,7 @@ public class MainActivity extends Activity implements OnSelectedListener {
                 fragment = new MyProfileFragment();
                 break;
             case 5:
-                fragment = new VoteFragment();
+                fragment = new MyDossiersFragment();
                 break;
             case 6:
                 fragment = new MyReactionsFragment();
@@ -400,6 +402,33 @@ public class MainActivity extends Activity implements OnSelectedListener {
         fragTran.addToBackStack(null);
         fragTran.commit();
     }
+
+    @Override
+    public void onVoteAgendaReaction(int id) {
+        Fragment fragment = new VoteAgendaFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+
+    @Override
+    public void onEditDossierClicked(int id) {
+        Fragment fragment = new EditDossierFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+
 
 
 

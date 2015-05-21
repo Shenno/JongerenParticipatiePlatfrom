@@ -54,6 +54,7 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
     private ExpandableHeightListView tEvents;
     private ExpandableHeightGridView tImages;
     private ImageView tImage;
+    int id;
     ImageGridAdapter tGridAdapter;
     EventAdapter tEventAdapter;
     QAAdapter tQAAdapter;
@@ -131,15 +132,15 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
 
                 if(String.valueOf(spinner.getSelectedItem()).equals("Extra"))
                 {
-                    mCallback.onAddExtraToDossier(3);
+                    mCallback.onAddExtraToDossier(id);
                 }
                 else if(String.valueOf(spinner.getSelectedItem()).equals("Locatie"))
                 {
-                    mCallback.onAddLocationToDossier(3);
+                    mCallback.onAddLocationToDossier(id);
                 }
                 else if(String.valueOf(spinner.getSelectedItem()).equals("Event"))
                 {
-                    mCallback.onAddEventToDossier(3);
+                    mCallback.onAddEventToDossier(id);
                 }
             }
 
@@ -150,12 +151,12 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
     @Override
     public void onStart() {
         super.onStart();
-      /*  if (getArguments() != null) {
+        if (getArguments() != null) {
             Bundle b = getArguments();
             int i = b.getInt("dId");
-            getJppService().getDossier(3, this);
-        }*/
-        getJppService().getDossier(3, this);
+            id = i;
+            getJppService().getDossier(i, this);
+        }
     }
 
     @Override

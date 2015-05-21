@@ -50,19 +50,18 @@ public class AddExtraToDossierFragment extends Fragment implements Callback<DtoA
 
     private void submitExtra() {
         DtoAddExtra dtoAddExtra = new DtoAddExtra();
-        dtoAddExtra.setdID(3);
+        if (getArguments() != null) {
+            Bundle b = getArguments();
+            int i = b.getInt("dId");
+            dtoAddExtra.setdID(i);
+        }
         dtoAddExtra.setExtra(extra.getText().toString());
         getJppService().addExtraToDossier(dtoAddExtra, this);
     }
 
     @Override
     public void success(DtoAddExtra dtoAddExtra, Response response) {
-        Fragment fragment = new EditDossierFragment();
-        FragmentManager fragMan = getFragmentManager();
-        FragmentTransaction fragTran = fragMan.beginTransaction();
-        fragTran.replace(R.id.frame_container, fragment);
-        fragTran.addToBackStack(null);
-        fragTran.commit();
+        getFragmentManager().popBackStack();
     }
 
     @Override

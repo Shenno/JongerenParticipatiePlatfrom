@@ -117,7 +117,21 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
 
     @Override
     public void failure(RetrofitError error) {
-        AppMsg.makeText(getActivity(), "Er is iets mis gegaan :(", AppMsg.STYLE_ALERT).show();
+        // AppMsg.makeText(getActivity(), "Er is iets mis gegaan :(", AppMsg.STYLE_ALERT).show();
+        String json = new String(((TypedByteArray) error.getResponse().getBody()).getBytes());
+
+        if (json.equals(getResources().getString(R.string.retrofit_invalid_emailformat))) {
+            AppMsg.makeText(getActivity(), "Foutief email adres", AppMsg.STYLE_ALERT).show();
+        } else if (json.equals(getResources().getString(R.string.retrofit_password_minimum))) {
+            AppMsg.makeText(getActivity(), "Wachtwoord moet minstens 6 tekens zijn", AppMsg.STYLE_ALERT).show();
+        } else if (json.equals("{\"Message\":\"The request is invalid.\",\"ModelState\":{\"\":[\"Name maxim.vandebroeck@gmail.com1 is already taken.\"]}}")) ;
+
+        //{"Message":"The request is invalid.","ModelState":{"":["Passwords must be at least 6 characters."]}}
+        //{"Message":"The request is invalid.","ModelState":{"":["Name maxim.vandebroeck@gmail.com1 is already taken."]}}
+        //{"Message":"The request is invalid.","ModelState":{"model.Email":["The Emailadres field is not a valid e-mail address."]}}
+
 
     }
 }
+
+

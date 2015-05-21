@@ -140,7 +140,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         //Gaat het inloggen verkeerd, vang dan de json error code die retrofit teruggeeft. Match de json code aan gekende errors en geef gepaste feedback.
         String json = new String(((TypedByteArray) error.getResponse().getBody()).getBytes());
 
-        if (json.equals(getResources().getString(R.string.username_or_password_wrong_json))) {
+        if (json.equals(getResources().getString(R.string.retrofit_username_or_password_wrong_json))) {
             AppMsg.makeText(getActivity(), getResources().getString(R.string.username_or_password_wrong), AppMsg.STYLE_ALERT).show();
         } else {
             AppMsg.makeText(getActivity(), getResources().getString(R.string.something_went_wrong) + error, AppMsg.STYLE_ALERT).show();

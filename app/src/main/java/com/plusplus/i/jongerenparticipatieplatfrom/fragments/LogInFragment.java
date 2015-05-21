@@ -71,7 +71,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
             public void onClick(View v) {
 
                 /*
-                Bij het klikken op de knop wordt er gekeken of de email van de gebruiker nog in de Sharedprefence zit.
+                Bij het klikken op de knop wordt er gekeken of de email en pw van de gebruiker nog in de Sharedprefence zit.
                 Staat hier niets in, dan is de gebruiker niet aangelogd. ==> We controleren dan elke veld om te zien of deze een waarde bevat. Zoja probeer dan in te loggen.
                 Staat in de Sharedpref wel een waarde dan is de gebruiker al inglogd. Probeert hij opnieuw in te loggen met de gegevens die al in de sharedpref staan dan krijgt hij een melding dat hij al aangmeld is
                 Probeert hij in te loggen met andere gegevens dan in de sharedpref staan dan probeert het systeem gewoon in te loggen.
@@ -100,16 +100,13 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 
 
                 if (alreadyLoggedIn) { //melding geven als de gebruiker al ingelogd is en nog eens probeert in te loggen met dezelfde gegevens
-                    AppMsg.makeText(getActivity(), getResources().getString(R.string.already_logged_in_as) +" " +email, AppMsg.STYLE_ALERT).show();
+                    AppMsg.makeText(getActivity(), getResources().getString(R.string.already_logged_in_as) + " " + email, AppMsg.STYLE_ALERT).show();
 
                 } else {
                     if (!(txtName.getText().length() == 0 || txtPwd.getText().length() == 0)) { // Als beide velden een waarde bevatten mag er een inlog poging gebeuren.
                         signIn();
                     }
                 }
-
-
-                //TODO Als de user foute username gebruik of foute pw de error code van retrofit opvangen en error weergeven in de textfields
             }
 
         });
@@ -127,7 +124,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         editor.putString("email", txtName.getText().toString());
         editor.putString("password", txtPwd.getText().toString());
         editor.apply();
-        AppMsg.makeText(getActivity(), getResources().getString(R.string.successfullLogin) +" "+ txtName.getText().toString()  , AppMsg.STYLE_INFO).show();
+        AppMsg.makeText(getActivity(), getResources().getString(R.string.successfullLogin) + " " + txtName.getText().toString(), AppMsg.STYLE_INFO).show();
 
         //Als het inloggen succesvol is gebeurd wissel dan naar het QuestionFragment (lijst met vragen)
         Fragment frag = new QuestionFragment();
@@ -140,6 +137,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 
     @Override
     public void failure(RetrofitError error) {
+        //Gaat het inloggen verkeerd, vang dan de json error code die retrofit teruggeeft. Match de json code aan gekende errors en geef gepaste feedback.
         String json = new String(((TypedByteArray) error.getResponse().getBody()).getBytes());
 
         if (json.equals(getResources().getString(R.string.username_or_password_wrong_json))) {

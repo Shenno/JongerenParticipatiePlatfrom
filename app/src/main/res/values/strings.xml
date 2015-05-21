@@ -26,8 +26,8 @@
         <item>@drawable/password_white</item>
         <item>@drawable/registericon_white</item>
         <item>@drawable/user_white</item>
-        <item>@drawable/ic_whats_hot</item>
-        <item>@drawable/ic_whats_hot</item>
+        <item>@drawable/mijn_dossier</item>
+        <item>@drawable/mijn_vragen</item>
 
     </array>
 

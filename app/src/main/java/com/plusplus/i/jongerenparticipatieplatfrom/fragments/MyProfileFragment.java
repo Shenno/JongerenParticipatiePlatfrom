@@ -121,6 +121,7 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
         Date geboortedatum = dtoUserInfo.getBday();
 
         SimpleDateFormat formatter5=new SimpleDateFormat("dd-MM-yyyy");
+
         String formats1 = formatter5.format(geboortedatum);
         System.out.println(formats1);
 

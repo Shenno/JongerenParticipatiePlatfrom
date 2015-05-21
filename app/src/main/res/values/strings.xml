@@ -83,6 +83,11 @@
     <string name="amount_votes">#Votes</string>
     <string name="description">Beschrijving</string>
     <string name="no_questions_now">Er zijn op dit moment geen vragen</string>
+    <string name="username_or_password_wrong_json">{\"error\":\"invalid_grant\",\"error_description\":\"The user name or password is incorrect.\"}</string>
+    <string name="username_or_password_wrong">De gebruikersnaam of wachtwoord is verkeerd</string>
+    <string name="something_went_wrong">Er ging iets mis: </string>
+    <string name="already_logged_in_as">Je bent al ingelogd als  </string>
+    <string name="successfullLogin">Succesvol ingelogd als </string>
 
     <!-- http://10.134.216.25:8009 -->
 </resources>

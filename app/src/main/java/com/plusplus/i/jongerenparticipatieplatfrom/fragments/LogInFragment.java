@@ -26,7 +26,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 
 
 public class LogInFragment extends Fragment implements Callback<Token> {
-    private EditText txtName;
+    public EditText txtName;
     private EditText txtPwd;
     private Button btnSignIn;
     private boolean alreadyLoggedIn;
@@ -79,7 +79,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
                  */
                 SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
                 String email = userDetails.getString("email", ""); // email uit de SP ophalen
-                String password = userDetails.getString("password",""); //pw uit de SP ophalen
+                String password = userDetails.getString("password", ""); //pw uit de SP ophalen
 
                 if (txtName.getText().length() == 0) {
                     txtName.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
@@ -94,13 +94,13 @@ public class LogInFragment extends Fragment implements Callback<Token> {
                     alreadyLoggedIn = false;
                 }
 
-                if (email.isEmpty() || password.isEmpty()) {
+                if (email.isEmpty() || password.isEmpty()) { // is de sharedpref leeg? Dan kan er niemand ingelogd zijn.
                     alreadyLoggedIn = false;
                 }
 
 
-                if (alreadyLoggedIn) {
-                    AppMsg.makeText(getActivity(), "Je bent al ingelogd als " + email, AppMsg.STYLE_ALERT).show();
+                if (alreadyLoggedIn) { //melding geven als de gebruiker al ingelogd is en nog eens probeert in te loggen met dezelfde gegevens
+                    AppMsg.makeText(getActivity(), getResources().getString(R.string.already_logged_in_as) +" " +email, AppMsg.STYLE_ALERT).show();
 
                 } else {
                     if (!(txtName.getText().length() == 0 || txtPwd.getText().length() == 0)) { // Als beide velden een waarde bevatten mag er een inlog poging gebeuren.
@@ -127,7 +127,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         editor.putString("email", txtName.getText().toString());
         editor.putString("password", txtPwd.getText().toString());
         editor.apply();
-        AppMsg.makeText(getActivity(), "Succesvol ingelogd! :)", AppMsg.STYLE_INFO).show();
+        AppMsg.makeText(getActivity(), getResources().getString(R.string.successfullLogin) +" "+ txtName.getText().toString()  , AppMsg.STYLE_INFO).show();
 
         //Als het inloggen succesvol is gebeurd wissel dan naar het QuestionFragment (lijst met vragen)
         Fragment frag = new QuestionFragment();
@@ -140,9 +140,14 @@ public class LogInFragment extends Fragment implements Callback<Token> {
 
     @Override
     public void failure(RetrofitError error) {
-        // AppMsg.makeText(getActivity(), error.getMessage(), AppMsg.STYLE_ALERT).show();
         String json = new String(((TypedByteArray) error.getResponse().getBody()).getBytes());
-        AppMsg.makeText(getActivity(), json, AppMsg.STYLE_ALERT).show();
+
+        if (json.equals(getResources().getString(R.string.username_or_password_wrong_json))) {
+            AppMsg.makeText(getActivity(), getResources().getString(R.string.username_or_password_wrong), AppMsg.STYLE_ALERT).show();
+        } else {
+            AppMsg.makeText(getActivity(), getResources().getString(R.string.something_went_wrong) + error, AppMsg.STYLE_ALERT).show();
+
+        }
 
 
     }

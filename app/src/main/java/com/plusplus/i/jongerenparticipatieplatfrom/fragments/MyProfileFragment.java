@@ -30,10 +30,10 @@ public class MyProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_myprofile, container, false);
-
-
+        initTextFields();
         updatePassword = (Button) rootView.findViewById(R.id.btnUpdatePassword);
 
+        //Wissel naar het fragment op het password te updaten
         updatePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,8 +51,8 @@ public class MyProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                //Vraag de SP op. Leeg? ==> Al uitglogd. Niet leeg? Verwijder de prefs en geef bericht succesvol uitgelogd.
                 SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
-
                 String token = userDetails.getString("token", "");
                 String email = userDetails.getString("email", "");
 
@@ -60,8 +60,10 @@ public class MyProfileFragment extends Fragment {
                     AppMsg.makeText(getActivity(), "Je bent al uitgelogd", AppMsg.STYLE_ALERT).show();
 
                 } else {
-                    userDetails.edit().remove("token").commit();
-                    userDetails.edit().remove("email").commit();
+                    userDetails.edit().remove("token").apply();
+                    userDetails.edit().remove("email").apply();
+                    userDetails.edit().remove("password").apply();
+
                     AppMsg.makeText(getActivity(), "Je bent succesvol uitgelogd", AppMsg.STYLE_INFO).show();
 
                 }
@@ -69,8 +71,20 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
-
         return rootView;
+    }
+
+    public void initTextFields() {
+        //bevat de SP gegevens (maw er is iemand ingelogd) vraag dan de account gegevens op en geef deze weer in de textfields. Is de SP leeg, geef dan een melding dat de gegevens zichtbaar worden na inloggen.
+        SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
+        String token = userDetails.getString("token", "");
+        String email = userDetails.getString("email", "");
+
+        if (token.isEmpty() && email.isEmpty()) {
+            AppMsg.makeText(getActivity(), "Je profielgegevens verschijnen na het inloggen (TODO)", AppMsg.STYLE_ALERT).show();
+        }
+
+        //TODO: Als de SP gegevens bevat, de account opvragen met (HOE? getaccount methode maken?) Dan de gegevens van deze account (naam, email, pw, geboortedatum en gemeente plaatsen in de textfields
     }
 
 

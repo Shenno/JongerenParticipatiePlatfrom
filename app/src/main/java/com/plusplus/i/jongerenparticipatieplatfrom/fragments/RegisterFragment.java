@@ -49,6 +49,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         return rootView;
     }
 
+
     public void initListeners() {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override

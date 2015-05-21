@@ -59,6 +59,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         }
     }
 
+
     public void initListeners() {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override

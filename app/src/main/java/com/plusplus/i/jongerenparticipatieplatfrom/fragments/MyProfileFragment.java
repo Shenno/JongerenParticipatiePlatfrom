@@ -112,6 +112,7 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
     @Override
     public void success(DtoUserInfo dtoUserInfo, Response response) {
         AppMsg.makeText(getActivity(), "Hier init je alles he", AppMsg.STYLE_INFO).show();
+        //TODO fonttypes
 
 
 

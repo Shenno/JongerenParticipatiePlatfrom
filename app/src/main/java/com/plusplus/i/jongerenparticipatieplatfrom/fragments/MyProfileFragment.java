@@ -20,15 +20,12 @@ public class MyProfileFragment extends Fragment {
     private Button updatePassword;
     private Button logOut;
 
-
     public MyProfileFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_myprofile, container, false);
         initTextFields();
         updatePassword = (Button) rootView.findViewById(R.id.btnUpdatePassword);

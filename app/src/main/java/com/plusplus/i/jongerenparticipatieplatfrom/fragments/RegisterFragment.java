@@ -54,6 +54,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Controle van alle velden (mogen niet leeg zijn)
                 if (txtName.getText().length() == 0) {
                     txtName.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
                 }
@@ -71,6 +72,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
                 }
 
                 if (!txtPassword.getText().toString().equals(txtConfirmPwd.getText().toString())) {
+                    //controleren of pw en confirm pw overeenkomen, indien niet melding gegeven dat de PW's niet overeenkomen.
                     if (txtConfirmPwd.getText().length() == 0) {
                         txtConfirmPwd.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
                     } else {
@@ -79,6 +81,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
                 }
 
                 if (!(txtName.getText().length() == 0 || txtEmail.getText().length() == 0 || txtPassword.getText().length() == 0 || txtBirthdate.getText().length() == 0 || txtConfirmPwd.getText().length() == 0)) {
+                    //Als alle velden een waarde bevatten wordt de account geregistreerd.
                     registerAccount();
 
                 }
@@ -94,11 +97,14 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         acc.setBirthDate(new Date());
         acc.setPassword(txtPassword.getText().toString());
         acc.setConfirmPassword(txtConfirmPwd.getText().toString());
+
+        //Lees alle gegevens uit de textfields, brengen deze samen in een Account en registreer deze account via de getJppService.
         getJppService().registerAccount(acc, this);
     }
 
     @Override
     public void success(Account account, Response response) {
+        //Registratie succesvol? Geef melding weer en breng de user naar het LogInScherm zpdat hij daar kan inloggen.
         AppMsg.makeText(getActivity(), "Succesvol geregistreerd", AppMsg.STYLE_INFO).show();
         Fragment frag = new LogInFragment();
         FragmentManager fragMan = getFragmentManager();

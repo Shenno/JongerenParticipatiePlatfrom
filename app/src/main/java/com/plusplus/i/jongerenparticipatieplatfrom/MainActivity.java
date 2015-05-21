@@ -35,6 +35,8 @@ import com.plusplus.i.jongerenparticipatieplatfrom.fragments.LogInFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyProfileFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.QuestionFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.ReactionFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.ReactionsFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.RegisterFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.SolutionFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.NavDrawerItem;
@@ -343,6 +345,34 @@ public class MainActivity extends Activity implements OnSelectedListener {
         Fragment fragment = new AmsFragment();
         Bundle args = new Bundle();
         args.putInt("parameter", i);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+
+    @Override
+    public void onAmsItemClicked(int id, String question) {
+        Fragment fragment = new ReactionsFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        args.putString("answer", question);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+
+    @Override
+    public void onReactionItemClicked(int id, String question) {
+        Fragment fragment = new ReactionFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        args.putString("question", question);
         fragment.setArguments(args);
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTran = fragMan.beginTransaction();

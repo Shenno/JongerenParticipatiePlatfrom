@@ -2,6 +2,8 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
-import com.plusplus.i.jongerenparticipatieplatfrom.adapter.DossierAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.ReactionAdapter;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReaction;
 import com.software.shell.fab.ActionButton;
 
@@ -29,25 +29,20 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 /**
  * Created by Shenno on 21/05/2015.
  */
-public class ReactionsFragment extends Fragment implements Callback<List<DtoReaction>> {
+public class MyReactionsFragment extends Fragment implements Callback<List<DtoReaction>> {
     private ReactionAdapter reactionAdapter;
     private OnSelectedListener mCallback;
-    ActionButton actionButtonNewDossier;
     TextView title;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         reactionAdapter = new ReactionAdapter(getActivity());
-        View rootView = inflater.inflate(R.layout.fragment_reactions, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_myreactions, container, false);
 
         ListView listView = (ListView) rootView.findViewById(R.id.rList);
         title = (TextView) rootView.findViewById(R.id.rTitle);
-        if(getArguments() != null) {
-            Bundle b = getArguments();
-            String i = b.getString("answer");
-            title.setText(i);
-        }
+        title.setText("Mijn reacties");
         listView.setAdapter(reactionAdapter);
         View emptyView = rootView.findViewById(R.id.rEmpty);
         listView.setEmptyView(emptyView);
@@ -61,17 +56,6 @@ public class ReactionsFragment extends Fragment implements Callback<List<DtoReac
             }
 
         });
-        actionButtonNewDossier = (ActionButton) rootView.findViewById(R.id.rNewReaction);
-        actionButtonNewDossier.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            /*    if(getArguments() != null) {
-                    Bundle b = getArguments();
-                    int i = b.getInt("dId");
-                    mCallback.onNewDossierClicked(i);
-                }*/
-            }
-        });
 
 
         return rootView;
@@ -80,11 +64,9 @@ public class ReactionsFragment extends Fragment implements Callback<List<DtoReac
     @Override
     public void onStart() {
         super.onStart();
-        if(getArguments() != null) {
-            Bundle b = getArguments();
-            int i = b.getInt("dId");
-            getJppService().getReactions(i, this);
-        }
+        SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
+        String mail = userDetails.getString("email","");
+        getJppService().getReactionsByEmail(mail, this);
     }
 
     @Override

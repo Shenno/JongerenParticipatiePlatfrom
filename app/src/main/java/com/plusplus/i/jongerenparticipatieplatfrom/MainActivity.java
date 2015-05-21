@@ -33,6 +33,7 @@ import com.plusplus.i.jongerenparticipatieplatfrom.fragments.DossiersFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.EditDossierFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.LogInFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyProfileFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyReactionsFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.QuestionFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.ReactionFragment;
@@ -207,6 +208,9 @@ public class MainActivity extends Activity implements OnSelectedListener {
             case 5:
                 fragment = new EditDossierFragment();
                 break;
+            case 6:
+                fragment = new MyReactionsFragment();
+                break;
 
             default:
                 break;
@@ -371,11 +375,10 @@ public class MainActivity extends Activity implements OnSelectedListener {
     }
 
     @Override
-    public void onReactionItemClicked(int id, String question) {
+    public void onReactionItemClicked(int id) {
         Fragment fragment = new ReactionFragment();
         Bundle args = new Bundle();
         args.putInt("dId", id);
-        args.putString("question", question);
         fragment.setArguments(args);
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTran = fragMan.beginTransaction();

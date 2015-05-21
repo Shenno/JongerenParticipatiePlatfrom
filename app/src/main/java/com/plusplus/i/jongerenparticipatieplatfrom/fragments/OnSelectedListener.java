@@ -13,5 +13,5 @@ public interface OnSelectedListener {
     public void onAddEventToDossier(int id);
     public void onHomeAmsItemClicked(int id);
     public void onAmsItemClicked(int id, String question);
-    public void onReactionItemClicked(int id, String question);
+    public void onReactionItemClicked(int id);
 }

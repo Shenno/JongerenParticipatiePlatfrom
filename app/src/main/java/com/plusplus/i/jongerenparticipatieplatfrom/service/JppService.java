@@ -76,6 +76,9 @@ public interface JppService {
     @GET("/api/ams/reactions/{rId}")
     void getReaction(@Path("rId") int rId, Callback<DtoReactionDetailed> callBack);
 
+    @GET("/api/ams/reaction/{email}/")
+    void getReactionsByEmail(@Path("email") String email, Callback<List<DtoReaction>> callBack);
+
 
 
 

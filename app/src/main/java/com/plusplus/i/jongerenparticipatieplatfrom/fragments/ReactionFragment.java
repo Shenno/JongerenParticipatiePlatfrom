@@ -56,13 +56,13 @@ public class ReactionFragment extends Fragment implements Callback<DtoReactionDe
         if (getArguments() != null) {
             Bundle b = getArguments();
             int i = b.getInt("dId");
-            rQuestion.setText(b.getString("question"));
             getJppService().getReaction(i, this);
         }
     }
 
     @Override
     public void success(DtoReactionDetailed dtoReactionDetailed, Response response) {
+        rQuestion.setText(dtoReactionDetailed.getQuestion());
         rDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(dtoReactionDetailed.getDate()));
         rAnswer.setText(dtoReactionDetailed.getAnswer());
         rExtra.setText(dtoReactionDetailed.getExtra());

@@ -8,6 +8,7 @@ import java.util.Date;
 public class DtoReactionDetailed {
     private int id;
     private Date date;
+    private String question;
     private String username;
     private String answer;
     private String extra;
@@ -59,5 +60,13 @@ public class DtoReactionDetailed {
 
     public void setVotes(int votes) {
         this.votes = votes;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 }

@@ -45,6 +45,16 @@
             android:inputType="date" />
 
         <EditText
+            android:id="@+id/txtZipCode"
+            style="@style/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/cityicon"
+            android:drawableStart="@drawable/cityicon"
+            android:hint="@string/zipcodehint"
+            android:inputType="date" />
+
+        <EditText
             android:id="@+id/txtSignUpPassword"
             style="@style/myTextView"
             android:layout_width="match_parent"

@@ -39,6 +39,7 @@
     <string name="EmailHint">E-mailadres</string>
     <string name="townHint">Gemeente</string>
     <string name="BirthdateHint">Geboortedatum</string>
+    <string name="zipcodehint">Postcode</string>
     <string name="Password">Wachtwoord</string>
     <string name="LogOut">Uitloggen</string>
     <string name="LogIn">Inloggen</string>

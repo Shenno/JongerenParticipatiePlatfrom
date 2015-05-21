@@ -32,6 +32,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
     private EditText txtBirthdate;
     private EditText txtPassword;
     private EditText txtConfirmPwd;
+    private EditText txtZipCode;
     private Button btnRegister;
 
     @Override
@@ -45,6 +46,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         txtConfirmPwd = (EditText) rootView.findViewById(R.id.txtConfirmSignUpPassword);
         btnRegister = (Button) rootView.findViewById(R.id.btnSingIn);
         txtBirthdate = (EditText) rootView.findViewById(R.id.txtBirthDay);
+        txtZipCode = (EditText)rootView.findViewById(R.id.txtZipCode);
         initListeners();
         return rootView;
     }
@@ -70,6 +72,9 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
                 if (txtBirthdate.getText().length() == 0) {
                     txtBirthdate.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
                 }
+                if (txtZipCode.getText().length() == 0) {
+                    txtZipCode.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
+                }
 
                 if (!txtPassword.getText().toString().equals(txtConfirmPwd.getText().toString())) {
                     //controleren of pw en confirm pw overeenkomen, indien niet melding gegeven dat de PW's niet overeenkomen.
@@ -80,7 +85,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
                     }
                 }
 
-                if (!(txtName.getText().length() == 0 || txtEmail.getText().length() == 0 || txtPassword.getText().length() == 0 || txtBirthdate.getText().length() == 0 || txtConfirmPwd.getText().length() == 0)) {
+                if (!(txtName.getText().length() == 0 || txtEmail.getText().length() == 0 || txtPassword.getText().length() == 0 || txtBirthdate.getText().length() == 0 || txtConfirmPwd.getText().length() == 0 || txtZipCode.getText().length() ==0)) {
                     //Als alle velden een waarde bevatten wordt de account geregistreerd.
                     registerAccount();
 

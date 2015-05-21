@@ -3,6 +3,7 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -43,26 +44,52 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         txtPwd = (EditText) rootView.findViewById(R.id.signInPassword);
         btnSignIn = (Button) rootView.findViewById(R.id.signInBtn);
         initListeners();
+        initUsernameAndPassWordFields();
+
 
         return rootView;
+    }
+
+    public void initUsernameAndPassWordFields() {
+        SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
+
+        String email = userDetails.getString("email", "");
+        String password = userDetails.getString("password", "");
+
+        if (!email.isEmpty()) {
+            txtName.setText(email);
+        }
+        if (!password.isEmpty()) {
+            txtPwd.setText(password);
+        }
     }
 
     public void initListeners() {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (txtName.getText().length() == 0) {
-                    txtName.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
-                }
-                if (txtPwd.getText().length() == 0) {
-                    txtPwd.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
-                }
+                SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
+                String email = userDetails.getString("email", ""); // email uit de SP ophalen
+                String password = userDetails.getString("password", ""); //password uit de SP ophalen
 
-                if (!(txtName.getText().length() == 0 || txtPwd.getText().length() == 0)) {
-                    signIn();
-                }
+                if (email.equalsIgnoreCase(txtName.getText().toString()) && password.equals(txtPwd.getText().toString())) { //Pw & Email uit de SP zijn hetzelfde als ingegeven PW en email? ==> Al ingelogd
+                    AppMsg.makeText(getActivity(), "Je bent al ingelogd als " + txtName.getText().toString(), AppMsg.STYLE_ALERT).show();
 
-                //TODO Als de user foute username gebruik of foute pw de error code van retrofit opvangen en error weergeven in de textfields
+                } else {
+
+                    if (txtName.getText().length() == 0) {
+                        txtName.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
+                    }
+                    if (txtPwd.getText().length() == 0) {
+                        txtPwd.setError(getString(R.string.EmptyTextFieldCannotBeEmpty));
+                    }
+
+                    if (!(txtName.getText().length() == 0 || txtPwd.getText().length() == 0)) { // Als beide velden een waarde bevatten mag er een inlog poging gebeuren.
+                        signIn();
+                    }
+
+                    //TODO Als de user foute username gebruik of foute pw de error code van retrofit opvangen en error weergeven in de textfields
+                }
             }
         });
     }
@@ -76,6 +103,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         SharedPreferences.Editor editor = getActivity().getSharedPreferences("Logindetails", MODE_PRIVATE).edit();
         editor.putString("token", token.getAccess_token());
         editor.putString("email", txtName.getText().toString());
+        editor.putString("password", txtPwd.getText().toString());
         editor.apply();
         AppMsg.makeText(getActivity(), "Succesvol ingelogd! :)", AppMsg.STYLE_INFO).show();
 
@@ -91,7 +119,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
     public void failure(RetrofitError error) {
 
 
-         AppMsg.makeText(getActivity(), error.getMessage(), AppMsg.STYLE_ALERT).show();
+        AppMsg.makeText(getActivity(), error.getMessage(), AppMsg.STYLE_ALERT).show();
 
 
     }

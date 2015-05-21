@@ -50,8 +50,8 @@
     <string name="EmptyTextFieldCannotBeEmpty">Dit veld mag niet leeg zijn</string>
     <string name="PasswordsMisMatch">Wachtwoorden komen niet overeen</string>
     <string name="desc_list_item_icon">Item Icon</string>
-    <string name="baseUrlRetro">http://10.0.3.2:57252</string>
-    <string name="baseUrlRetro2">http://10.134.216.25:8009</string>
+    <string name="baseUrlRetro2">http://10.0.3.2:57252</string>
+    <string name="baseUrlRetro">http://10.134.216.25:8009</string>
     <string name="title">Title</string>
     <string name="question_details">Question Details</string>
     <string name="date">Datum</string>

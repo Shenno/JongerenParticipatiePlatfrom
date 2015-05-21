@@ -17,7 +17,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="50sp"
-            android:text="Voeg toe!"
+            android:text="@string/add"
             android:id="@+id/button"
             android:layout_alignEnd="@+id/ddUsername"
             style="@style/Base.Widget.AppCompat.Button.Small"

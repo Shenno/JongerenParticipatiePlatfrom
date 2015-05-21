@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
 
@@ -30,6 +31,7 @@ public class DossierAdapter extends BaseAdapter {
     public DossierAdapter(Context context) {
         this.context = context;
         this.dossierList = new ArrayList();
+
     }
 
     public void setDossierList(List<DtoDossier> dossierList) {
@@ -81,6 +83,7 @@ public class DossierAdapter extends BaseAdapter {
             public void onClick(View v) {
              //  "Hier komt nog ne push naar de db met fragment switch"
                 Toast.makeText(context,"Je stem wordt verwerkt.",Toast.LENGTH_LONG).show();
+
 
 
             }

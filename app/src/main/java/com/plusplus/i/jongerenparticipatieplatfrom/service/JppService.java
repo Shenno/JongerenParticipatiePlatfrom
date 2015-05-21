@@ -14,6 +14,7 @@ import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierPost;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReaction;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReactionDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoUserInfo;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoVote;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Token;
 
 import java.util.List;
@@ -78,6 +79,9 @@ public interface JppService {
 
     @GET("/api/ams/reaction/{email}/")
     void getReactionsByEmail(@Path("email") String email, Callback<List<DtoReaction>> callBack);
+
+    @POST("/api/dms/dossier/vote")
+    void addVote(@Body DtoVote dtoVote, Callback<DtoVote> callback);
 
 
 

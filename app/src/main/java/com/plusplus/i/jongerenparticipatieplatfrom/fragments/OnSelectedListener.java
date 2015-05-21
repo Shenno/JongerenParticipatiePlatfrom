@@ -14,4 +14,5 @@ public interface OnSelectedListener {
     public void onHomeAmsItemClicked(int id);
     public void onAmsItemClicked(int id, String question);
     public void onReactionItemClicked(int id);
+    public void onVoteDossier(int id);
 }

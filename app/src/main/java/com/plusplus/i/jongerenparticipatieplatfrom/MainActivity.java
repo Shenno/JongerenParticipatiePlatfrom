@@ -40,6 +40,7 @@ import com.plusplus.i.jongerenparticipatieplatfrom.fragments.ReactionFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.ReactionsFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.RegisterFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.SolutionFragment;
+import com.plusplus.i.jongerenparticipatieplatfrom.fragments.VoteFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.NavDrawerItem;
 
 public class MainActivity extends Activity implements OnSelectedListener {
@@ -206,7 +207,7 @@ public class MainActivity extends Activity implements OnSelectedListener {
                 fragment = new MyProfileFragment();
                 break;
             case 5:
-                fragment = new EditDossierFragment();
+                fragment = new VoteFragment();
                 break;
             case 6:
                 fragment = new MyReactionsFragment();
@@ -386,5 +387,20 @@ public class MainActivity extends Activity implements OnSelectedListener {
         fragTran.addToBackStack(null);
         fragTran.commit();
     }
+
+    @Override
+    public void onVoteDossier(int id) {
+        Fragment fragment = new VoteFragment();
+        Bundle args = new Bundle();
+        args.putInt("dId", id);
+        fragment.setArguments(args);
+        FragmentManager fragMan = getFragmentManager();
+        FragmentTransaction fragTran = fragMan.beginTransaction();
+        fragTran.replace(R.id.frame_container, fragment);
+        fragTran.addToBackStack(null);
+        fragTran.commit();
+    }
+
+
 
 }

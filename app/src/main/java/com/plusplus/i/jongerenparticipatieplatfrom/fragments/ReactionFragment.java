@@ -25,7 +25,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 21/05/2015.
  */
 public class ReactionFragment extends Fragment implements Callback<DtoReactionDetailed> {
-    OnSelectedListener mCallback;
+    private OnSelectedListener mCallback;
     private TextView rDate;
     private TextView rQuestion;
     private TextView rAnswer;
@@ -76,7 +76,7 @@ public class ReactionFragment extends Fragment implements Callback<DtoReactionDe
         if (getArguments() != null) {
             Bundle b = getArguments();
             int i = b.getInt("dId");
-            getJppService().getReaction(i, this);
+            getJppService().getReaction(i, this); //Haalt een gedetailleerde agendareaction op met een GET call
         }
     }
 

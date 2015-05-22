@@ -27,9 +27,9 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 4/05/2015.
  */
 public class CreateDossierFragment extends Fragment implements Callback<DtoDossierPost> {
-    TextView tvTitle;
-    EditText etAnswer;
-    Button btnSubmit;
+    private TextView tvTitle;
+    private EditText etAnswer;
+    private Button btnSubmit;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

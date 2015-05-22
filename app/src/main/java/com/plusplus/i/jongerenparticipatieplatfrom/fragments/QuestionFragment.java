@@ -26,7 +26,8 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 
 public class QuestionFragment extends Fragment implements Callback<List<DtoDms>> {
     private DmsAdapter dmsAdapter;
-    OnSelectedListener mCallback;
+    private OnSelectedListener mCallback;
+    private ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +35,7 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
         dmsAdapter = new DmsAdapter(getActivity());
         View rootView = inflater.inflate(R.layout.fragment_question, container, false);
 
-        ListView listView  = (ListView) rootView.findViewById(R.id.dmsList);
+        listView  = (ListView) rootView.findViewById(R.id.dmsList);
         listView.setAdapter(dmsAdapter);
         View emptyView = rootView.findViewById(R.id.empty);
         listView.setEmptyView(emptyView);
@@ -48,17 +49,10 @@ public class QuestionFragment extends Fragment implements Callback<List<DtoDms>>
             }
 
         });
-
+        // Haalt alle actieve dossiermodules op
         getJppService().getOpenDms(1, this);
-
-
         return rootView;
     }
-
-/*    // Container Activity must implement this interface
-    public interface OnHeadlineSelectedListener {
-        public void onItemClicked(int position);
-    }*/
 
     @Override
     public void onAttach(Activity activity) {

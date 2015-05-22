@@ -31,7 +31,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 28/04/2015.
  */
 public class DossierFragment extends Fragment implements Callback<DtoDossierDetailed> {
-    OnSelectedListener mCallback;
+    private OnSelectedListener mCallback;
     private TextView tUsername;
     private TextView tAnswer;
     private TextView tExtra;
@@ -39,11 +39,11 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
     private ExpandableHeightListView tEvents;
     private ExpandableHeightGridView tImages;
     private ImageView tImage;
-    ImageGridAdapter tGridAdapter;
-    EventAdapter tEventAdapter;
-    QAAdapter tQAAdapter;
-    String tempstring;
-    ActionButton voteBtn;
+    private ImageGridAdapter tGridAdapter;
+    private EventAdapter tEventAdapter;
+    private QAAdapter tQAAdapter;
+    private String tempstring;
+    private ActionButton voteBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -138,17 +138,12 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         if (dtoDossierDetailed.getLocation() != null) {
             tempstring = tempstring + " \nLocatie: " + dtoDossierDetailed.getLocation();
             tUsername.setText(tempstring);
-           // tLocation.setText("Locatie: " + dtoDossierDetailed.getLocation());
-        } else {
-        //    tLocation.setVisibility(View.GONE);
         }
 
         if (dtoDossierDetailed.getCalendar() != null) {
             tEventAdapter.setEvents(dtoDossierDetailed.getCalendar());
 
             tEvents.setAdapter(tEventAdapter);
-
-
 
         } else {
 
@@ -162,10 +157,6 @@ public class DossierFragment extends Fragment implements Callback<DtoDossierDeta
         } else {
             tQA.setVisibility(View.GONE);
         }
-
-
-
-
     }
 
     @Override

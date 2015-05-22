@@ -30,6 +30,7 @@ public class VoteAgendaFragment extends Fragment implements Callback<DtoVote> {
 
         View rootView = inflater.inflate(R.layout.fragment_vote, container, false);
         DtoVote dtoVote = new DtoVote();
+        //Haalt de parameter id op van de agendareaction waarop gestemd moet worden
         if (getArguments() != null) {
             Bundle b = getArguments();
             int i = b.getInt("dId");
@@ -40,7 +41,7 @@ public class VoteAgendaFragment extends Fragment implements Callback<DtoVote> {
         dtoVote.setUserId(email);
         String token = userDetails.getString("token","");
         token = "Bearer " + token;
-        getJppService().addVoteR(token, dtoVote, this);
+        getJppService().addVoteR(token, dtoVote, this); //Roept back-end op met een post call om te stemmen op een agendareaction
         return rootView;
     }
 

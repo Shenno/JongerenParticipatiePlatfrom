@@ -30,18 +30,18 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 17/04/2015.
  */
 public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
-    OnSelectedListener mCallback;
-    TextView startDate;
-    TextView endDate;
-    TextView questioner;
-    TextView winner;
-    TextView question;
-    TextView extra;
-    Button showDossiers;
-    ActionButton newDossier;
-    ImageView calIcon;
-    ImageView infoIcon;
-    String winners;
+    private OnSelectedListener mCallback;
+    private TextView startDate;
+    private TextView endDate;
+    private TextView questioner;
+    private TextView winner;
+    private TextView question;
+    private TextView extra;
+    private Button showDossiers;
+    private ActionButton newDossier;
+    private ImageView calIcon;
+    private ImageView infoIcon;
+    private String winners;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,11 +59,9 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         calIcon = (ImageView)rootView.findViewById(R.id.imageCal);
         infoIcon = (ImageView)rootView.findViewById(R.id.imageIcon);
 
-
         Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
         Typeface opensansBold = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Semibold.ttf");
         Typeface openSansItalic = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Italic.ttf");
-
 
         startDate.setTypeface(fontttype);
         endDate.setTypeface(fontttype);
@@ -114,11 +112,8 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
             @Override
             public void onClick(View v) {
                 AppMsg.makeText(getActivity(),"Maximum aantal winnende antwoorden",AppMsg.STYLE_INFO).show();
-
             }
         });
-
-
         return rootView;
     }
 
@@ -147,6 +142,7 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
 
     @Override
     public void success(DtoDmsDetailed dtoDmsDetailed, Response response) {
+        // Vul de velden op het scherm in met de waarden uit de back-end
         startDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(dtoDmsDetailed.getStartDate()));
         endDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(dtoDmsDetailed.getEndDate()));
         questioner.setText(dtoDmsDetailed.getQuestioner());

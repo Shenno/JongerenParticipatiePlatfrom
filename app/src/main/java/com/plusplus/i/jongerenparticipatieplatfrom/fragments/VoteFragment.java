@@ -22,14 +22,13 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 21/05/2015.
  */
 public class VoteFragment extends Fragment implements Callback<DtoVote> {
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_vote, container, false);
         DtoVote dtoVote = new DtoVote();
+        // Haalt de parameter id op van dossier
         if (getArguments() != null) {
             Bundle b = getArguments();
             int i = b.getInt("dId");
@@ -40,7 +39,7 @@ public class VoteFragment extends Fragment implements Callback<DtoVote> {
         dtoVote.setUserId(email);
         String token = userDetails.getString("token","");
         token = "Bearer " + token;
-        getJppService().addVote(token, dtoVote, this);
+        getJppService().addVote(token, dtoVote, this); //Roept back-end op met een post call om te stemmen op een dossier
         return rootView;
     }
 

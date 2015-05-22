@@ -29,7 +29,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  */
 public class AmsHomeFragment extends Fragment implements Callback<List<DtoAsm>> {
     private AmsAdapter amsAdapter;
-    OnSelectedListener mCallback;
+    private OnSelectedListener mCallback;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

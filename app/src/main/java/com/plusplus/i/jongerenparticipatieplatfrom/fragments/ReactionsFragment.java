@@ -31,15 +31,14 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 public class ReactionsFragment extends Fragment implements Callback<List<DtoReaction>> {
     private ReactionAdapter reactionAdapter;
     private OnSelectedListener mCallback;
-    ActionButton actionButtonNewDossier;
-    TextView title;
+    private ActionButton actionButtonNewDossier;
+    private TextView title;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         reactionAdapter = new ReactionAdapter(getActivity());
         View rootView = inflater.inflate(R.layout.fragment_reactions, container, false);
-
         ListView listView = (ListView) rootView.findViewById(R.id.rList);
         title = (TextView) rootView.findViewById(R.id.rTitle);
         if(getArguments() != null) {
@@ -64,15 +63,13 @@ public class ReactionsFragment extends Fragment implements Callback<List<DtoReac
         actionButtonNewDossier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            /*    if(getArguments() != null) {
+                if(getArguments() != null) {
                     Bundle b = getArguments();
                     int i = b.getInt("dId");
-                    mCallback.onNewDossierClicked(i);
-                }*/
+                    mCallback.onNewReactionClicked(i);
+                }
             }
         });
-
-
         return rootView;
     }
 
@@ -82,7 +79,7 @@ public class ReactionsFragment extends Fragment implements Callback<List<DtoReac
         if(getArguments() != null) {
             Bundle b = getArguments();
             int i = b.getInt("dId");
-            getJppService().getReactions(i, this);
+            getJppService().getReactions(i, this); //Haalt alle reactions op een vraag op via een GET call
         }
     }
 

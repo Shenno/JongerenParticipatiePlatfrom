@@ -35,43 +35,27 @@ public class LogInFragment extends Fragment implements Callback<Token> {
     private Button btnGplusSignIn;
     private boolean alreadyLoggedIn;
 
-
-    public LogInFragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_sign_in_screen, container, false);
-
         Typeface opensans = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
         Typeface roboto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Bold.ttf");
-
         txtName = (EditText) rootView.findViewById(R.id.signInUsername);
         txtPwd = (EditText) rootView.findViewById(R.id.signInPassword);
         txtLogIn = (EditText) rootView.findViewById(R.id.register);
-
         btnSignIn = (Button) rootView.findViewById(R.id.signInBtn);
         btnFbSignIn = (Button)rootView.findViewById(R.id.btnSingInFacebook);
         btnGplusSignIn = (Button)rootView.findViewById(R.id.btnSingInGoogle);
-
         btnSignIn.setTypeface(opensans);
         btnGplusSignIn.setTypeface(opensans);
         btnFbSignIn.setTypeface(opensans);
-
-        initListeners();
-        initUsernameAndPassWordFields();
-
-
-
-
         txtName.setTypeface(opensans);
         txtPwd.setTypeface(opensans);
         txtLogIn.setTypeface(roboto);
-
-
-
+        initListeners();
+        initUsernameAndPassWordFields();
         return rootView;
     }
 
@@ -89,7 +73,6 @@ public class LogInFragment extends Fragment implements Callback<Token> {
             txtPwd.setText(password);
         }
     }
-
 
     public void initListeners() {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +122,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
     }
 
     private void signIn() {
+        // Haal OAuth token op
         getJppService().getToken("password", txtName.getText().toString() + 1, txtPwd.getText().toString(), this);
     }
 
@@ -152,7 +136,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         editor.apply();
         AppMsg.makeText(getActivity(), getResources().getString(R.string.successfullLogin) + " " + txtName.getText().toString(), AppMsg.STYLE_INFO).show();
 
-        //Als het inloggen succesvol is gebeurd wissel dan naar het QuestionFragment (lijst met vragen)
+        //Als het inloggen succesvol is gebeurd wissel dan naar het Home scherm (lijst met vragen)
         Fragment frag = new AmsHomeFragment();
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTran = fragMan.beginTransaction();
@@ -170,9 +154,6 @@ public class LogInFragment extends Fragment implements Callback<Token> {
             AppMsg.makeText(getActivity(), getResources().getString(R.string.username_or_password_wrong), AppMsg.STYLE_ALERT).show();
         } else {
             AppMsg.makeText(getActivity(), getResources().getString(R.string.something_went_wrong) + error, AppMsg.STYLE_ALERT).show();
-
         }
-
-
     }
 }

@@ -45,14 +45,14 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
     private ExpandableHeightListView tEvents;
     private ExpandableHeightGridView tImages;
     private ImageView tImage;
-    int id;
-    ImageGridAdapter tGridAdapter;
-    EventAdapter tEventAdapter;
-    QAAdapter tQAAdapter;
-    String tempstring;
-    Spinner spinner;
-    Button button;
-    OnSelectedListener mCallback;
+    public int id;
+    private ImageGridAdapter tGridAdapter;
+    private EventAdapter tEventAdapter;
+    private QAAdapter tQAAdapter;
+    private String tempstring;
+    private Spinner spinner;
+    private Button button;
+    private OnSelectedListener mCallback;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -108,7 +108,6 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
     }
 
     public void addListenerOnSpinnerItemSelection(){
-
         spinner.setOnItemSelectedListener(new CustomListener());
     }
 
@@ -117,26 +116,26 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
     public void addListenerOnButton() {
 
         button.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 
                 if(String.valueOf(spinner.getSelectedItem()).equals("Extra"))
                 {
+                    // Zorgt voor fragmentswitch met juiste dossierid parameter
                     mCallback.onAddExtraToDossier(id);
                 }
                 else if(String.valueOf(spinner.getSelectedItem()).equals("Locatie"))
                 {
+                    // Zorgt voor fragmentswitch met juiste dossierid parameter
                     mCallback.onAddLocationToDossier(id);
                 }
                 else if(String.valueOf(spinner.getSelectedItem()).equals("Event"))
                 {
+                    // Zorgt voor fragmentswitch met juiste dossierid parameter
                     mCallback.onAddEventToDossier(id);
                 }
             }
-
         });
-
     }
 
     @Override
@@ -146,6 +145,7 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
             Bundle b = getArguments();
             int i = b.getInt("dId");
             id = i;
+            // Haalt dossier op met een GET call
             getJppService().getDossier(i, this);
         }
     }
@@ -169,6 +169,7 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
         }
         else
         {
+            // Verberg velden als er geen afbeeldingen zijn
             tImage.setVisibility(View.GONE);
             tImages.setVisibility(View.GONE);
         }
@@ -177,46 +178,40 @@ public class EditDossierFragment extends Fragment implements Callback<DtoDossier
         tAnswer.setText(dtoDossierDetailed.getAnswer());
         if (dtoDossierDetailed.getExtra() != null) {
             tExtra.setText(dtoDossierDetailed.getExtra());
-        } else {
+        }
+        else
+        {
+            // Verberg veld als er geen extra informatie is
             tExtra.setVisibility(View.GONE);
         }
 
         if (dtoDossierDetailed.getLocation() != null) {
             tempstring = tempstring + " \nLocatie: " + dtoDossierDetailed.getLocation();
             tUsername.setText(tempstring);
-            // tLocation.setText("Locatie: " + dtoDossierDetailed.getLocation());
-        } else {
-            //    tLocation.setVisibility(View.GONE);
         }
 
         if (dtoDossierDetailed.getCalendar() != null) {
             tEventAdapter.setEvents(dtoDossierDetailed.getCalendar());
-
             tEvents.setAdapter(tEventAdapter);
-
-
-
-        } else {
-
+        }
+        else
+        {
+            // Verberg veld als er geen kalendergebeurtenissen zijn
             tEvents.setVisibility(View.GONE);
         }
 
         if (dtoDossierDetailed.getFixedQuestion() != null) {
             tQAAdapter.setEvents(dtoDossierDetailed.getFixedQuestion());
             tQA.setAdapter(tQAAdapter);
-
-        } else {
+        }
+        else
+        {
             tQA.setVisibility(View.GONE);
         }
-
-
-
-
     }
 
     @Override
     public void failure(RetrofitError error) {
         Toast.makeText(getActivity(), "niet goed", Toast.LENGTH_LONG).show();
     }
-
 }

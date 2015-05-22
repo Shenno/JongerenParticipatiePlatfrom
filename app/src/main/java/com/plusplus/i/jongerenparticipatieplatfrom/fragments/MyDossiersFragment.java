@@ -32,15 +32,15 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 public class MyDossiersFragment extends Fragment implements Callback<List<DtoDossier>> {
     private DossierAdapter dossierAdapter;
     private OnSelectedListener mCallback;
-    TextView title;
+    private TextView title;
+    private ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         dossierAdapter = new DossierAdapter(getActivity());
         View rootView = inflater.inflate(R.layout.fragment_mydossiers, container, false);
-
-        ListView listView = (ListView) rootView.findViewById(R.id.dList);
+        listView = (ListView) rootView.findViewById(R.id.dList);
         title = (TextView) rootView.findViewById(R.id.dTitle);
         title.setText("Mijn dossiers");
         listView.setAdapter(dossierAdapter);
@@ -56,7 +56,6 @@ public class MyDossiersFragment extends Fragment implements Callback<List<DtoDos
             }
 
         });
-
         return rootView;
     }
 
@@ -67,6 +66,7 @@ public class MyDossiersFragment extends Fragment implements Callback<List<DtoDos
         String mail = userDetails.getString("email", "dummy@email.be");
         String token = userDetails.getString("token","");
         token = "Bearer " + token;
+        // Haal alle dossiers van de ingelogde gebruiker op
         getJppService().getDossiersByEmail(token, mail, this);
     }
 

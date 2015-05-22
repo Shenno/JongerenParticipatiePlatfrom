@@ -35,14 +35,10 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
     private EditText birthDate;
     private EditText myProfile;
 
-    public MyProfileFragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_myprofile, container, false);
-
         name = (EditText) rootView.findViewById(R.id.txtName);
         email2 = (EditText) rootView.findViewById(R.id.txtEmail);
         gemeente = (EditText) rootView.findViewById(R.id.txtGemeente);
@@ -123,10 +119,8 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
         }
     }
 
-
     @Override
     public void success(DtoUserInfo dtoUserInfo, Response response) {
-        //TODO fonttypes
         name.setText(dtoUserInfo.getName());
         email2.setText(dtoUserInfo.getEmail());
         gemeente.setText(Integer.toString(dtoUserInfo.getZip()));
@@ -137,7 +131,6 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
         System.out.println(formats1);
 
         birthDate.setText(formats1);
-
     }
 
     @Override

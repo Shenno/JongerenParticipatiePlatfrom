@@ -27,10 +27,10 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 22/05/2015.
  */
 public class CreateReactionFragment extends Fragment implements Callback<DtoReactionPost> {
-    TextView tvTitle;
-    EditText etAnswer;
-    EditText etExtra;
-    Button btnSubmit;
+    private TextView tvTitle;
+    private EditText etAnswer;
+    private EditText etExtra;
+    private Button btnSubmit;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

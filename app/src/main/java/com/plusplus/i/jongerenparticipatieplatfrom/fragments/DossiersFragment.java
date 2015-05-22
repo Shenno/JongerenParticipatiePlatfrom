@@ -32,8 +32,9 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 public class DossiersFragment extends Fragment implements Callback<List<DtoDossier>> {
     private DossierAdapter dossierAdapter;
     private OnSelectedListener mCallback;
-    ActionButton actionButtonNewDossier;
-    TextView title;
+    private ActionButton actionButtonNewDossier;
+    private TextView title;
+    private ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,18 +42,17 @@ public class DossiersFragment extends Fragment implements Callback<List<DtoDossi
         dossierAdapter = new DossierAdapter(getActivity());
         View rootView = inflater.inflate(R.layout.fragment_dossiers, container, false);
         Typeface opensans = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
-
-
-        ListView listView = (ListView) rootView.findViewById(R.id.dList);
+        listView = (ListView) rootView.findViewById(R.id.dList);
         title = (TextView) rootView.findViewById(R.id.dTitle);
         title.setTypeface(opensans);
 
-
         if(getArguments() != null) {
+            // Haal parameter op
             Bundle b = getArguments();
             String i = b.getString("answer");
             title.setText(i);
         }
+
         listView.setAdapter(dossierAdapter);
         View emptyView = rootView.findViewById(R.id.dEmpty);
         listView.setEmptyView(emptyView);
@@ -66,19 +66,19 @@ public class DossiersFragment extends Fragment implements Callback<List<DtoDossi
             }
 
         });
+
         actionButtonNewDossier = (ActionButton) rootView.findViewById(R.id.dsNewDossier);
         actionButtonNewDossier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(getArguments() != null) {
+                    // Haal parameter op
                     Bundle b = getArguments();
                     int i = b.getInt("dId");
                     mCallback.onNewDossierClicked(i);
                 }
             }
         });
-
-
         return rootView;
     }
 

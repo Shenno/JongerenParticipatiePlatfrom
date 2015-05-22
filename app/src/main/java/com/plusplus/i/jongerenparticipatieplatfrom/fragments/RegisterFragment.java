@@ -52,12 +52,8 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         txtZipCode = (EditText) rootView.findViewById(R.id.txtZipCode);
         initListeners();
 
-
-
-        Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
         Typeface robto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Bold.ttf");
         Typeface opensans = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
-
 
         txtName.setTypeface(opensans);
         txtEmail.setTypeface(opensans);
@@ -70,7 +66,6 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         txtRegister.setTypeface(robto);
         return rootView;
     }
-
 
     public void initListeners() {
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -112,9 +107,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-
                 }
-
             }
         });
     }

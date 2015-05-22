@@ -32,15 +32,15 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 public class MyReactionsFragment extends Fragment implements Callback<List<DtoReaction>> {
     private ReactionAdapter reactionAdapter;
     private OnSelectedListener mCallback;
-    TextView title;
+    private TextView title;
+    private ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         reactionAdapter = new ReactionAdapter(getActivity());
         View rootView = inflater.inflate(R.layout.fragment_myreactions, container, false);
-
-        ListView listView = (ListView) rootView.findViewById(R.id.rList);
+        listView = (ListView) rootView.findViewById(R.id.rList);
         title = (TextView) rootView.findViewById(R.id.rTitle);
         title.setText("Mijn reacties");
         listView.setAdapter(reactionAdapter);
@@ -56,8 +56,6 @@ public class MyReactionsFragment extends Fragment implements Callback<List<DtoRe
             }
 
         });
-
-
         return rootView;
     }
 
@@ -68,6 +66,7 @@ public class MyReactionsFragment extends Fragment implements Callback<List<DtoRe
         String mail = userDetails.getString("email", "dummy@email.be");
         String token = userDetails.getString("token","");
         token = "Bearer " + token;
+        //Haalt agendareactions op van de ingelogde gebruiker
         getJppService().getReactionsByEmail(token, mail, this);
     }
 

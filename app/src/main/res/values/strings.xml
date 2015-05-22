@@ -92,7 +92,7 @@
     <string name="successfullLogin">Succesvol ingelogd als </string>
     <string name="alreadyloggedOut">Je bent al uitgelogd</string>
     <string name="succesfullLogOut">Je bent succesvol uitgelogd</string>
-    <string name="profileDateWillAppearAfterLogin">"Je profielgegevens verschijnen na het inloggen (TODO)"</string>
+    <string name="profileDateWillAppearAfterLogin">"Je profielgegevens verschijnen na het inloggen"</string>
     <string name="succesfullregister">Succesvol geregistreerd</string>
     <string name="emailAdresError">Foutief email adres</string>
     <string name="minimum_password_length_error">Wachtwoord moet minstens 6 tekens zijn"</string>

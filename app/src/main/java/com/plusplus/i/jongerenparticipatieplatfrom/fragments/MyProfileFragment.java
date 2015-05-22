@@ -124,15 +124,12 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
         } else {
             getJppService().getUserInfo(email, this);
         }
-        //TODO: Als de SP gegevens bevat, de account opvragen met (HOE? getaccount methode maken?) Dan de gegevens van deze account (naam, email, pw, geboortedatum en gemeente plaatsen in de textfields
     }
 
 
     @Override
     public void success(DtoUserInfo dtoUserInfo, Response response) {
-        AppMsg.makeText(getActivity(), "Hier init je alles he", AppMsg.STYLE_INFO).show();
         //TODO fonttypes
-
         name.setText(dtoUserInfo.getName());
         email2.setText(dtoUserInfo.getEmail());
         gemeente.setText(Integer.toString(dtoUserInfo.getZip()));
@@ -148,7 +145,7 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
 
     @Override
     public void failure(RetrofitError error) {
-        AppMsg.makeText(getActivity(), "Foutje he", AppMsg.STYLE_INFO).show();
+        AppMsg.makeText(getActivity(), "Er is iets foutgelopen", AppMsg.STYLE_INFO).show();
 
     }
 }

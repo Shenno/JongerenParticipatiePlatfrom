@@ -3,6 +3,7 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddEvent;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddExtra;
@@ -26,6 +28,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
 /**
@@ -83,7 +86,10 @@ public class AddEventToDossierFragment extends Fragment implements Callback<DtoA
         Date today = getDateFromDatePicker(datePicker);
         String reportDate = df.format(today);
         dtoAddEvent.setDate(reportDate);
-        getJppService().addEventToDossier(dtoAddEvent, this);
+        SharedPreferences prefs = getActivity().getSharedPreferences("Logindetails", MODE_PRIVATE);
+        String token = prefs.getString("token","");
+        token = "Bearer " + token;
+        getJppService().addEventToDossier(token, dtoAddEvent, this);
     }
 
     @Override
@@ -93,6 +99,6 @@ public class AddEventToDossierFragment extends Fragment implements Callback<DtoA
 
     @Override
     public void failure(RetrofitError error) {
-
+        AppMsg.makeText(getActivity(), "U moet ingelogd zijn voor deze actie!", AppMsg.STYLE_ALERT).show();
     }
 }

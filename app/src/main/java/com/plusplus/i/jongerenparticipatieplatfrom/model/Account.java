@@ -52,4 +52,12 @@ public class Account {
     public void setConfirmPassword(String confirmPassword) {
         this.ConfirmPassword = confirmPassword;
     }
+
+    public int getZipCode() {
+        return ZipCode;
+    }
+
+    public void setZipCode(int zipCode) {
+        ZipCode = zipCode;
+    }
 }

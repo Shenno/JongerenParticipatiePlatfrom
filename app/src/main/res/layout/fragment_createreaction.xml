@@ -10,14 +10,14 @@
         android:id="@+id/cdTitel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Maak een nieuw dossier"
+        android:text="Geef hier jouw antwoord"
         android:textColor="@color/WhiteSmoke" />
 
     <EditText
         android:id="@+id/cdAnswer"
         style="@style/myTextView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="100dp"
         android:layout_below="@id/cdTitel"
         android:layout_gravity="center_horizontal"
         android:gravity="top"
@@ -27,13 +27,27 @@
         android:padding="5dp"
         android:textColorHint="#cccccc" />
 
+    <EditText
+        android:id="@+id/cdExtra"
+        style="@style/myTextView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/cdAnswer"
+        android:layout_gravity="center_horizontal"
+        android:gravity="top"
+        android:hint="Geef hier wat extra uitleg"
+        android:inputType="textMultiLine"
+        android:maxLength="1500"
+        android:padding="5dp"
+        android:textColorHint="#cccccc" />
+
 
     <Button
         android:id="@+id/cdSubmit"
         style="@style/btnStyleArsenic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/cdAnswer"
+        android:layout_below="@id/cdExtra"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="10dp"

@@ -17,4 +17,5 @@ public interface OnSelectedListener {
     public void onVoteDossier(int id);
     public void onVoteAgendaReaction(int id);
     public void onEditDossierClicked(int id);
+    public void onNewReactionClicked(int id);
 }

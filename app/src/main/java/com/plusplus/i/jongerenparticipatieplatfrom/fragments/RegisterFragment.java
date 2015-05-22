@@ -142,6 +142,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         acc.setFullName(txtName.getText().toString());
         acc.setEmail(txtEmail.getText().toString());
         acc.setBirthDate(date);
+        acc.setZipCode(Integer.parseInt(txtZipCode.getText().toString()));
         acc.setPassword(txtPassword.getText().toString());
         acc.setConfirmPassword(txtConfirmPwd.getText().toString());
 

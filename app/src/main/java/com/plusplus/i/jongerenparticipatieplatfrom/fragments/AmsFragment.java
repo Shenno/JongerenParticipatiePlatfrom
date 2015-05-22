@@ -40,6 +40,7 @@ public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
     ImageView infoRewards;
     ImageView infoCal;
     String startdateAppMsg, endDateAppmsg;
+    ActionButton newReaction;
     //ActionButton newDossier;
 
     @Override
@@ -53,6 +54,7 @@ public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
         tags = (TextView) rootView.findViewById(R.id.txtvTags);
         question = (TextView) rootView.findViewById(R.id.amsDetQuestion);
         extra = (TextView) rootView.findViewById(R.id.amsDetExtra);
+        newReaction = (ActionButton) rootView.findViewById(R.id.amsNewReaction);
  //       newDossier = (ActionButton) rootView.findViewById(R.id.dmsNewDossier);
         showReactions = (Button) rootView.findViewById(R.id.btnShowReactions);
         infoRewards = (ImageView) rootView.findViewById(R.id.imageIcon);
@@ -88,24 +90,16 @@ public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
             }
         });
 
-   /*     showDossiers.setOnClickListener(new View.OnClickListener() {
+        newReaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (getArguments() != null) {
                     Bundle b = getArguments();
                     int i = b.getInt("parameter");
-                    mCallback.onDmsItemClicked(i, question.getText().toString());
+                    mCallback.onNewReactionClicked(i);
                 }
             }
         });
-
-        winner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppMsg.makeText(getActivity(), "Maximum aantal winnende antwoorden", AppMsg.STYLE_INFO).show();
-
-            }
-        }); */
 
 
         return rootView;

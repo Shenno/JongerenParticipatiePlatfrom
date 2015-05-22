@@ -13,6 +13,7 @@ import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierPost;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReaction;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReactionDetailed;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReactionPost;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoUserInfo;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoVote;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Token;
@@ -24,6 +25,7 @@ import retrofit.http.Body;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
+import retrofit.http.Header;
 import retrofit.http.POST;
 import retrofit.http.Path;
 
@@ -54,16 +56,16 @@ public interface JppService {
     void getDossier(@Path("dId") int dId, Callback<DtoDossierDetailed> callback);
 
     @POST("/api/dms/dossier")
-    void postDossier(@Body DtoDossierPost dtoDossierPost, Callback<DtoDossierPost> callback);
+    void postDossier(@Header("Authorization") String token, @Body DtoDossierPost dtoDossierPost, Callback<DtoDossierPost> callback);
 
     @POST("/api/dms/dossier/extra")
-    void addExtraToDossier(@Body DtoAddExtra dtoAddExtra, Callback<DtoAddExtra> callback);
+    void addExtraToDossier(@Header("Authorization") String token, @Body DtoAddExtra dtoAddExtra, Callback<DtoAddExtra> callback);
 
     @POST("/api/dms/dossier/location")
-    void addLocationToDossier(@Body DtoAddLocation dtoAddLocation, Callback<DtoAddLocation> callback);
+    void addLocationToDossier(@Header("Authorization") String token, @Body DtoAddLocation dtoAddLocation, Callback<DtoAddLocation> callback);
 
     @POST("/api/dms/dossier/event")
-    void addEventToDossier(@Body DtoAddEvent dtoAddEvent, Callback<DtoAddEvent> callback);
+    void addEventToDossier(@Header("Authorization") String token, @Body DtoAddEvent dtoAddEvent, Callback<DtoAddEvent> callback);
 
     @GET("/api/ams/open/{asmId}")
     void getOpenAms(@Path("asmId") int asmId, Callback<List<DtoAsm>> callBack);
@@ -78,16 +80,21 @@ public interface JppService {
     void getReaction(@Path("rId") int rId, Callback<DtoReactionDetailed> callBack);
 
     @GET("/api/ams/reaction/{email}/")
-    void getReactionsByEmail(@Path("email") String email, Callback<List<DtoReaction>> callBack);
+    void getReactionsByEmail(@Header("Authorization") String token, @Path("email") String email, Callback<List<DtoReaction>> callBack);
 
     @GET("/api/dms/dossiers/{email}/")
-    void getDossiersByEmail(@Path("email") String email, Callback<List<DtoDossier>> callBack);
+    void getDossiersByEmail(@Header("Authorization") String token, @Path("email") String email, Callback<List<DtoDossier>> callBack);
 
     @POST("/api/dms/dossier/vote")
-    void addVote(@Body DtoVote dtoVote, Callback<DtoVote> callback);
+    void addVote(@Header("Authorization") String token, @Body DtoVote dtoVote, Callback<DtoVote> callback);
 
     @POST("/api/ams/reaction/vote")
-    void addVoteR(@Body DtoVote dtoVote, Callback<DtoVote> callback);
+    void addVoteR(@Header("Authorization") String token, @Body DtoVote dtoVote, Callback<DtoVote> callback);
+
+    @POST("/api/ams/reaction")
+    void postReaction(@Header("Authorization") String token, @Body DtoReactionPost dtoReactionPost, Callback<DtoReactionPost> callback);
+
+
 
 
 

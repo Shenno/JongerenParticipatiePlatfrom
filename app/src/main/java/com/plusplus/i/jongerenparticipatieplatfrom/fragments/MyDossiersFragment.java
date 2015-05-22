@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.DossierAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
@@ -24,6 +25,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
 /**
@@ -64,8 +66,10 @@ public class MyDossiersFragment extends Fragment implements Callback<List<DtoDos
     public void onStart() {
         super.onStart();
         SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
-        String mail = userDetails.getString("email","");
-        getJppService().getDossiersByEmail(mail, this);
+        String mail = userDetails.getString("email", "dummy@email.be");
+        String token = userDetails.getString("token","");
+        token = "Bearer " + token;
+        getJppService().getDossiersByEmail(token, mail, this);
     }
 
     @Override
@@ -88,6 +92,6 @@ public class MyDossiersFragment extends Fragment implements Callback<List<DtoDos
 
     @Override
     public void failure(RetrofitError error) {
-        Toast.makeText(getActivity(), "Fout", Toast.LENGTH_LONG).show();
+        AppMsg.makeText(getActivity(), "U moet ingelogd zijn voor deze actie!", AppMsg.STYLE_ALERT).show();
     }
 }

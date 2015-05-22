@@ -153,7 +153,7 @@ public class LogInFragment extends Fragment implements Callback<Token> {
         AppMsg.makeText(getActivity(), getResources().getString(R.string.successfullLogin) + " " + txtName.getText().toString(), AppMsg.STYLE_INFO).show();
 
         //Als het inloggen succesvol is gebeurd wissel dan naar het QuestionFragment (lijst met vragen)
-        Fragment frag = new QuestionFragment();
+        Fragment frag = new AmsHomeFragment();
         FragmentManager fragMan = getFragmentManager();
         FragmentTransaction fragTran = fragMan.beginTransaction();
         fragTran.replace(R.id.frame_container, frag);

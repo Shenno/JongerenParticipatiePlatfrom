@@ -16,6 +16,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
 /**
@@ -38,7 +39,9 @@ public class VoteAgendaFragment extends Fragment implements Callback<DtoVote> {
         SharedPreferences userDetails = getActivity().getSharedPreferences("Logindetails", Context.MODE_PRIVATE);
         String email = userDetails.getString("email", "");
         dtoVote.setUserId(email);
-        getJppService().addVoteR(dtoVote, this);
+        String token = userDetails.getString("token","");
+        token = "Bearer " + token;
+        getJppService().addVoteR(token, dtoVote, this);
         return rootView;
     }
 

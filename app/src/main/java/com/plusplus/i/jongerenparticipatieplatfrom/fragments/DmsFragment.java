@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,9 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
     TextView extra;
     Button showDossiers;
     ActionButton newDossier;
+    ImageView calIcon;
+    ImageView infoIcon;
+    String winners;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,6 +61,9 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         extra = (TextView) rootView.findViewById(R.id.dmsDetExtra);
         newDossier = (ActionButton) rootView.findViewById(R.id.dmsNewDossier);
         showDossiers = (Button) rootView.findViewById(R.id.btnShowReactions);
+        calIcon = (ImageView)rootView.findViewById(R.id.imageCal);
+        infoIcon = (ImageView)rootView.findViewById(R.id.imageIcon);
+
 
         Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
         Typeface opensansBold = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Semibold.ttf");
@@ -71,6 +78,20 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         extra.setTypeface(fontttype);
 
 
+        calIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppMsg.makeText(getActivity(),"Beschikbaar van " +startDate.getText().toString() + " tot " + endDate.getText().toString(),AppMsg.STYLE_INFO).show();
+
+            }
+        });
+
+        infoIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppMsg.makeText(getActivity(),winners+ " winnende dossiers voor deze vraag",AppMsg.STYLE_INFO).show();
+            }
+        });
 
         newDossier.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +156,7 @@ public class DmsFragment extends Fragment implements Callback<DtoDmsDetailed> {
         endDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(dtoDmsDetailed.getEndDate()));
         questioner.setText(dtoDmsDetailed.getQuestioner());
         winner.setText(Integer.toString(dtoDmsDetailed.getWinnersCount()));
+        winners = Integer.toString(dtoDmsDetailed.getWinnersCount());
         question.setText(dtoDmsDetailed.getQuestion());
         extra.setText(dtoDmsDetailed.getExtraInfo());
     }

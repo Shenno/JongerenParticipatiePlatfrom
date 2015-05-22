@@ -38,6 +38,8 @@ public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
     TextView extra;
     Button showReactions;
     ImageView infoRewards;
+    ImageView infoCal;
+    String startdateAppMsg, endDateAppmsg;
     //ActionButton newDossier;
 
     @Override
@@ -54,18 +56,19 @@ public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
  //       newDossier = (ActionButton) rootView.findViewById(R.id.dmsNewDossier);
         showReactions = (Button) rootView.findViewById(R.id.btnShowReactions);
         infoRewards = (ImageView) rootView.findViewById(R.id.imageIcon);
-
-        Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
+        infoCal = (ImageView)rootView.findViewById(R.id.imageCal);
+        Typeface opensans = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
         Typeface opensansBold = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Semibold.ttf");
         Typeface openSansItalic = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Italic.ttf");
 
 
-        startDate.setTypeface(fontttype);
-        endDate.setTypeface(fontttype);
+        startDate.setTypeface(opensans);
+        endDate.setTypeface(opensans);
         questioner.setTypeface(openSansItalic);
-        tags.setTypeface(fontttype);
+        tags.setTypeface(opensans);
         question.setTypeface(opensansBold);
-        extra.setTypeface(fontttype);
+        extra.setTypeface(opensans);
+        showReactions.setTypeface(opensans);
 
         showReactions.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +81,12 @@ public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
             }
         });
 
+        infoCal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AppMsg.makeText(getActivity(),"Beschikbaar van " + startdateAppMsg+" tot " +endDateAppmsg,AppMsg.STYLE_INFO ).show();
+            }
+        });
 
    /*     showDossiers.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +137,9 @@ public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
     @Override
     public void success(final DtoAmsDetailed dtoAmsDetailed, Response response) {
         startDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(dtoAmsDetailed.getStartDate()));
+        startdateAppMsg = startDate.getText().toString();
         endDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(dtoAmsDetailed.getEndDate()));
+        endDateAppmsg = endDate.getText().toString();
         questioner.setText(dtoAmsDetailed.getQuestioner());
         tags.setText(convertTags(dtoAmsDetailed.getTags()));
         question.setText(dtoAmsDetailed.getQuestion());

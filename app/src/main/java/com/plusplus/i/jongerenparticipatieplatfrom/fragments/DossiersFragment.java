@@ -2,6 +2,7 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,9 +41,14 @@ public class DossiersFragment extends Fragment implements Callback<List<DtoDossi
                              Bundle savedInstanceState) {
         dossierAdapter = new DossierAdapter(getActivity());
         View rootView = inflater.inflate(R.layout.fragment_dossiers, container, false);
+        Typeface opensans = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
+
 
         ListView listView = (ListView) rootView.findViewById(R.id.dList);
         title = (TextView) rootView.findViewById(R.id.dTitle);
+        title.setTypeface(opensans);
+
+
         if(getArguments() != null) {
             Bundle b = getArguments();
             String i = b.getString("answer");

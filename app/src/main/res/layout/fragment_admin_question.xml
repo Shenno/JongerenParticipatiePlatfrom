@@ -21,7 +21,7 @@
         android:id="@+id/amsDetEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignBottom="@+id/imageCal"
         android:layout_alignStart="@+id/amsDetStartDate"
         android:paddingLeft="2dp"
         android:paddingRight="2dp"
@@ -38,7 +38,7 @@
         android:padding="5dp"
         android:text="@string/title"
         android:textColor="@color/WhiteSmoke"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
 
@@ -73,7 +73,7 @@
         android:textStyle="italic" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageCal"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignTop="@+id/amsDetStartDate"
@@ -102,7 +102,7 @@
         android:layout_below="@+id/amsDetQuestion"
         android:layout_marginLeft="2dp"
         android:layout_marginRight="2dp"
-        android:layout_toStartOf="@+id/imageView2"
+        android:layout_toStartOf="@+id/imageCal"
         android:background="@drawable/round_corners_imageview"
         android:src="@drawable/infoicon" />
 

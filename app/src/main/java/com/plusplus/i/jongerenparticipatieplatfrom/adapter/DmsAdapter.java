@@ -62,15 +62,14 @@ public class DmsAdapter extends BaseAdapter {
             convertView.setTag(viewHolder);
         }
 
-        Typeface fontttype = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Regular.ttf");
+        Typeface opensans = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Regular.ttf");
         Typeface openSansBold = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Semibold.ttf");
+        Typeface pacifico = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/pacifico.ttf");
 
-        Typeface fonttype2 = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/pacifico.ttf");
-
-        viewHolder.dateTextView.setTypeface(fontttype);
+        viewHolder.dateTextView.setTypeface(opensans);
         viewHolder.questionTextView.setTypeface(openSansBold);
-        viewHolder.questionExraInfo.setTypeface(fontttype);
-        viewHolder.image.setTypeface(fonttype2);
+        viewHolder.questionExraInfo.setTypeface(opensans);
+        viewHolder.image.setTypeface(pacifico);
 
 
 

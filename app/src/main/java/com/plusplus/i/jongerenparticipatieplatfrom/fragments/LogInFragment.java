@@ -29,8 +29,12 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 public class LogInFragment extends Fragment implements Callback<Token> {
     public EditText txtName;
     private EditText txtPwd;
+    private EditText txtLogIn;
     private Button btnSignIn;
+    private Button btnFbSignIn;
+    private Button btnGplusSignIn;
     private boolean alreadyLoggedIn;
+
 
     public LogInFragment() {
     }
@@ -40,17 +44,31 @@ public class LogInFragment extends Fragment implements Callback<Token> {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_sign_in_screen, container, false);
+
+        Typeface opensans = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
+        Typeface roboto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Bold.ttf");
+
         txtName = (EditText) rootView.findViewById(R.id.signInUsername);
         txtPwd = (EditText) rootView.findViewById(R.id.signInPassword);
+        txtLogIn = (EditText) rootView.findViewById(R.id.register);
+
         btnSignIn = (Button) rootView.findViewById(R.id.signInBtn);
+        btnFbSignIn = (Button)rootView.findViewById(R.id.btnSingInFacebook);
+        btnGplusSignIn = (Button)rootView.findViewById(R.id.btnSingInGoogle);
+
+        btnSignIn.setTypeface(opensans);
+        btnGplusSignIn.setTypeface(opensans);
+        btnFbSignIn.setTypeface(opensans);
+
         initListeners();
         initUsernameAndPassWordFields();
 
-        Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
 
-        txtName.setTypeface(fontttype);
-        txtPwd.setTypeface(fontttype);
 
+
+        txtName.setTypeface(opensans);
+        txtPwd.setTypeface(opensans);
+        txtLogIn.setTypeface(roboto);
 
 
 

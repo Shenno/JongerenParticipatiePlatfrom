@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
     private EditText email2;
     private EditText gemeente;
     private EditText birthDate;
+    private EditText myProfile;
 
     public MyProfileFragment() {
     }
@@ -48,10 +50,20 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
         email2 = (EditText) rootView.findViewById(R.id.txtEmail);
         gemeente = (EditText) rootView.findViewById(R.id.txtGemeente);
         birthDate = (EditText) rootView.findViewById(R.id.txtGeboorteDatum);
+        myProfile = (EditText)rootView.findViewById(R.id.myProfile);
 
+        Typeface robto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Bold.ttf");
+        Typeface opensans = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
+
+        name.setTypeface(opensans);
+        email2.setTypeface(opensans);
+        gemeente.setTypeface(opensans);
+        birthDate.setTypeface(opensans);
+        myProfile.setTypeface(robto);
 
         initTextFields();
         updatePassword = (Button) rootView.findViewById(R.id.btnUpdatePassword);
+        updatePassword.setTypeface(opensans);
 
         //Wissel naar het fragment op het password te updaten
         updatePassword.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +79,7 @@ public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo>
         });
 
         logOut = (Button) rootView.findViewById(R.id.btnSignOut);
+        logOut.setTypeface(opensans);
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

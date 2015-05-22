@@ -65,13 +65,13 @@ public class DossierAdapter extends BaseAdapter {
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         }
-        Typeface fontttype = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Regular.ttf");
+        Typeface opensans = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Regular.ttf");
         Typeface openSansItalic = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Italic.ttf");
 
 
         viewHolder.usernameTextView.setTypeface(openSansItalic);
-        viewHolder.votesTextView.setTypeface(fontttype);
-        viewHolder.answerTextView.setTypeface(fontttype);
+        viewHolder.votesTextView.setTypeface(opensans);
+        viewHolder.answerTextView.setTypeface(opensans);
 
 
         viewHolder.usernameTextView.setText(dossier.getUsername());

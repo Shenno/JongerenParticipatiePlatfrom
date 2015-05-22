@@ -29,7 +29,7 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
 
 
 public class RegisterFragment extends Fragment implements Callback<Account> {
-
+    private EditText txtRegister;
     private EditText txtName;
     private EditText txtEmail;
     private EditText txtBirthdate;
@@ -43,6 +43,7 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_sign_up_screen, container, false);
+        txtRegister = (EditText)rootView.findViewById(R.id.register);
         txtName = (EditText) rootView.findViewById(R.id.txtName);
         txtEmail = (EditText) rootView.findViewById(R.id.etEmail);
         txtPassword = (EditText) rootView.findViewById(R.id.txtSignUpPassword);
@@ -60,11 +61,14 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
         Typeface paci = Typeface.createFromAsset(getActivity().getAssets(), "fonts/pacifico.ttf");
 
 
-        txtName.setTypeface(fontttype);
-        txtEmail.setTypeface(robto);
-        txtConfirmPwd.setTypeface(opensans);
+        txtName.setTypeface(paci);
+        txtEmail.setTypeface(paci);
+        txtConfirmPwd.setTypeface(paci);
         txtZipCode.setTypeface(paci);
-
+        btnRegister.setTypeface(paci);
+        txtBirthdate.setTypeface(paci);
+        txtZipCode.setTypeface(paci);
+        txtRegister.setTypeface(paci);
         return rootView;
     }
 

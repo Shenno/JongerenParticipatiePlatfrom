@@ -1,6 +1,5 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -12,11 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierPost;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReactionPost;
 
 import retrofit.Callback;

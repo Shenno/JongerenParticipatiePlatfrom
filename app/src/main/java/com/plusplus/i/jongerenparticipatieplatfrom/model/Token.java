@@ -1,7 +1,5 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.model;
 
-import android.content.SharedPreferences;
-
 /**
  * Created by Shenno on 11/04/2015.
  */

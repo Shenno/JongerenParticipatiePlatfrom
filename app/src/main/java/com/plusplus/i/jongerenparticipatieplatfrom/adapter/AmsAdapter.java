@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAsm;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

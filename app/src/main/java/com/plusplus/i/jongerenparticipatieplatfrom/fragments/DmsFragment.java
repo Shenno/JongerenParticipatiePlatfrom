@@ -2,23 +2,18 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.graphics.Typeface;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
+import com.plusplus.i.jongerenparticipatieplatfrom.interfaces.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDmsDetailed;
 import com.software.shell.fab.ActionButton;
 

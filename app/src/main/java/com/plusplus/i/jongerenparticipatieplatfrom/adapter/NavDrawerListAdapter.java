@@ -10,10 +10,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.NavDrawerItem;
+
+import java.util.ArrayList;
 
 
 public class NavDrawerListAdapter extends BaseAdapter {

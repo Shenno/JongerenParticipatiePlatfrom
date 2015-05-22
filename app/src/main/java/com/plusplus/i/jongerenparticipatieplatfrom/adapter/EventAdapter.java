@@ -1,17 +1,14 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.adapter;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoEvent;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -15,7 +15,6 @@ import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.Account;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

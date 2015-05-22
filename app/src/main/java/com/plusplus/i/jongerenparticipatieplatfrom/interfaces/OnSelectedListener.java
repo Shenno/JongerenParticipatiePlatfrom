@@ -1,4 +1,4 @@
-package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
+package com.plusplus.i.jongerenparticipatieplatfrom.interfaces;
 
 /**
  * Created by Shenno on 28/04/2015.

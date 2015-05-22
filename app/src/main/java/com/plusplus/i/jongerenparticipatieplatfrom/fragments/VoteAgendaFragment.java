@@ -16,7 +16,6 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-import static android.content.Context.MODE_PRIVATE;
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
 /**

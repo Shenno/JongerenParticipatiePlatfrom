@@ -13,10 +13,8 @@ import android.widget.ListView;
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.AmsAdapter;
-import com.plusplus.i.jongerenparticipatieplatfrom.adapter.DmsAdapter;
+import com.plusplus.i.jongerenparticipatieplatfrom.interfaces.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAsm;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReaction;
 
 import java.util.List;
 

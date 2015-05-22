@@ -1,4 +1,4 @@
-package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
+package com.plusplus.i.jongerenparticipatieplatfrom.custom;
 
 /**
  * Created by Shenno on 4/05/2015.
@@ -7,7 +7,6 @@ package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Toast;
 
 public class CustomListener implements OnItemSelectedListener {
 

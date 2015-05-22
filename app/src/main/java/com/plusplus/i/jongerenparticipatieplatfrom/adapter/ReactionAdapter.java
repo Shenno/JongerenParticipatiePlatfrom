@@ -5,17 +5,13 @@ import android.graphics.Typeface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReaction;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import static android.view.LayoutInflater.from;

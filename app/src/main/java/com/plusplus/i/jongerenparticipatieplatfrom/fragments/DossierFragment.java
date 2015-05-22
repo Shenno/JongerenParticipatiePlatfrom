@@ -1,25 +1,13 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,11 +15,10 @@ import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.EventAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.ImageGridAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.QAAdapter;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAsm;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
+import com.plusplus.i.jongerenparticipatieplatfrom.custom.ExpandableHeightGridView;
+import com.plusplus.i.jongerenparticipatieplatfrom.custom.ExpandableHeightListView;
+import com.plusplus.i.jongerenparticipatieplatfrom.interfaces.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoEvent;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoFixedQuestion;
 import com.software.shell.fab.ActionButton;
 
 import retrofit.Callback;

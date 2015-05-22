@@ -13,9 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
-import com.plusplus.i.jongerenparticipatieplatfrom.adapter.DmsAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.DossierAdapter;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
+import com.plusplus.i.jongerenparticipatieplatfrom.interfaces.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
 import com.software.shell.fab.ActionButton;
 

@@ -1,4 +1,4 @@
-package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
+package com.plusplus.i.jongerenparticipatieplatfrom.custom;
 
 import android.content.Context;
 import android.util.AttributeSet;

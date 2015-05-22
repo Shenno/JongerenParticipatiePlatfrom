@@ -2,7 +2,6 @@ package com.plusplus.i.jongerenparticipatieplatfrom.adapter;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,11 +10,10 @@ import android.widget.TextView;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDms;
 
-import org.w3c.dom.Text;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 import static android.view.LayoutInflater.from;
 
 /**

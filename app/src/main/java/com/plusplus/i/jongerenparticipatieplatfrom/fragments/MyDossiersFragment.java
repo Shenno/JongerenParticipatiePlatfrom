@@ -11,13 +11,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.DossierAdapter;
+import com.plusplus.i.jongerenparticipatieplatfrom.interfaces.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
-import com.software.shell.fab.ActionButton;
 
 import java.util.List;
 
@@ -25,7 +24,6 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-import static android.content.Context.MODE_PRIVATE;
 import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
 /**

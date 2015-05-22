@@ -7,7 +7,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoEvent;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoFixedQuestion;
 
 import java.util.ArrayList;

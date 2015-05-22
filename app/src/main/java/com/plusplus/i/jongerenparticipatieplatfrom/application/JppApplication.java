@@ -29,7 +29,7 @@ public class JppApplication extends Application {
 
     private JppService createDemoService(Context context) {
         final Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss") // Om DateTimes van C# te converteren
                 .create();
 
         return new RestAdapter.Builder()

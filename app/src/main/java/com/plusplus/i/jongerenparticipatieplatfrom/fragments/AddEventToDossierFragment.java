@@ -1,8 +1,6 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,14 +9,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddEvent;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddExtra;
 
-import java.net.DatagramPacket;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -35,15 +30,14 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 8/05/2015.
  */
 public class AddEventToDossierFragment extends Fragment implements Callback<DtoAddEvent> {
-    EditText title;
-    EditText desc;
-    DatePicker datePicker;
-    Button button;
+    private EditText title;
+    private EditText desc;
+    private DatePicker datePicker;
+    private Button button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_addeventtodossier, container, false);
         title = (EditText) rootView.findViewById(R.id.addEventTitle);
         desc = (EditText) rootView.findViewById(R.id.addEventDesc);
@@ -62,6 +56,7 @@ public class AddEventToDossierFragment extends Fragment implements Callback<DtoA
         });
     }
 
+    // Helpermethode om datum uit datepicker te krijgen
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();

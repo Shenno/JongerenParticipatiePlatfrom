@@ -70,7 +70,7 @@
             android:textColor="@color/WhiteSmoke"
             android:textSize="12sp" />
 
-        <com.plusplus.i.jongerenparticipatieplatfrom.fragments.ExpandableHeightListView
+        <com.plusplus.i.jongerenparticipatieplatfrom.custom.ExpandableHeightListView
             android:id="@+id/ddListEvents"
             style="@style/myTextView.Profile.dossier"
             android:layout_width="250dp"
@@ -79,7 +79,7 @@
             android:layout_below="@id/ddExtra"
             android:layout_gravity="center_horizontal" />
 
-        <com.plusplus.i.jongerenparticipatieplatfrom.fragments.ExpandableHeightListView
+        <com.plusplus.i.jongerenparticipatieplatfrom.custom.ExpandableHeightListView
             android:id="@+id/ddListQA"
             style="@style/myTextView.Profile.dossier"
             android:layout_width="match_parent"
@@ -95,7 +95,7 @@
             android:layout_below="@id/ddListQA"
             android:layout_gravity="center_horizontal" />
 
-        <com.plusplus.i.jongerenparticipatieplatfrom.fragments.ExpandableHeightGridView
+        <com.plusplus.i.jongerenparticipatieplatfrom.custom.ExpandableHeightGridView
             android:id="@+id/ddGrid"
             style="@style/myTextView.Profile.dossier"
             android:layout_width="match_parent"

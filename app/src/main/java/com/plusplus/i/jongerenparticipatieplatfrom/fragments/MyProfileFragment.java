@@ -7,19 +7,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
-import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
-
-
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.Account;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoUserInfo;
 
 import java.text.SimpleDateFormat;
@@ -28,6 +23,8 @@ import java.util.Date;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+
+import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplication.getJppService;
 
 public class MyProfileFragment extends Fragment implements Callback<DtoUserInfo> {
     private Button updatePassword;

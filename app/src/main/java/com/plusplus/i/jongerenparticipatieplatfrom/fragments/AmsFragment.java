@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
+import com.plusplus.i.jongerenparticipatieplatfrom.interfaces.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAmsDetailed;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDmsDetailed;
 import com.software.shell.fab.ActionButton;
 
 import java.text.SimpleDateFormat;
@@ -29,25 +29,24 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 20/05/2015.
  */
 public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
-    OnSelectedListener mCallback;
-    TextView startDate;
-    TextView endDate;
-    TextView questioner;
-    TextView tags;
-    TextView question;
-    TextView extra;
-    Button showReactions;
-    ImageView infoRewards;
-    ImageView infoCal;
-    String startdateAppMsg, endDateAppmsg;
-    ActionButton newReaction;
-    //ActionButton newDossier;
+    private OnSelectedListener mCallback;
+    private TextView startDate;
+    private TextView endDate;
+    private TextView questioner;
+    private TextView tags;
+    private TextView question;
+    private TextView extra;
+    private Button showReactions;
+    private ImageView infoRewards;
+    private ImageView infoCal;
+    private String startdateAppMsg, endDateAppmsg;
+    private ActionButton newReaction;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View rootView = inflater.inflate(R.layout.fragment_admin_question, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_ams, container, false);
         startDate = (TextView) rootView.findViewById(R.id.amsDetStartDate);
         endDate = (TextView) rootView.findViewById(R.id.amsDetEndDate);
         questioner = (TextView) rootView.findViewById(R.id.amsDetQuestioner);
@@ -55,14 +54,13 @@ public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
         question = (TextView) rootView.findViewById(R.id.amsDetQuestion);
         extra = (TextView) rootView.findViewById(R.id.amsDetExtra);
         newReaction = (ActionButton) rootView.findViewById(R.id.amsNewReaction);
- //       newDossier = (ActionButton) rootView.findViewById(R.id.dmsNewDossier);
         showReactions = (Button) rootView.findViewById(R.id.btnShowReactions);
         infoRewards = (ImageView) rootView.findViewById(R.id.imageIcon);
         infoCal = (ImageView)rootView.findViewById(R.id.imageCal);
+
         Typeface opensans = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
         Typeface opensansBold = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Semibold.ttf");
         Typeface openSansItalic = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Italic.ttf");
-
 
         startDate.setTypeface(opensans);
         endDate.setTypeface(opensans);
@@ -100,8 +98,6 @@ public class AmsFragment extends Fragment implements Callback<DtoAmsDetailed> {
                 }
             }
         });
-
-
         return rootView;
     }
 

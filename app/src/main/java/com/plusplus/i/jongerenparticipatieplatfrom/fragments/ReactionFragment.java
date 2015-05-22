@@ -6,16 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
-import com.plusplus.i.jongerenparticipatieplatfrom.adapter.EventAdapter;
-import com.plusplus.i.jongerenparticipatieplatfrom.adapter.ImageGridAdapter;
-import com.plusplus.i.jongerenparticipatieplatfrom.adapter.QAAdapter;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierDetailed;
+import com.plusplus.i.jongerenparticipatieplatfrom.interfaces.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReactionDetailed;
 
 import java.text.SimpleDateFormat;

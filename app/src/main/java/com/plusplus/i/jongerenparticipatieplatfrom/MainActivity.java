@@ -14,9 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -36,12 +34,11 @@ import com.plusplus.i.jongerenparticipatieplatfrom.fragments.LogInFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyDossiersFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyProfileFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.MyReactionsFragment;
-import com.plusplus.i.jongerenparticipatieplatfrom.fragments.OnSelectedListener;
+import com.plusplus.i.jongerenparticipatieplatfrom.interfaces.OnSelectedListener;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.QuestionFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.ReactionFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.ReactionsFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.RegisterFragment;
-import com.plusplus.i.jongerenparticipatieplatfrom.fragments.SolutionFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.VoteAgendaFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.fragments.VoteFragment;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.NavDrawerItem;
@@ -260,6 +257,9 @@ public class MainActivity extends Activity implements OnSelectedListener {
         // Pass any configuration change to the drawer toggls
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
+
+    // Hieronder implementeren we de interface om parameters tussen fragments
+    // te ondersteunen
 
     @Override
     public void onItemClicked(int i) {

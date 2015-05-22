@@ -1,8 +1,6 @@
 package com.plusplus.i.jongerenparticipatieplatfrom.fragments;
 
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,12 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.devspark.appmsg.AppMsg;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoAddExtra;
-import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossierPost;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -28,13 +24,12 @@ import static com.plusplus.i.jongerenparticipatieplatfrom.application.JppApplica
  * Created by Shenno on 4/05/2015.
  */
 public class AddExtraToDossierFragment extends Fragment implements Callback<DtoAddExtra> {
-    EditText extra;
-    Button button;
+    private EditText extra;
+    private Button button;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.fragment_addextratodossier, container, false);
         extra = (EditText) rootView.findViewById(R.id.aeExtra);
         button = (Button) rootView.findViewById(R.id.aeSubmit);

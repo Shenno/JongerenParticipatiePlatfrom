@@ -31,7 +31,6 @@ public class DossierAdapter extends BaseAdapter {
     public DossierAdapter(Context context) {
         this.context = context;
         this.dossierList = new ArrayList();
-
     }
 
     public void setDossierList(List<DtoDossier> dossierList) {
@@ -68,42 +67,26 @@ public class DossierAdapter extends BaseAdapter {
         Typeface opensans = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Regular.ttf");
         Typeface openSansItalic = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Italic.ttf");
 
-
         viewHolder.usernameTextView.setTypeface(openSansItalic);
         viewHolder.votesTextView.setTypeface(opensans);
         viewHolder.answerTextView.setTypeface(opensans);
-
 
         viewHolder.usernameTextView.setText(dossier.getUsername());
         viewHolder.votesTextView.setText(Integer.toString(dossier.getVotes()));
         viewHolder.answerTextView.setText(dossier.getAnswer());
 
-        viewHolder.likeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-             //  "Hier komt nog ne push naar de db met fragment switch"
-                Toast.makeText(context,"Je stem wordt verwerkt.",Toast.LENGTH_LONG).show();
-
-
-
-            }
-        });
         return convertView;
     }
-
-
 
     static class ViewHolder {
         TextView usernameTextView;
         TextView votesTextView;
         TextView answerTextView;
-        ImageButton likeButton;
 
         public ViewHolder(View view) {
             usernameTextView = (TextView) view.findViewById(R.id.dUsername);
             votesTextView = (TextView) view.findViewById(R.id.dVotes);
             answerTextView = (TextView) view.findViewById(R.id.dAnswer);
-            likeButton = (ImageButton) view.findViewById(R.id.dLikeButton);
         }
     }
 }

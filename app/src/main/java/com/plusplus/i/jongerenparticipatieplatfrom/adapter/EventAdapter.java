@@ -76,7 +76,6 @@ public class EventAdapter extends BaseAdapter {
             title = (TextView) view.findViewById(R.id.eiTitle);
             desc = (TextView) view.findViewById(R.id.eiDesc);
             date = (TextView) view.findViewById(R.id.eiDate);
-
         }
     }
 }

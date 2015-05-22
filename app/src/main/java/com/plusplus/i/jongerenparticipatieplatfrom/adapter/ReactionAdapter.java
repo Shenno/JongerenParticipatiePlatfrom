@@ -75,30 +75,18 @@ public class ReactionAdapter extends BaseAdapter {
         viewHolder.usernameTextView.setText(tmp + " - " + reaction.getUsername());
         viewHolder.votesTextView.setText(Integer.toString(reaction.getVotes()));
         viewHolder.answerTextView.setText(reaction.getAnswer());
-
-        viewHolder.likeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //  "Hier komt nog ne push naar de db met fragment switch"
-                Toast.makeText(context, "Je stem wordt verwerkt.", Toast.LENGTH_LONG).show();
-            }
-        });
         return convertView;
     }
-
-
 
     static class ViewHolder {
         TextView usernameTextView;
         TextView votesTextView;
         TextView answerTextView;
-        ImageButton likeButton;
 
         public ViewHolder(View view) {
             usernameTextView = (TextView) view.findViewById(R.id.rUserAndDate);
             votesTextView = (TextView) view.findViewById(R.id.rVotes);
             answerTextView = (TextView) view.findViewById(R.id.rAnswer);
-            likeButton = (ImageButton) view.findViewById(R.id.rLikeButton);
         }
     }
 }

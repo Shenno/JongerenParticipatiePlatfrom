@@ -70,14 +70,10 @@ public class AmsAdapter extends BaseAdapter {
         viewHolder.questionExraInfo.setTypeface(fontttype);
         viewHolder.image.setTypeface(fonttype2);
 
-
-
         viewHolder.dateTextView.setText(new SimpleDateFormat("dd/MM/yyyy").format(ams.getEndDate()));
         viewHolder.questionTextView.setText(ams.getQuestion());
         viewHolder.questionExraInfo.setText(ams.getExtraInfo());
         viewHolder.image.setText(ams.getQuestion().substring(0,1));
-
-
 
         return convertView;
     }
@@ -93,7 +89,6 @@ public class AmsAdapter extends BaseAdapter {
             questionTextView = (TextView) view.findViewById(R.id.amsQuestion);
             questionExraInfo = (TextView) view.findViewById(R.id.amsQuestionExtra);
             image = (TextView)view.findViewById(R.id.amsImage);
-
         }
     }
 }

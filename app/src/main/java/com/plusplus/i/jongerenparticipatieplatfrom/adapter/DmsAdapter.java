@@ -71,14 +71,10 @@ public class DmsAdapter extends BaseAdapter {
         viewHolder.questionExraInfo.setTypeface(opensans);
         viewHolder.image.setTypeface(pacifico);
 
-
-
         viewHolder.dateTextView.setText(new SimpleDateFormat("dd/MM/yyyy").format(dms.getEndDate()));
         viewHolder.questionTextView.setText(dms.getQuestion());
         viewHolder.questionExraInfo.setText(dms.getExtraInfo());
         viewHolder.image.setText(dms.getQuestion().substring(0,1));
-
-
 
         return convertView;
     }
@@ -94,7 +90,6 @@ public class DmsAdapter extends BaseAdapter {
             questionTextView = (TextView) view.findViewById(R.id.dmsQuestion);
             questionExraInfo = (TextView) view.findViewById(R.id.dmsQuestionExtra);
             image = (TextView)view.findViewById(R.id.dmsImage);
-
         }
     }
 }

@@ -2,6 +2,7 @@ package com.plusplus.i.jongerenparticipatieplatfrom.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,9 +48,11 @@ public class NavDrawerListAdapter extends BaseAdapter {
                     context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = mInflater.inflate(R.layout.drawer_list_item, null);
         }
-         
+        Typeface opensans = Typeface.createFromAsset(convertView.getContext().getAssets(), "fonts/OpenSans-Regular.ttf");
+
         ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
         TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
+        txtTitle.setTypeface(opensans);
         TextView txtCount = (TextView) convertView.findViewById(R.id.counter);
          
         imgIcon.setImageResource(navDrawerItems.get(position).getIcon());        

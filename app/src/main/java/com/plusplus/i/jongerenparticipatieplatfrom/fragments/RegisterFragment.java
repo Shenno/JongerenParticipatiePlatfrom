@@ -56,19 +56,19 @@ public class RegisterFragment extends Fragment implements Callback<Account> {
 
 
         Typeface fontttype = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
-        Typeface robto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
+        Typeface robto = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Bold.ttf");
         Typeface opensans = Typeface.createFromAsset(getActivity().getAssets(), "fonts/OpenSans-Regular.ttf");
-        Typeface paci = Typeface.createFromAsset(getActivity().getAssets(), "fonts/pacifico.ttf");
 
 
-        txtName.setTypeface(paci);
-        txtEmail.setTypeface(paci);
-        txtConfirmPwd.setTypeface(paci);
-        txtZipCode.setTypeface(paci);
-        btnRegister.setTypeface(paci);
-        txtBirthdate.setTypeface(paci);
-        txtZipCode.setTypeface(paci);
-        txtRegister.setTypeface(paci);
+        txtName.setTypeface(opensans);
+        txtEmail.setTypeface(opensans);
+        txtPassword.setTypeface(opensans);
+        txtConfirmPwd.setTypeface(opensans);
+        txtZipCode.setTypeface(opensans);
+        btnRegister.setTypeface(opensans);
+        txtBirthdate.setTypeface(opensans);
+        txtZipCode.setTypeface(opensans);
+        txtRegister.setTypeface(robto);
         return rootView;
     }
 

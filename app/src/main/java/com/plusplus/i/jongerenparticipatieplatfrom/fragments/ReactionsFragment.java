@@ -14,9 +14,12 @@ import android.widget.Toast;
 import com.plusplus.i.jongerenparticipatieplatfrom.R;
 import com.plusplus.i.jongerenparticipatieplatfrom.adapter.ReactionAdapter;
 import com.plusplus.i.jongerenparticipatieplatfrom.interfaces.OnSelectedListener;
+import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoReaction;
 import com.software.shell.fab.ActionButton;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import retrofit.Callback;
@@ -96,8 +99,16 @@ public class ReactionsFragment extends Fragment implements Callback<List<DtoReac
         }
     }
 
+    public class CustomComparator implements Comparator<DtoReaction> {
+        @Override
+        public int compare(DtoReaction o1, DtoReaction o2) {
+            return o2.getVotes()-o1.getVotes();
+        }
+    }
+
     @Override
     public void success(List<DtoReaction> dtoReactions, Response response) {
+        Collections.sort(dtoReactions, new CustomComparator());
         reactionAdapter.setReactionList(dtoReactions);
     }
 

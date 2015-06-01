@@ -18,6 +18,8 @@ import com.plusplus.i.jongerenparticipatieplatfrom.interfaces.OnSelectedListener
 import com.plusplus.i.jongerenparticipatieplatfrom.model.DtoDossier;
 import com.software.shell.fab.ActionButton;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import retrofit.Callback;
@@ -105,8 +107,16 @@ public class DossiersFragment extends Fragment implements Callback<List<DtoDossi
         }
     }
 
+    public class CustomComparator implements Comparator<DtoDossier> {
+        @Override
+        public int compare(DtoDossier o1, DtoDossier o2) {
+            return o2.getVotes()-o1.getVotes();
+        }
+    }
+
     @Override
     public void success(List<DtoDossier> dtoDossiers, Response response) {
+        Collections.sort(dtoDossiers, new CustomComparator());
         dossierAdapter.setDossierList(dtoDossiers);
     }
 

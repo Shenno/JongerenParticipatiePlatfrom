@@ -77,7 +77,7 @@ public class AddEventToDossierFragment extends Fragment implements Callback<DtoA
         }
         dtoAddEvent.setTitle(title.getText().toString());
         dtoAddEvent.setDescription(desc.getText().toString());
-        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         Date today = getDateFromDatePicker(datePicker);
         String reportDate = df.format(today);
         dtoAddEvent.setDate(reportDate);
